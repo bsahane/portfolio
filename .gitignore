@@ -1,0 +1,24 @@
+# OS & editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Local build / scratch outputs
+_bmad-output/
+node_modules/
+.opencode/node_modules/
