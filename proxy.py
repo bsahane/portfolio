@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
 import http.server, socketserver, urllib.request, urllib.error, json, os, sys
 
-UPSTREAM = "https://api.brocode.live/v1/messages"
-API_KEY = os.environ.get("BROCODE_KEY", "")
-PORT = int(os.environ.get("PROXY_PORT", "8787"))
+# OpenAI-compatible upstream. Override any of these with env vars; never
+# hardcode the key here — this file is committed.
+UPSTREAM = os.environ.get("CODECRAFT_URL", "https://codecraftapi.com/v1/chat/completions")
+MODEL    = os.environ.get("CODECRAFT_MODEL", "deepseek-v4-flash-0731")
+API_KEY  = os.environ.get("CODECRAFT_KEY") or os.environ.get("BROCODE_KEY", "")
+PORT     = int(os.environ.get("PROXY_PORT", "8787"))
+SYSTEM   = os.environ.get(
+    "CODECRAFT_SYSTEM",
+    "You are the terminal on Bhushan Sahane's engineering portfolio. He is a "
+    "Senior System Administrator at Red Hat with ~9 years of infrastructure "
+    "experience, RHCE and RHCSA certified, working on MCP servers, RAG "
+    "pipelines and agentic AI. Answer in under 60 words, plain text, no "
+    "markdown. If you do not know something about him, say so plainly and "
+    "suggest emailing sahane.bhushan7@gmail.com."
+)
 
 CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -36,7 +48,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         "status": "healthy",
         "service": "bsahane-terminal-proxy",
         "has_key": bool(API_KEY),
-        "upstream": UPSTREAM
+        "upstream": UPSTREAM,
+        "model": MODEL
       }
       self.wfile.write(json.dumps(status_data).encode())
       return
@@ -54,29 +67,55 @@ class Handler(http.server.BaseHTTPRequestHandler):
       self._cors()
       self.end_headers()
       self.wfile.write(json.dumps({
-        "error": "BROCODE_KEY not configured on proxy. Local knowledge engine active."
+        "error": "CODECRAFT_KEY not configured on proxy. Local knowledge engine active."
       }).encode())
       return
 
     n = int(self.headers.get("Content-Length", 0))
     body = self.rfile.read(n) if n else b""
+
+    # The page sends {messages:[...]}; the model and system prompt are the
+    # proxy's business, so a browser can never select a costlier model.
+    try:
+      incoming = json.loads(body or b"{}")
+    except ValueError:
+      incoming = {}
+    msgs = [m for m in incoming.get("messages", []) if m.get("role") in ("user", "assistant")]
+    payload = {
+      "model": MODEL,
+      "max_tokens": int(incoming.get("max_tokens") or 300),
+      "messages": [{"role": "system", "content": SYSTEM}] + msgs[-8:],
+    }
+
     req = urllib.request.Request(
-      UPSTREAM, data=body, method="POST",
+      UPSTREAM, data=json.dumps(payload).encode(), method="POST",
       headers={
         "Content-Type": "application/json",
-        "x-api-key": API_KEY,
-        "anthropic-version": "2023-06-01",
-        "anthropic-dangerous-direct-browser-access": "true",
+        "Authorization": "Bearer " + API_KEY,
+        # urllib's default UA is blocked outright by the upstream's CDN (403
+        # before the request ever reaches the origin). Identify properly.
+        "User-Agent": "bsahane-portfolio-proxy/1.0",
+        "Accept": "application/json",
       },
     )
     try:
-      with urllib.request.urlopen(req, timeout=120) as r:
-        out = r.read()
-      self.send_response(r.status)
+      with urllib.request.urlopen(req, timeout=20) as r:
+        raw = json.loads(r.read())
+      # Normalise OpenAI shape to the one the page already reads, so the
+      # browser stays protocol-agnostic.
+      text = ""
+      try:
+        text = raw["choices"][0]["message"]["content"]
+      except (KeyError, IndexError, TypeError):
+        pass
+      self.send_response(200 if text else 502)
       self.send_header("Content-Type", "application/json")
       self._cors()
       self.end_headers()
-      self.wfile.write(out)
+      self.wfile.write(json.dumps(
+        {"content": [{"type": "text", "text": text}], "model": MODEL}
+        if text else {"error": "empty completion"}
+      ).encode())
     except urllib.error.HTTPError as e:
       self.send_response(e.code)
       self.send_header("Content-Type", "application/json")
