@@ -566,8 +566,13 @@
  scroll-behavior: auto !important;
  transition-property: opacity, color, background-color, border-color, box-shadow, fill, stroke !important;
  transition-duration: 120ms !important;
- transform: none !important;
  }
+ /* No blanket `transform: none`. It never prevented motion — the
+    transition-property list above already excludes transform, and
+    `animation: none` drops keyframe movement — but it did destroy every
+    transform used for *position*. The mobile drawer is parked off-canvas
+    with translateX(100%); killing that pinned an inert, aria-hidden panel
+    across the page at z-index 999 for anyone browsing with Reduce Motion. */
  .boot, .boot * { opacity: 1 !important; clip-path: none !important; filter: none !important; }
  /* The status LED still reads as live, without pulsing. */
  .hero-status .dot { box-shadow: 0 0 8px var(--green) !important; }
@@ -744,6 +749,15 @@
  display: flex; align-items: center; justify-content: center;
  cursor: pointer;
  transition: all 0.2s;
+ position: relative;
+ }
+ /* The 32px mark is right for a drawer header; 32px of *target* is not, and
+    44×44 is a floor this project set for itself. Grow the hit area, not the
+    glyph — 6px on every side reaches 44 without touching the layout. */
+ .drawer-close::after {
+ content: '';
+ position: absolute;
+ inset: -6px;
  }
  .drawer-close:hover { color: var(--green); border-color: var(--green); }
  .drawer-close svg { width: 16px; height: 16px; }
@@ -3339,10 +3353,31 @@
   position: relative;
   z-index: 1;
   }
+  /* This marker used @keyframes pulse — a dot keyframe (opacity 1→0.4,
+     scale 1→0.85) written for the 6px status LEDs. On a 36px icon puck it
+     made the timeline's leading item its faintest element for half of every
+     cycle: the squint test lost the entry that matters most. The marker now
+     holds still and a ring radiates off it, so "live" is signalled without
+     erasing the thing being signalled. The old 0 0 0 4px halo is gone — the
+     ring is a real ring, not a shadow pretending to be one. With motion
+     reduced the ring renders at rest and still reads as a marked state. */
   .journey-marker.now {
   background: var(--green);
-  box-shadow: 0 0 0 4px rgba(57, 211, 83, 0.18);
-  animation: pulse 2.5s infinite;
+  }
+  .journey-marker.now::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--green);
+  pointer-events: none;
+  animation: markerPing 2.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  animation-play-state: var(--loop-state, running);
+  }
+  @keyframes markerPing {
+  0%   { transform: scale(0.82); opacity: 0.6; }
+  70%  { transform: scale(1.55); opacity: 0; }
+  100% { transform: scale(1.55); opacity: 0; }
   }
   .journey-marker svg { width: 14px; height: 14px; color: var(--green); }
   .journey-marker.now svg { color: var(--bg); }
@@ -5464,10 +5499,19 @@ renderProjects();
 
    Offscreen loops are paused instead. An always-running packet animation in a
    section nobody is looking at costs frames and says nothing. */
-const loopSelectors = '.hero-status .dot, .term-banner-dots span, .mcp-connector, .status-pulse, .chat-msg-status-dot';
+const loopSelectors = '.hero-status .dot, .term-banner-dots span, .mcp-connector, .status-pulse, .chat-msg-status-dot, .journey-marker.now';
+
+/* animation-play-state does not inherit into ::before/::after, so a loop that
+   lives on a pseudo-element cannot be paused by setting the property on its
+   host. Set the custom property too; pseudo-element loops read it. */
+function setLoopState(el, state) {
+  el.style.animationPlayState = state;
+  el.style.setProperty('--loop-state', state);
+}
+
 const loopObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    e.target.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+    setLoopState(e.target, e.isIntersecting ? 'running' : 'paused');
   });
 }, { threshold: 0 });
 
@@ -5483,7 +5527,7 @@ document.addEventListener('visibilitychange', () => {
       const r = el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > window.innerHeight) return;
     }
-    el.style.animationPlayState = state;
+    setLoopState(el, state);
   });
 });
 
