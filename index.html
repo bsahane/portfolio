@@ -308,13 +308,26 @@
  :root[data-theme="glass"] .toast-notification {
   backdrop-filter: blur(18px) saturate(150%);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
-  border-top-color: rgba(255, 255, 255, 0.9);
+  /* Ink hairline, not a lit top edge — the highlight belongs to dark glass. */
+  border-color: rgba(5, 3, 21, 0.12);
  }
+ /* Containment on paper comes from elevation, not from a hairline. These
+    cards measured 1.015 against the page — functionally invisible. A two-stop
+    shadow (contact + ambient) plus an ink hairline gives them an edge. */
  :root[data-theme="glass"] .project-card,
  :root[data-theme="glass"] .skill-card,
  :root[data-theme="glass"] .cert-card,
- :root[data-theme="glass"] .journey-item {
-  border-top-color: rgba(255, 255, 255, 0.85);
+ :root[data-theme="glass"] .journey-item,
+ :root[data-theme="glass"] .xp-org {
+  background: rgba(255, 255, 255, 0.74);
+  border-color: rgba(5, 3, 21, 0.10);
+  box-shadow: 0 1px 2px rgba(5, 3, 21, 0.05), 0 8px 20px rgba(5, 3, 21, 0.07);
+ }
+ :root[data-theme="glass"] .project-card:hover,
+ :root[data-theme="glass"] .skill-card:hover,
+ :root[data-theme="glass"] .cert-card:hover {
+  border-color: rgba(47, 39, 206, 0.45);
+  box-shadow: 0 2px 4px rgba(5, 3, 21, 0.06), 0 14px 32px rgba(5, 3, 21, 0.12);
  }
  @media (prefers-reduced-transparency: reduce) {
   :root[data-theme="glass"] {
@@ -389,6 +402,14 @@
     inset 0 2px 0 rgba(255, 255, 255, 0.95),
     inset 0 -3px 7px rgba(90, 50, 40, 0.08);
  }
+ :root[data-theme="clay"] .project-card:hover,
+ :root[data-theme="clay"] .skill-card:hover,
+ :root[data-theme="clay"] .cert-card:hover {
+  box-shadow:
+    0 18px 34px rgba(90, 50, 40, 0.20),
+    inset 0 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 7px rgba(90, 50, 40, 0.08);
+ }
  :root[data-theme="clay"] .btn,
  :root[data-theme="clay"] .contact-cmd-btn,
  :root[data-theme="clay"] .filter-btn,
@@ -418,6 +439,17 @@
  /* The dark console keeps its own scrim rules. */
  :root[data-theme="glass"] .terminal-card .chat-list::-webkit-scrollbar-thumb,
  :root[data-theme="clay"]  .terminal-card .chat-list::-webkit-scrollbar-thumb { background: #484f58; }
+
+ /* Base hover/elevation shadows are tuned for black grounds — rgba(0,0,0,0.4+)
+    reads as a smudge on paper. Re-point the shared ones per material. */
+ :root[data-theme="glass"] .contact-command { box-shadow: 0 1px 2px rgba(5,3,21,0.05), 0 10px 28px rgba(5,3,21,0.10); }
+ :root[data-theme="glass"] .certs-banner    { box-shadow: 0 1px 2px rgba(5,3,21,0.05), 0 8px 22px rgba(5,3,21,0.08); }
+ :root[data-theme="glass"] .theme-menu      { box-shadow: 0 2px 6px rgba(5,3,21,0.06), 0 14px 34px rgba(5,3,21,0.14); }
+ :root[data-theme="glass"] .toast-notification { box-shadow: 0 2px 6px rgba(5,3,21,0.06), 0 14px 34px rgba(5,3,21,0.16); }
+ :root[data-theme="clay"]  .theme-menu      { box-shadow: 0 2px 6px rgba(90,50,40,0.08), 0 14px 32px rgba(90,50,40,0.18); }
+ :root[data-theme="clay"]  .toast-notification { box-shadow: 0 2px 6px rgba(90,50,40,0.08), 0 14px 32px rgba(90,50,40,0.20); }
+ :root[data-theme="glass"] .mobile-drawer   { box-shadow: -10px 0 40px rgba(5,3,21,0.16); }
+ :root[data-theme="clay"]  .mobile-drawer   { box-shadow: -10px 0 40px rgba(90,50,40,0.18); }
 
  /* A terminal is dark even inside a light IDE. Keeping the console dark on
     the light themes preserves the product's own object — and keeps the ASCII
