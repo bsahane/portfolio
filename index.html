@@ -8,11 +8,26 @@
 <meta name="description" content="Bhushan Sahane — AI Infrastructure Engineer at Red Hat, Inc. building agentic AI platforms, MCP servers, RAG pipelines, and A2A systems." />
 <meta name="author" content="Bhushan Sahane" />
 <meta name="email" content="sahane.bhushan7@gmail.com" />
+<link rel="canonical" href="https://bhushan.sahane.in/" />
+
+<!-- Favicon: inline SVG, no asset request -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0e14'/%3E%3Ctext x='6' y='23' font-family='ui-monospace,monospace' font-size='18' font-weight='700' fill='%2339d353'%3E%24_%3C/text%3E%3C/svg%3E" />
+
+<!-- Social previews: link shares are the primary arrival path -->
+<meta property="og:type" content="profile" />
+<meta property="og:site_name" content="bsahane ~/portfolio" />
+<meta property="og:url" content="https://bhushan.sahane.in/" />
+<meta property="og:title" content="Bhushan Sahane — AI Infrastructure Engineer at Red Hat" />
+<meta property="og:description" content="Agentic AI platforms, MCP servers, RAG pipelines and A2A systems. RHCE and RHCSA certified — credentials verifiable in one click." />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Bhushan Sahane — AI Infrastructure Engineer at Red Hat" />
+<meta name="twitter:description" content="Agentic AI platforms, MCP servers, RAG pipelines and A2A systems. RHCE and RHCSA certified — credentials verifiable in one click." />
 <script>
   (function() {
     try {
-      if (localStorage.getItem('portfolio-theme') === 'gruvbox') {
-        document.documentElement.setAttribute('data-theme', 'gruvbox');
+      var t = localStorage.getItem('portfolio-theme');
+      if (['tokyo','mocha','nord','gruvbox','glass','clay'].indexOf(t) !== -1) {
+        document.documentElement.setAttribute('data-theme', t);
       }
     } catch (e) {}
   })();
@@ -55,7 +70,28 @@
 
   --font: 'JetBrains Mono', 'Fira Code', ui-monospace, 'SF Mono', Consolas, monospace;
 
-  --fs-xs: 11px;
+  /* Spacing scale, 4-unit base. DESIGN.md documented this ramp; nothing in the
+     CSS implemented it, so 14 distinct gap values had accumulated (5, 7, 9,
+     14, 18px among them). These are the steps — use them, not new numbers. */
+  --sp-1: 4px;
+  --sp-1-5: 6px;
+  --sp-2: 8px;
+  --sp-2-5: 10px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  /* 12px is the floor for anything a person has to read. Below it, a mono
+     face on an OLED-black surface stops being text and becomes texture.
+     ASCII art keeps its own sizes — there the glyph grid is the point. */
+  --fs-xs: 12px;
   --fs-sm: 13px;
   --fs-base: 14px;
   --fs-md: 16px;
@@ -65,7 +101,9 @@
   --fs-3xl: 44px;
   --fs-4xl: 60px;
 
+  --radius-sm: 4px;
   --radius: 6px;
+  --radius-md: 6px;
   --radius-lg: 10px;
 
   --shadow: 0 4px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02);
@@ -78,7 +116,7 @@
  /* =============================================================
   GRUVBOX THEME (morhetz/gruvbox retro groove dark)
   ============================================================= */
- [data-theme="gruvbox"] {
+ :root[data-theme="gruvbox"] {
   --bg: #1d2021;
   --bg-raised: #282828;
   --bg-overlay: #32302f;
@@ -112,22 +150,318 @@
   --glow-purple: 0 0 24px rgba(211, 134, 155, 0.22);
  }
 
- [data-theme="gruvbox"] body::before {
-  background:
-    radial-gradient(ellipse at 0% 0%, rgba(184, 187, 38, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 0%, rgba(254, 128, 25, 0.07) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 100%, rgba(131, 165, 152, 0.06) 0%, transparent 60%);
+ /* Tokyo Night — enkia/tokyo-night */
+ :root[data-theme="tokyo"] {
+  --bg: #1a1b26;
+  --bg-raised: #1f2335;
+  --bg-overlay: #24283b;
+  --bg-elev: #2f334d;
+  --bg-hover: #414868;
+
+  --bdr-subtle: #292e42;
+  --bdr: #3b4261;
+  --bdr-strong: #545c7e;
+  --bdr-hover: #6172b0;
+
+  --fg: #c0caf5;
+  --fg-2: #a9b1d6;
+  --fg-3: #9aa5ce;
+  --fg-muted: #8b95c4;
+
+  --green: #9ece6a;
+  --cyan: #7dcfff;
+  --blue: #7aa2f7;
+  --purple: #bb9af7;
+  --yellow: #e0af68;
+  --orange: #ff9e64;
+  --pink: #f7768e;
+  --mint: #73daca;
+  --red: #f7768e;
+
+  --shadow: 0 4px 24px rgba(0,0,0,0.6), 0 0 0 1px rgba(192,202,245,0.04);
+  --glow: 0 0 24px rgba(158, 206, 106, 0.22);
+  --glow-cyan: 0 0 24px rgba(125, 207, 255, 0.22);
+  --glow-blue: 0 0 24px rgba(122, 162, 247, 0.22);
+  --glow-purple: 0 0 24px rgba(187, 154, 247, 0.22);
  }
 
- [data-theme="gruvbox"] .mobile-drawer-overlay {
+ /* Catppuccin Mocha — catppuccin/catppuccin */
+ :root[data-theme="mocha"] {
+  --bg: #11111b;
+  --bg-raised: #181825;
+  --bg-overlay: #1e1e2e;
+  --bg-elev: #313244;
+  --bg-hover: #45475a;
+
+  --bdr-subtle: #313244;
+  --bdr: #45475a;
+  --bdr-strong: #585b70;
+  --bdr-hover: #6c7086;
+
+  --fg: #cdd6f4;
+  --fg-2: #bac2de;
+  --fg-3: #a6adc8;
+  --fg-muted: #9399b2;
+
+  --green: #a6e3a1;
+  --cyan: #89dceb;
+  --blue: #89b4fa;
+  --purple: #cba6f7;
+  --yellow: #f9e2af;
+  --orange: #fab387;
+  --pink: #f5c2e7;
+  --mint: #94e2d5;
+  --red: #f38ba8;
+
+  --shadow: 0 4px 24px rgba(0,0,0,0.7), 0 0 0 1px rgba(205,214,244,0.04);
+  --glow: 0 0 24px rgba(166, 227, 161, 0.22);
+  --glow-cyan: 0 0 24px rgba(137, 220, 235, 0.22);
+  --glow-blue: 0 0 24px rgba(137, 180, 250, 0.22);
+  --glow-purple: 0 0 24px rgba(203, 166, 247, 0.22);
+ }
+
+ /* Nord — arcticicestudio/nord */
+ :root[data-theme="nord"] {
+  --bg: #1c2029;
+  --bg-raised: #242933;
+  --bg-overlay: #2e3440;
+  --bg-elev: #3b4252;
+  --bg-hover: #434c5e;
+
+  --bdr-subtle: #3b4252;
+  --bdr: #4c566a;
+  --bdr-strong: #5d6b83;
+  --bdr-hover: #6f7f99;
+
+  --fg: #eceff4;
+  --fg-2: #e5e9f0;
+  --fg-3: #d8dee9;
+  --fg-muted: #b8c2d4;
+
+  --green: #a3be8c;
+  --cyan: #88c0d0;
+  --blue: #9dbbdb;
+  --purple: #c9a3c4;
+  --yellow: #ebcb8b;
+  --orange: #d08770;
+  --pink: #c9a3c4;
+  --mint: #8fbcbb;
+  --red: #bf616a;
+
+  --shadow: 0 4px 24px rgba(0,0,0,0.55), 0 0 0 1px rgba(236,239,244,0.05);
+  --glow: 0 0 24px rgba(163, 190, 140, 0.22);
+  --glow-cyan: 0 0 24px rgba(136, 192, 208, 0.22);
+  --glow-blue: 0 0 24px rgba(129, 161, 193, 0.22);
+  --glow-purple: 0 0 24px rgba(180, 142, 173, 0.22);
+ }
+
+ /* ── Frosted ──────────────────────────────────────────────────
+    Light, because that is the honest form of the material: frosted glass
+    reads as glass over a bright field, not over a black one. Palette follows
+    realtimecolors.com's indigo set and its method — neutrals tinted toward
+    the accent (#050315 / #fbfbfe are violet-cast, never neutral grey).
+    Accents are re-darkened: a neon that sings on #0a0e14 vanishes on paper. */
+ :root[data-theme="glass"] {
+  --bg: #f4f4fc;
+  --bg-raised: rgba(255, 255, 255, 0.58);
+  --bg-overlay: rgba(255, 255, 255, 0.72);
+  --bg-elev: rgba(255, 255, 255, 0.86);
+  --bg-hover: rgba(47, 39, 206, 0.10);
+
+  --bdr-subtle: rgba(5, 3, 21, 0.09);
+  --bdr: rgba(5, 3, 21, 0.15);
+  --bdr-strong: rgba(5, 3, 21, 0.30);
+  --bdr-hover: rgba(47, 39, 206, 0.55);
+
+  --fg: #050315;
+  --fg-2: #292544;
+  --fg-3: #3d3958;
+  --fg-muted: #4e4a67;
+
+  --green: #0c6b45;
+  --cyan: #0a5f6d;
+  --blue: #2f27ce;
+  --purple: #5b21b6;
+  --yellow: #7a4e00;
+  --orange: #9a3d0c;
+  --pink: #a3245c;
+  --mint: #0b6a52;
+  --red: #b21e2f;
+
+  --radius-lg: 16px;
+  --shadow: 0 10px 30px rgba(5, 3, 21, 0.10), 0 0 0 1px rgba(5, 3, 21, 0.04);
+  --glow: 0 6px 18px rgba(12, 107, 69, 0.18);
+  --glow-cyan: 0 6px 18px rgba(10, 95, 109, 0.18);
+  --glow-blue: 0 6px 18px rgba(47, 39, 206, 0.18);
+  --glow-purple: 0 6px 18px rgba(91, 33, 182, 0.18);
+ }
+ :root[data-theme="glass"] body {
+  background-image:
+    radial-gradient(1100px 620px at 12% -8%, rgba(67, 59, 255, 0.20), transparent 62%),
+    radial-gradient(900px 560px at 92% 4%, rgba(168, 85, 247, 0.16), transparent 62%),
+    radial-gradient(880px 520px at 50% 108%, rgba(34, 197, 194, 0.16), transparent 60%);
+  background-attachment: fixed;
+ }
+ :root[data-theme="glass"] .certs-banner,
+ :root[data-theme="glass"] .contact-command,
+ :root[data-theme="glass"] .theme-menu,
+ :root[data-theme="glass"] .toast-notification {
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border-top-color: rgba(255, 255, 255, 0.9);
+ }
+ :root[data-theme="glass"] .project-card,
+ :root[data-theme="glass"] .skill-card,
+ :root[data-theme="glass"] .cert-card,
+ :root[data-theme="glass"] .journey-item {
+  border-top-color: rgba(255, 255, 255, 0.85);
+ }
+ @media (prefers-reduced-transparency: reduce) {
+  :root[data-theme="glass"] {
+   --bg-raised: #ffffff;
+   --bg-overlay: #fbfbff;
+   --bg-elev: #f6f6fd;
+   --bg-hover: #e9e7fb;
+  }
+  :root[data-theme="glass"] .certs-banner,
+  :root[data-theme="glass"] .contact-command,
+  :root[data-theme="glass"] .theme-menu,
+  :root[data-theme="glass"] .toast-notification {
+   backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+ }
+
+ /* ── Clay ─────────────────────────────────────────────────────
+    Warm light pastel, claymorphism's native register. Inflated surfaces:
+    outer drop shadow, inset top highlight, inset bottom shade. */
+ :root[data-theme="clay"] {
+  --bg: #f4ebe6;
+  --bg-raised: #fdf7f4;
+  --bg-overlay: #fbf2ed;
+  --bg-elev: #f6e8e1;
+  --bg-hover: #efdbd1;
+
+  --bdr-subtle: rgba(34, 22, 25, 0.07);
+  --bdr: rgba(34, 22, 25, 0.12);
+  --bdr-strong: rgba(34, 22, 25, 0.24);
+  --bdr-hover: rgba(176, 58, 104, 0.45);
+
+  --fg: #221619;
+  --fg-2: #453239;
+  --fg-3: #56424a;
+  --fg-muted: #64505a;
+
+  --green: #14664a;
+  --cyan: #0c6068;
+  --blue: #33459f;
+  --purple: #6d328c;
+  --yellow: #7c5008;
+  --orange: #97401a;
+  --pink: #9c2f5b;
+  --mint: #12634f;
+  --red: #a52a35;
+
+  --radius: 12px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 12px 26px rgba(90, 50, 40, 0.16);
+  --glow: 0 6px 18px rgba(20, 102, 74, 0.18);
+  --glow-cyan: 0 6px 18px rgba(12, 96, 104, 0.18);
+  --glow-blue: 0 6px 18px rgba(51, 69, 159, 0.18);
+  --glow-purple: 0 6px 18px rgba(109, 50, 140, 0.18);
+ }
+ :root[data-theme="clay"] body {
+  background-image:
+    radial-gradient(1000px 600px at 15% -6%, rgba(240, 171, 140, 0.30), transparent 62%),
+    radial-gradient(880px 540px at 88% 6%, rgba(196, 160, 230, 0.24), transparent 62%);
+ }
+ :root[data-theme="clay"] .certs-banner,
+ :root[data-theme="clay"] .contact-command,
+ :root[data-theme="clay"] .project-card,
+ :root[data-theme="clay"] .skill-card,
+ :root[data-theme="clay"] .cert-card,
+ :root[data-theme="clay"] .journey-item,
+ :root[data-theme="clay"] .theme-menu {
+  border-color: transparent;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 12px 24px rgba(90, 50, 40, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 7px rgba(90, 50, 40, 0.08);
+ }
+ :root[data-theme="clay"] .btn,
+ :root[data-theme="clay"] .contact-cmd-btn,
+ :root[data-theme="clay"] .filter-btn,
+ :root[data-theme="clay"] .theme-toggle-btn {
+  border-radius: 999px;
+  box-shadow:
+    0 6px 13px rgba(90, 50, 40, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+ }
+
+ /* Base styles hardcode a dark nav, drawer scrim and spotlight; on a light
+    paper those survive as black bars. Re-point them at the active palette. */
+ :root[data-theme="glass"] .nav { background: rgba(255, 255, 255, 0.70); }
+ :root[data-theme="clay"]  .nav { background: rgba(253, 247, 244, 0.82); }
+ :root[data-theme="glass"] .mobile-drawer-overlay { background: rgba(5, 3, 21, 0.35); }
+ :root[data-theme="clay"]  .mobile-drawer-overlay { background: rgba(34, 22, 25, 0.32); }
+ :root[data-theme="glass"] .mobile-drawer { background: #f7f7fd; }
+ :root[data-theme="clay"]  .mobile-drawer { background: #fdf7f4; }
+ :root[data-theme="glass"] .spotlight-card::before {
+  background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(47, 39, 206, 0.10), transparent 65%);
+ }
+ :root[data-theme="clay"] .spotlight-card::before {
+  background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(156, 47, 91, 0.10), transparent 65%);
+ }
+ /* The dark console keeps its own scrim rules. */
+ :root[data-theme="glass"] .terminal-card .chat-list::-webkit-scrollbar-thumb,
+ :root[data-theme="clay"]  .terminal-card .chat-list::-webkit-scrollbar-thumb { background: #484f58; }
+
+ /* A terminal is dark even inside a light IDE. Keeping the console dark on
+    the light themes preserves the product's own object — and keeps the ASCII
+    art's phosphor glow legible, which it would not be on paper. */
+ :root[data-theme="glass"] .terminal-card,
+ :root[data-theme="clay"] .terminal-card,
+ :root[data-theme="glass"] .neofetch-card,
+ :root[data-theme="clay"] .neofetch-card {
+  --bg: #0a0e14;
+  --bg-raised: #0f141b;
+  --bg-overlay: #141a23;
+  --bg-elev: #1a212c;
+  --bg-hover: #232b37;
+  --bdr-subtle: #21262d;
+  --bdr: #30363d;
+  --bdr-strong: #484f58;
+  --fg: #e6edf3;
+  --fg-2: #b1bac4;
+  --fg-3: #a1abb7;
+  --fg-muted: #9aa6b4;
+  --green: #39d353;
+  --cyan: #39c5cf;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --yellow: #d29922;
+  --orange: #f0883e;
+  --pink: #ff7b72;
+  --mint: #7ee787;
+  --red: #f85149;
+  background: #0d1117;
+  color: var(--fg);
+  border-color: var(--bdr);
+  box-shadow: 0 16px 40px rgba(5, 3, 21, 0.28);
+ }
+
+ :root[data-theme="gruvbox"] .mobile-drawer-overlay {
   background: rgba(29, 32, 33, 0.85);
  }
 
- [data-theme="gruvbox"] .scroll-progress-bar {
+ :root[data-theme="gruvbox"] .scroll-progress-bar {
   background: linear-gradient(90deg, #b8bb26, #fabd2f, #fe8019);
  }
 
- [data-theme="gruvbox"] .spotlight-card::before {
+ :root[data-theme="gruvbox"] .spotlight-card::before {
   background: radial-gradient(
     400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
     rgba(184, 187, 38, 0.12),
@@ -175,16 +509,19 @@
  }
  .skip-link:focus { top: 8px; }
 
+ /* Reduced motion removes movement and looping, not feedback. Colour, opacity
+    and border changes still confirm that a control responded. */
  @media (prefers-reduced-motion: reduce) {
  *, *::before, *::after {
- animation-duration: 0.01ms !important;
- transition-duration: 0.01ms !important;
+ animation: none !important;
  scroll-behavior: auto !important;
- }
- .reveal {
- opacity: 1 !important;
+ transition-property: opacity, color, background-color, border-color, box-shadow, fill, stroke !important;
+ transition-duration: 120ms !important;
  transform: none !important;
  }
+ .boot, .boot * { opacity: 1 !important; clip-path: none !important; filter: none !important; }
+ /* The status LED still reads as live, without pulsing. */
+ .hero-status .dot { box-shadow: 0 0 8px var(--green) !important; }
  }
 
  /* =============================================================
@@ -266,7 +603,7 @@
  .theme-toggle-btn:hover svg {
   transform: rotate(30deg);
  }
- [data-theme="gruvbox"] .theme-toggle-btn {
+ :root[data-theme="gruvbox"] .theme-toggle-btn {
   border-color: rgba(250, 189, 47, 0.5);
   background: rgba(250, 189, 47, 0.1);
   color: var(--yellow);
@@ -401,9 +738,10 @@
  .drawer-theme-box {
   margin: 18px 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 14px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
   background: var(--bg-overlay);
   border: 1px solid var(--bdr);
   border-radius: var(--radius);
@@ -412,48 +750,29 @@
   font-size: var(--fs-xs);
   color: var(--fg-muted);
  }
- .drawer-theme-btn {
-  background: transparent;
-  border: 1px solid var(--bdr);
-  color: var(--fg-2);
-  border-radius: var(--radius);
-  padding: 5px 12px;
-  font-family: var(--font);
-  font-size: var(--fs-xs);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s;
- }
- .drawer-theme-btn:hover {
-  color: var(--fg);
-  border-color: var(--green);
- }
- [data-theme="gruvbox"] .drawer-theme-btn {
-  border-color: rgba(250, 189, 47, 0.5);
-  color: var(--yellow);
- }
 
  /* =============================================================
  LAYOUT
  ============================================================= */
  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
+ /* Rhythm, not metronome. One interval repeated at all six seams told the
+    visitor every section weighs the same. It doesn't: credentials are the
+    payload and contact is the close, so both get air before them; sections
+    that continue a thought run tighter into it. */
  section { padding: 100px 0; scroll-margin-top: 80px; }
+ #stack   { padding-top: 72px; }   /* continues the argument from #about */
+ #experience { padding-top: 72px; } /* continues from the credentials */
+ #journey { padding-top: 72px; }   /* continues from the experience log */
+ #certs   { padding-top: 152px; }  /* arrival — the evidence the visit is for */
+ #contact { padding-top: 152px; }  /* the close, given room to land */
+ /* Alias anchors land with the same clearance as a real section. */
+ .anchor-alias { height: 0; width: 0; pointer-events: none; scroll-margin-top: 80px; }
 
  .section-header { margin-bottom: 64px; max-width: 760px; }
- .section-eyebrow {
- display: inline-flex; align-items: center; gap: 10px;
- font-size: var(--fs-xs);
- color: var(--green);
- text-transform: uppercase;
- letter-spacing: 2.5px;
- margin-bottom: 16px;
- }
- .section-eyebrow::before {
- content: ''; width: 24px; height: 1px; background: var(--green); display: inline-block;
- }
+ /* Eyebrows removed. Each one restated its own heading — "// ~ tail -f
+    ~/journey.log" sat above "$ cat ~/journey.log" — so it cost a line of
+    tracking-heavy 11px caps to say nothing the heading did not. */
  .section-title {
  font-size: clamp(28px, 4.5vw, 44px);
  font-weight: 700;
@@ -479,9 +798,11 @@
  HERO
  ============================================================= */
  .hero {
- min-height: 100vh; min-height: 100dvh;
+ min-height: 100vh; min-height: 100dvh; min-height: 100svh;
  display: flex; align-items: center;
- padding: 130px 0 80px;
+ /* Sized so the terminal — the hero's visual — completes inside a 1280x800
+    fold. Top clears the 66px fixed nav; the rest is the content budget. */
+ padding: 92px 0 40px;
  }
  .hero-grid {
  display: grid;
@@ -565,14 +886,15 @@
 
  .hero-stats {
  display: grid;
+ /* 4 x 140 + 3 x 24 = 632. Below this the last stat always orphaned to row 2. */
  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
- gap: 28px;
+ gap: 24px;
  padding-top: 28px;
  border-top: 1px dashed var(--bdr);
- max-width: 620px;
+ max-width: 640px;
  }
  .hero-stat-label {
- font-size: 10px;
+ font-size: var(--fs-xs);
  text-transform: uppercase;
  letter-spacing: 2px;
  color: var(--fg-muted);
@@ -620,7 +942,7 @@
  border-bottom: 1px solid var(--bdr-subtle);
  display: flex; align-items: center; gap: 10px;
  position: relative; z-index: 1; }
- .term-dots { display: flex; gap: 7px; }
+ .term-dots { display: flex; gap: var(--sp-2); }
  .term-dots button {
  width: 12px; height: 12px;
  border-radius: 50%;
@@ -645,7 +967,7 @@
  }
  .term-title::before { content: 'λ '; color: var(--green); opacity: 0.5; }
  .term-badge {
- font-size: 10px;
+ font-size: var(--fs-xs);
  color: var(--mint);
  padding: 3px 9px;
  border-radius: 100px;
@@ -723,7 +1045,7 @@
  .t-sep { color: var(--fg-muted); }
  .t-cmd { color: var(--fg); }
 
- .t-out { margin: 4px 0 14px; color: var(--fg-2); }
+ .t-out { margin: 2px 0 8px; color: var(--fg-2); }
  .t-out.muted { color: var(--fg-muted); }
  .t-out.g { color: var(--green); }
  .t-out.b { color: var(--blue); }
@@ -749,8 +1071,8 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin: 14px 0;
-    padding: 12px 6px 16px 2px;
+    margin: 10px 0;
+    padding: 10px 6px 12px 2px;
     border-top: 1px dashed var(--bdr-subtle);
     border-bottom: 1px dashed var(--bdr-subtle);
     flex: 1;
@@ -850,7 +1172,7 @@
     gap: 8px;
     flex-wrap: wrap;
   }
-  [data-theme="gruvbox"] .chat-msg-header {
+  :root[data-theme="gruvbox"] .chat-msg-header {
     border-bottom-color: rgba(0, 0, 0, 0.2);
   }
   .chat-msg-header-left {
@@ -875,7 +1197,7 @@
     color: var(--green);
     font-weight: 600;
     letter-spacing: 0.5px;
-    font-size: 11px;
+    font-size: var(--fs-xs);
   }
   .chat-msg-header-right {
     display: inline-flex;
@@ -883,7 +1205,7 @@
     gap: 6px;
   }
   .engine-badge {
-    font-size: 9px;
+    font-size: var(--fs-xs);
     font-weight: 700;
     letter-spacing: 0.5px;
     padding: 2px 7px;
@@ -915,7 +1237,7 @@
     align-items: center;
     gap: 4px;
     padding: 2px 7px;
-    font-size: 10px;
+    font-size: var(--fs-xs);
     font-family: var(--font);
     background: transparent;
     color: var(--fg-muted);
@@ -989,7 +1311,7 @@
     flex-wrap: nowrap;
     align-items: stretch;
     gap: 8px;
-    margin-top: 12px;
+    margin-top: 8px;
     padding-top: 10px;
     width: 100%;
   }
@@ -1066,7 +1388,7 @@
     right: 8px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 10px;
+    font-size: var(--fs-xs);
     color: var(--green);
     background: rgba(57, 211, 83, 0.1);
     border: 1px solid rgba(57, 211, 83, 0.25);
@@ -1117,21 +1439,21 @@
     transform: none;
   }
   .chat-send-kbd {
-    font-size: 10px;
+    font-size: var(--fs-xs);
     background: rgba(0, 0, 0, 0.25);
     padding: 1px 5px;
     border-radius: 3px;
     font-weight: 600;
     line-height: 1.2;
   }
-  [data-theme="gruvbox"] .chat-send-kbd {
+  :root[data-theme="gruvbox"] .chat-send-kbd {
     background: rgba(29, 32, 33, 0.35);
   }
 
   .chat-hint {
     font-size: var(--fs-xs);
     color: var(--fg-muted);
-    margin-top: 8px;
+    margin-top: 6px;
     line-height: 1.5;
   }
   .chat-hint .key {
@@ -1145,12 +1467,12 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 6px;
-    margin-top: 12px;
-    padding-top: 10px;
+    margin-top: 8px;
+    padding-top: 8px;
     border-top: 1px dashed var(--bdr-subtle);
   }
   .chat-chips-label {
-    font-size: 11px;
+    font-size: var(--fs-xs);
     color: var(--fg-muted);
     font-family: var(--font);
     margin-right: 4px;
@@ -1161,7 +1483,7 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-size: 11px;
+    font-size: var(--fs-xs);
     font-family: var(--font);
     padding: 3px 9px;
     background: var(--bg-overlay);
@@ -1175,7 +1497,7 @@
   }
   .chat-chip .chip-sym {
     font-weight: 700;
-    font-size: 11px;
+    font-size: var(--fs-xs);
     transition: color 0.15s;
   }
   .chat-chip.cmd-chip .chip-sym {
@@ -1295,7 +1617,7 @@
   }
   .terminal-dots {
     display: inline-flex;
-    gap: 7px;
+    gap: var(--sp-2);
     align-items: center;
     margin-right: 8px;
   }
@@ -1320,7 +1642,7 @@
   .neofetch-grid {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 18px;
+    gap: var(--sp-4);
     align-items: start;
     margin: 0;
   }
@@ -1378,7 +1700,7 @@
     display: grid;
     grid-template-columns: 80px 10px 1fr;
     align-items: baseline;
-    font-size: 11.5px;
+    font-size: var(--fs-xs);
     line-height: 1.48;
     padding: 1px 0;
   }
@@ -1397,7 +1719,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 11.5px;
+    font-size: var(--fs-xs);
   }
   .neofetch-v.g { color: var(--green); font-weight: 600; }
   .neofetch-v.c { color: var(--cyan); font-weight: 600; }
@@ -1411,7 +1733,7 @@
     border: 1px solid rgba(57, 211, 83, 0.35);
     border-radius: 3px;
     color: var(--green);
-    font-size: 9.5px;
+    font-size: var(--fs-xs);
     font-weight: 700;
     letter-spacing: 0.3px;
     margin-left: 5px;
@@ -1441,11 +1763,11 @@
     border-top: 1px dashed var(--bdr-subtle);
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: var(--sp-1);
   }
   .palette-row {
     display: flex;
-    gap: 5px;
+    gap: var(--sp-1);
     width: 100%;
   }
   .sw-blk {
@@ -1471,13 +1793,13 @@
     background: var(--bg-overlay);
     border: 1px solid var(--bdr-subtle);
     border-radius: var(--radius);
-    font-size: 11px;
+    font-size: var(--fs-xs);
     font-family: var(--font);
   }
   .prompt-line {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: var(--sp-1);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1503,7 +1825,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 10px;
+    font-size: var(--fs-xs);
     font-weight: 700;
     color: var(--green);
     letter-spacing: 0.5px;
@@ -1525,7 +1847,7 @@
   @media (max-width: 680px) {
     .neofetch-grid {
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: var(--sp-3);
     }
     .neofetch-logo-wrapper {
       border-right: none;
@@ -1535,7 +1857,7 @@
     }
     .neofetch-row {
       grid-template-columns: 74px 10px 1fr;
-      font-size: 11px;
+      font-size: var(--fs-xs);
     }
     .neofetch-prompt {
       flex-direction: column;
@@ -1623,14 +1945,17 @@
     color: var(--fg);
   }
   .mcp-node-badge {
-    font-size: 10px;
+    font-size: var(--fs-xs);
     padding: 2px 6px;
     border-radius: 4px;
     font-weight: 500;
+    /* Hue lives in the tint; the label takes --fg so every theme clears AA
+       even on an elevated surface. */
+    color: var(--fg) !important;
   }
   .mcp-node-desc {
     font-size: var(--fs-xs);
-    color: var(--fg-muted);
+    color: var(--fg-2);
     line-height: 1.4;
   }
   .mcp-connector {
@@ -1745,9 +2070,9 @@
  color: var(--fg-2);
  border: 1px solid var(--bdr-subtle);
  }
- .tag-b { color: var(--blue); border-color: rgba(88,166,255,0.3); background: rgba(88,166,255,0.06); }
- .tag-p { color: var(--purple); border-color: rgba(188,140,255,0.3); background: rgba(188,140,255,0.06); }
- .tag-c { color: var(--cyan); border-color: rgba(57,197,207,0.3); background: rgba(57,197,207,0.06); }
+ .tag-b { color: var(--blue); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
+ .tag-p { color: var(--purple); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
+ .tag-c { color: var(--cyan); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
   .skill-head {
   display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
   }
@@ -1792,22 +2117,202 @@
   border: 1px solid var(--bdr-subtle);
   transition: all 0.15s ease;
   }
+  /* =============================================================
+  THEME PICKER — five palettes needs a list, not a two-state toggle.
+  Each row previews the palette it selects, so the choice is made by
+  looking rather than by reading a name.
+  ============================================================= */
+  .theme-picker { position: relative; }
+  /* This is the only theme control in the mobile header — it has to be
+     thumb-sized, not a 25px sliver. */
+  .theme-toggle-btn { min-height: 44px; min-width: 44px; }
+  .theme-swatches { display: inline-flex; gap: 3px; }
+  .theme-swatches .sw { width: 7px; height: 7px; border-radius: 50%; display: block; }
+  .sw-a { background: var(--green); }
+  .sw-b { background: var(--cyan); }
+  .sw-c { background: var(--purple); }
+
+  .theme-menu, .drawer-theme-list { list-style: none; margin: 0; padding: var(--sp-1-5); }
+  .theme-menu {
+  position: absolute;
+  top: calc(100% + var(--sp-2));
+  right: 0;
+  z-index: 1200;
+  min-width: 190px;
+  background: var(--bg-overlay);
+  border: 1px solid var(--bdr);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 34px rgba(0,0,0,0.55);
+  }
+  .theme-menu[hidden] { display: none; }
+  .theme-opt {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2-5);
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--sp-2-5);
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--fg-2);
+  font: inherit;
+  font-size: var(--fs-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.14s ease, color 0.14s ease;
+  }
+  .theme-opt:hover, .theme-opt:focus-visible { background: var(--bg-hover); color: var(--fg); }
+  .theme-opt[aria-selected="true"] { color: var(--green); }
+  .theme-opt-sw { display: inline-flex; gap: 3px; flex: none; }
+  .theme-opt-sw i { width: 9px; height: 9px; border-radius: 2px; display: block; }
+  .theme-opt-check { margin-left: auto; opacity: 0; flex: none; }
+  .theme-opt[aria-selected="true"] .theme-opt-check { opacity: 1; }
+
+  .drawer-theme-list { display: grid; gap: var(--sp-1); padding: 0; }
+
+  /* Named editor schemes and surface materials are different kinds of choice.
+     Saying so at the point of choice is cheaper than explaining it later. */
+  .theme-group {
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  padding: var(--sp-2) var(--sp-2-5) var(--sp-1);
+  }
+  .theme-group:not(:first-child) {
+  margin-top: var(--sp-1);
+  border-top: 1px solid var(--bdr-subtle);
+  padding-top: var(--sp-2-5);
+  }
+
+  /* =============================================================
+  EXPERIENCE — the seniority evidence a recruiter arrives for.
+  Tenure is data, so the numbers are tabular and the durations align.
+  ============================================================= */
+  .xp-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--sp-6);
+  margin: 0 0 var(--sp-12);
+  padding: var(--sp-6) 0;
+  border-top: 1px dashed var(--bdr);
+  border-bottom: 1px dashed var(--bdr);
+  }
+  .xp-summary dt {
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  margin-bottom: var(--sp-2);
+  }
+  .xp-summary dd { margin: 0; }
+  .xp-num {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  }
+  .xp-unit {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  color: var(--fg-2);
+  margin-left: var(--sp-1-5);
+  }
+
+  .xp-list { list-style: none; margin: 0; padding: 0; }
+  .xp-org { padding-bottom: var(--sp-8); }
+  .xp-org + .xp-org { border-top: 1px solid var(--bdr-subtle); padding-top: var(--sp-8); }
+  .xp-org-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-6);
+  margin-bottom: var(--sp-5);
+  }
+  .xp-company {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0;
+  }
+  .xp-meta { font-size: var(--fs-sm); color: var(--fg-muted); }
+  .xp-dur { color: var(--fg-2); font-variant-numeric: tabular-nums; }
+
+  /* Roles hang off a rule, so a promotion inside one company reads as one. */
+  .xp-roles {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--sp-6);
+  border-left: 1px solid var(--bdr);
+  }
+  .xp-role { position: relative; padding-bottom: var(--sp-6); }
+  .xp-role:last-child { padding-bottom: 0; }
+  .xp-marker {
+  position: absolute;
+  left: calc(-1 * var(--sp-6) - 4px);
+  top: 7px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--bdr-strong);
+  }
+  .xp-role-current .xp-marker { background: var(--green); box-shadow: 0 0 10px var(--green); }
+  .xp-title {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0 0 var(--sp-1-5);
+  }
+  .xp-role-current .xp-title { color: var(--green); }
+  .xp-when {
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 var(--sp-1);
+  }
+  .xp-now { color: var(--green); font-weight: 600; }
+  .xp-skills { font-size: var(--fs-xs); color: var(--fg-muted); margin: 0; }
+
+  .xp-edu {
+  margin: var(--sp-10) 0 0;
+  padding-top: var(--sp-6);
+  border-top: 1px dashed var(--bdr);
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+  }
+  .xp-edu-k { color: var(--fg-muted); margin-right: var(--sp-2); }
+
+  .stack-hint {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  }
+
+  /* These tags route into the repo grid — the best interaction on the page and,
+     until now, invisible. A hover lift alone never reaches a touch visitor, so
+     the resting state has to say "runnable" on its own. */
   .skill-tags .tag[role="button"] {
   cursor: pointer;
+  border-bottom-style: dashed;
+  border-bottom-color: currentColor;
   }
-  .skill-tags .tag[role="button"]:hover {
+  /* A `grep ` prefix revealed on hover was tried here and removed: growing the
+     tag reflowed its row and slid the click target out from under the cursor.
+     The dashed rest state and the command echoed on click carry the idea
+     without moving anything. */
+  .skill-tags .tag[role="button"]:hover,
+  .skill-tags .tag[role="button"]:focus-visible {
   transform: translateY(-1px);
   border-color: var(--green);
+  border-bottom-style: solid;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   filter: brightness(1.2);
   }
-  .tag-b { color: var(--blue); border-color: rgba(88,166,255,0.3); background: rgba(88,166,255,0.06); }
-  .tag-p { color: var(--purple); border-color: rgba(188,140,255,0.3); background: rgba(188,140,255,0.06); }
-  .tag-c { color: var(--cyan); border-color: rgba(57,197,207,0.3); background: rgba(57,197,207,0.06); }
-  .tag-y { color: var(--yellow); border-color: rgba(210,153,34,0.3); background: rgba(210,153,34,0.06); }
-  .tag-o { color: var(--orange); border-color: rgba(240,136,62,0.3); background: rgba(240,136,62,0.06); }
-  .tag-pink { color: var(--pink); border-color: rgba(255,123,114,0.3); background: rgba(255,123,114,0.06); }
-  .tag-g { color: var(--green); border-color: rgba(57,211,83,0.3); background: rgba(57,211,83,0.06); }
+  .tag-b { color: var(--blue); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
+  .tag-p { color: var(--purple); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
+  .tag-c { color: var(--cyan); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
+  .tag-y { color: var(--yellow); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
+  .tag-o { color: var(--orange); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
+  .tag-pink { color: var(--pink); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
+  .tag-g { color: var(--green); border-color: color-mix(in srgb, currentColor 32%, transparent); background: color-mix(in srgb, currentColor 8%, transparent); }
 
   /* =============================================================
   PROJECTS
@@ -1845,7 +2350,7 @@
   color: var(--bg);
   }
   .filter-count {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   padding: 1px 6px;
   border-radius: 10px;
   background: var(--bg-overlay);
@@ -1975,6 +2480,8 @@
   gap: 6px;
   transition: color 0.2s;
   }
+  /* Heading exists for screen-reader navigation; the anchor keeps the styling. */
+  .project-title-wrap { margin: 0; font-size: inherit; font-weight: inherit; line-height: inherit; }
   .project-title:hover { color: var(--green); }
   .project-title::before { content: '▸'; color: var(--green); }
   .project-desc {
@@ -1993,7 +2500,7 @@
   .project-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--sp-3);
   }
   .project-link {
   font-size: var(--fs-xs);
@@ -2020,18 +2527,18 @@
   .project-btn-copy:hover { color: var(--green); }
   .project-btn-copy svg { width: 12px; height: 12px; }
   .project-badge {
-  font-size: 10px;
+  font-size: var(--fs-xs);
   padding: 3px 8px;
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 700;
   }
-  .badge-featured { background: rgba(210, 153, 34, 0.18); color: var(--yellow); border: 1px solid rgba(210, 153, 34, 0.35); }
-  .badge-mcp { background: rgba(188, 140, 255, 0.18); color: var(--purple); border: 1px solid rgba(188, 140, 255, 0.35); }
-  .badge-ai { background: rgba(88, 166, 255, 0.18); color: var(--blue); border: 1px solid rgba(88, 166, 255, 0.35); }
-  .badge-devops { background: rgba(240, 136, 62, 0.18); color: var(--orange); border: 1px solid rgba(240, 136, 62, 0.35); }
-  .badge-tool { background: rgba(57, 197, 207, 0.18); color: var(--cyan); border: 1px solid rgba(57, 197, 207, 0.35); }
+  .badge-featured { background: color-mix(in srgb, var(--yellow) 18%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--yellow) 42%, transparent); }
+  .badge-mcp { background: color-mix(in srgb, var(--purple) 18%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--purple) 42%, transparent); }
+  .badge-ai { background: color-mix(in srgb, var(--blue) 18%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--blue) 42%, transparent); }
+  .badge-devops { background: color-mix(in srgb, var(--orange) 18%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--orange) 42%, transparent); }
+  .badge-tool { background: color-mix(in srgb, var(--cyan) 18%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--cyan) 42%, transparent); }
 
   .empty-state {
   grid-column: 1 / -1;
@@ -2042,7 +2549,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: var(--sp-3);
   }
   .btn-clear-search {
   display: inline-flex;
@@ -2145,15 +2652,15 @@
   }
   .certs-banner-badge {
     font-size: var(--fs-xs);
-    background: rgba(248, 81, 73, 0.15);
-    color: var(--red);
-    border: 1px solid rgba(248, 81, 73, 0.35);
+    background: color-mix(in srgb, var(--green) 14%, transparent);
+    color: var(--green);
+    border: 1px solid color-mix(in srgb, var(--green) 38%, transparent);
     padding: 3px 8px;
     border-radius: 4px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: var(--sp-1);
   }
   .certs-banner-title {
     font-size: var(--fs-sm);
@@ -2239,7 +2746,7 @@
     flex-shrink: 0;
   }
   .cert-status {
-    font-size: 10px;
+    font-size: var(--fs-xs);
     padding: 3px 8px;
     border-radius: 4px;
     font-weight: 700;
@@ -2329,7 +2836,7 @@
     color: var(--fg-muted);
     border-radius: 3px;
     padding: 2px 7px;
-    font-size: 11px;
+    font-size: var(--fs-xs);
     font-family: var(--font);
     cursor: pointer;
     display: inline-flex;
@@ -2354,7 +2861,7 @@
     flex: 1;
   }
   .cert-skill-tag {
-    font-size: 11px;
+    font-size: var(--fs-xs);
     padding: 2px 7px;
     border-radius: 3px;
     background: var(--bg-overlay);
@@ -2439,7 +2946,7 @@
     transform: translate(1px, -1px);
   }
   .cert-pill-subtle {
-    font-size: 10px;
+    font-size: var(--fs-xs);
     color: var(--yellow);
     background: rgba(210, 153, 34, 0.12);
     border: 1px solid rgba(210, 153, 34, 0.3);
@@ -2513,7 +3020,7 @@
   }
   .term-certs-dots {
     display: flex;
-    gap: 5px;
+    gap: var(--sp-1);
     margin-right: 4px;
   }
   .term-certs-prompt {
@@ -2526,12 +3033,12 @@
   }
   .term-certs-args {
     color: var(--fg-muted);
-    font-size: 11px;
+    font-size: var(--fs-xs);
   }
   .term-certs-viewall {
     color: var(--cyan);
     text-decoration: none;
-    font-size: 11px;
+    font-size: var(--fs-xs);
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -2561,7 +3068,7 @@
     position: relative;
     gap: 12px;
   }
-  [data-theme="gruvbox"] .term-cert-row {
+  :root[data-theme="gruvbox"] .term-cert-row {
     border-bottom-color: rgba(0, 0, 0, 0.15);
   }
 
@@ -2595,12 +3102,13 @@
   }
   .term-cert-num {
     color: var(--fg-muted);
-    font-size: 11px;
+    font-size: var(--fs-xs);
     font-weight: 500;
     min-width: 16px;
   }
   .term-cert-tag {
-    font-size: 10px;
+    color: var(--fg);
+    font-size: var(--fs-xs);
     font-weight: 700;
     padding: 2px 6px;
     border-radius: 3px;
@@ -2608,29 +3116,29 @@
     text-transform: uppercase;
   }
   .tag-rhce {
-    background: rgba(248, 81, 73, 0.15);
-    color: var(--red);
-    border: 1px solid rgba(248, 81, 73, 0.35);
+    background: color-mix(in srgb, var(--red) 16%, transparent);
+    color: var(--fg);
+    border: 1px solid color-mix(in srgb, var(--red) 40%, transparent);
   }
   .tag-do467 {
-    background: rgba(210, 153, 34, 0.15);
-    color: var(--yellow);
-    border: 1px solid rgba(210, 153, 34, 0.35);
+    background: color-mix(in srgb, var(--yellow) 16%, transparent);
+    color: var(--fg);
+    border: 1px solid color-mix(in srgb, var(--yellow) 40%, transparent);
   }
   .tag-rhcsa {
-    background: rgba(88, 166, 255, 0.15);
-    color: var(--blue);
-    border: 1px solid rgba(88, 166, 255, 0.35);
+    background: color-mix(in srgb, var(--blue) 16%, transparent);
+    color: var(--fg);
+    border: 1px solid color-mix(in srgb, var(--blue) 40%, transparent);
   }
   .tag-rh199 {
-    background: rgba(188, 140, 255, 0.15);
-    color: var(--purple);
-    border: 1px solid rgba(188, 140, 255, 0.35);
+    background: color-mix(in srgb, var(--purple) 16%, transparent);
+    color: var(--fg);
+    border: 1px solid color-mix(in srgb, var(--purple) 40%, transparent);
   }
   .tag-rh124 {
-    background: rgba(57, 197, 207, 0.15);
-    color: var(--cyan);
-    border: 1px solid rgba(57, 197, 207, 0.35);
+    background: color-mix(in srgb, var(--cyan) 16%, transparent);
+    color: var(--fg);
+    border: 1px solid color-mix(in srgb, var(--cyan) 40%, transparent);
   }
 
   .term-cert-info {
@@ -2653,11 +3161,11 @@
   .term-cert-meta {
     display: flex;
     align-items: center;
-    gap: 9px;
+    gap: var(--sp-2);
     flex-shrink: 0;
   }
   .term-cert-id {
-    font-size: 11px;
+    font-size: var(--fs-xs);
     color: var(--yellow);
     background: rgba(210, 153, 34, 0.1);
     border: 1px solid rgba(210, 153, 34, 0.25);
@@ -2671,7 +3179,7 @@
   }
 
   .term-cert-status {
-    font-size: 10px;
+    font-size: var(--fs-xs);
     font-weight: 600;
     padding: 1px 6px;
     border-radius: 3px;
@@ -2715,12 +3223,12 @@
     padding: 7px 14px;
     background: var(--bg-overlay);
     border-top: 1px solid var(--bdr-subtle);
-    font-size: 11px;
+    font-size: var(--fs-xs);
     color: var(--fg-muted);
   }
   .term-certs-foot-r {
     color: var(--green);
-    font-size: 10px;
+    font-size: var(--fs-xs);
   }
 
   @media (max-width: 720px) {
@@ -2802,7 +3310,7 @@
   flex-wrap: wrap;
   }
   .journey-badge {
-  font-size: 10px;
+  font-size: var(--fs-xs);
   padding: 2px 7px;
   border-radius: 4px;
   background: rgba(88, 166, 255, 0.08);
@@ -2827,96 +3335,88 @@
   /* =============================================================
   CONTACT
   ============================================================= */
-  .contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-bottom: 32px;
-  }
-  .contact-card {
+  /* =============================================================
+  CONTACT — one command, stated at full strength.
+  Four equal cards made the email rank the same as a link to this page.
+  The command block is the page's own device (see the certs headline),
+  turned up for the one moment that has to convert.
+  ============================================================= */
+  .contact-command {
   background: var(--bg-raised);
-  border: 1px solid var(--bdr-subtle);
-  border-radius: var(--radius-lg);
-  padding: 22px;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: all 0.2s;
-  position: relative;
-  overflow: hidden;
-  }
-  .contact-card:hover {
-  border-color: var(--green);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-  }
-  .contact-card-icon {
-  width: 38px; height: 38px;
-  border-radius: var(--radius);
-  background: var(--bg-overlay);
-  border: 1px solid var(--bdr-subtle);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--green);
-  transition: all 0.2s;
-  }
-  .contact-card:hover .contact-card-icon {
-  background: rgba(57, 211, 83, 0.1);
-  border-color: var(--green);
-  }
-  .contact-card-icon svg { width: 18px; height: 18px; }
-  .contact-card-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--fg-muted);
-  }
-  .contact-card-value {
-  font-size: var(--fs-sm);
-  color: var(--fg);
-  word-break: break-all;
-  }
-  .contact-card-actions {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  }
-  .contact-card-arrow {
-  color: var(--fg-muted);
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  }
-  .contact-card:hover .contact-card-arrow {
-  color: var(--green);
-  transform: translate(2px, -2px);
-  }
-  .contact-card-arrow svg { width: 14px; height: 14px; }
-  .contact-copy-btn {
-  background: var(--bg-overlay);
   border: 1px solid var(--bdr);
-  color: var(--fg-muted);
-  border-radius: 4px;
-  padding: 4px 6px;
-  font-size: 10px;
-  font-family: var(--font);
-  cursor: pointer;
-  transition: all 0.15s;
-  display: inline-flex;
+  border-left: 1px solid var(--green);
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 3.2vw, 34px);
+  margin-bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 3px;
+  justify-content: space-between;
+  gap: 22px;
+  box-shadow: 0 10px 34px rgba(0,0,0,0.45);
   }
-  .contact-copy-btn:hover {
-  color: var(--green);
-  border-color: var(--green);
+  .contact-command-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  font-size: clamp(15px, 2.1vw, 24px);
+  font-weight: 600;
+  line-height: 1.45;
+  min-width: 0;
   }
+  .contact-command-line .prompt-sym { color: var(--fg-muted); }
+  .contact-command-name { color: var(--green); }
+  .contact-command-flag { color: var(--fg-muted); }
+  .contact-command-subject { color: var(--yellow); }
+  .contact-command-addr { color: var(--fg); word-break: break-all; }
 
+  .contact-command-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .contact-cmd-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--bdr-strong);
+  background: var(--bg-overlay);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.16s ease, background-color 0.16s ease, color 0.16s ease;
+  }
+  .contact-cmd-btn svg { width: 15px; height: 15px; }
+  .contact-cmd-btn:hover { border-color: var(--green); color: var(--green); }
+  .contact-cmd-btn-primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--bg);
+  }
+  .contact-cmd-btn-primary:hover { background: var(--mint); border-color: var(--mint); color: var(--bg); }
+
+  /* Everything else steps back to a quiet index. */
+  .contact-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 0 0 32px;
+  padding: 0;
+  }
+  .contact-links a {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  min-height: 44px;
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  transition: color 0.16s ease;
+  }
+  .contact-links a svg { width: 15px; height: 15px; flex: none; }
+  .contact-links a:hover { color: var(--green); }
+  .contact-links a:hover span { text-decoration: underline; text-underline-offset: 4px; }
   /* =============================================================
   FOOTER
   ============================================================= */
@@ -2936,16 +3436,60 @@
   /* =============================================================
   REVEAL ANIMATION (Smooth cubic-bezier fade & slide)
   ============================================================= */
-  .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-  }
-  .reveal.is-visible {
+  /* =============================================================
+  HERO BOOT — the page's one authored moment.
+  A console powering on: the status LED strikes, the name writes itself across
+  the screen, the readouts latch in sequence, the terminal bezel illuminates.
+  Runs once, ~860ms, never on scroll. Nothing else on the page animates in.
+  ============================================================= */
+  .boot .boot-el { opacity: 0; }
+  .boot.booted .boot-el {
   opacity: 1;
-  transform: translateY(0);
+  transition: opacity 320ms cubic-bezier(0.16, 1, 0.3, 1) var(--boot-delay, 0ms);
   }
+
+  /* LED strikes hot, then falls back to its resting pulse. */
+  .boot.booted .hero-status .dot { animation: bootStrike 520ms cubic-bezier(0.16, 1, 0.3, 1) both, pulse 2s 560ms infinite; }
+  @keyframes bootStrike {
+  0%   { opacity: 0; box-shadow: 0 0 0 var(--green); transform: scale(0.4); }
+  35%  { opacity: 1; box-shadow: 0 0 22px 4px var(--green); transform: scale(1.35); }
+  100% { opacity: 1; box-shadow: 0 0 8px var(--green); transform: scale(1); }
+  }
+
+  /* The name is written to the display, not faded in. */
+  .boot.booted h1.hero-name {
+  animation: bootWrite 560ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both;
+  }
+  @keyframes bootWrite {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+  }
+
+  /* Each readout latches with a brightness flash, like a segment display. */
+  .boot.booted .hero-stats > * {
+  animation: bootLatch 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(540ms + var(--i, 0) * 70ms);
+  }
+  @keyframes bootLatch {
+  0%   { opacity: 0; filter: brightness(2.4); }
+  60%  { opacity: 1; filter: brightness(1.5); }
+  100% { opacity: 1; filter: brightness(1); }
+  }
+
+  /* The bezel comes up last — the machine is ready for input. */
+  .boot.booted .terminal-card {
+  animation: bootBezel 620ms cubic-bezier(0.16, 1, 0.3, 1) 240ms both;
+  }
+  @keyframes bootBezel {
+  from { opacity: 0; border-color: var(--bdr); box-shadow: 0 0 0 rgba(57,211,83,0); }
+  60%  { opacity: 1; border-color: var(--green); box-shadow: 0 0 34px rgba(57,211,83,0.22), 0 8px 32px rgba(0,0,0,0.6); }
+  to   { opacity: 1; }
+  }
+
+  /* Sections ship visible. The page has one authored entrance — the hero boot —
+     and repeating it 31 times would make it mean nothing. Class retained so the
+     markup needs no churn; it no longer hides content or holds will-change. */
+  .reveal { opacity: 1; transform: none; }
 
   /* =============================================================
   TOAST & BACK TO TOP
@@ -3011,8 +3555,14 @@
   RESPONSIVE
   ============================================================= */
   @media (max-width: 768px) {
+  /* The primary visitor reads this on a phone, in about a minute. Desktop can
+     afford compact metadata; a thumb-held 375px screen cannot. One step up on
+     the two dense tiers, applied at the token so every role moves together. */
+  :root { --fs-xs: 13px; --fs-sm: 14px; }
   .container { padding: 0 16px; }
   section { padding: 80px 0; }
+  #stack, #experience, #journey { padding-top: 56px; }
+  #certs, #contact { padding-top: 116px; }
   .nav-inner { padding: 0 16px; gap: 12px; }
   .nav-brand .brand-full { display: none; }
   .nav-brand .brand-short { display: inline-flex; align-items: center; }
@@ -3023,11 +3573,12 @@
   .theme-toggle-btn #themeToggleLabel { display: none; }
   .nav-hamburger { display: flex; flex-shrink: 0; }
   .hero { padding: 110px 0 64px; }
-  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
   .section-header { margin-bottom: 40px; }
   .skills-grid, .projects-grid { grid-template-columns: 1fr; }
   .search-wrapper { width: 100%; }
-  .contact-grid { grid-template-columns: 1fr; }
+  .contact-command { flex-direction: column; align-items: stretch; }
+  .contact-command-actions .contact-cmd-btn { flex: 1; }
   .about-text, .card-body { padding: 22px; }
   .journey-list::before { left: 17px; }
   .section-title-certs { font-size: clamp(20px, 5.5vw, 28px); gap: 6px 10px; }
@@ -3146,7 +3697,7 @@
     color: var(--fg-muted);
     border-radius: 4px;
     padding: 3px 8px;
-    font-size: 10px;
+    font-size: var(--fs-xs);
     font-family: var(--font);
     cursor: pointer;
     display: inline-flex;
@@ -3166,7 +3717,7 @@
     background: rgba(57, 211, 83, 0.1);
   }
   .term-kbd-hint {
-    font-size: 10px;
+    font-size: var(--fs-xs);
     padding: 2px 6px;
     background: var(--bg-overlay);
     border: 1px solid var(--bdr);
@@ -3200,24 +3751,22 @@
  <li><a href="#stack">stack</a></li>
  <li><a href="#projects">projects</a></li>
  <li><a href="#certs">certs</a></li>
+ <li><a href="#experience">experience</a></li>
  <li><a href="#journey">journey</a></li>
  <li><a href="#contact">contact</a></li>
  </ul>
  <div class="nav-actions">
-    <button type="button" class="theme-toggle-btn" id="themeToggleBtn" title="Switch color theme (Cyberpunk / Gruvbox)" aria-label="Toggle theme">
-      <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <span id="themeToggleLabel">gruvbox</span>
-    </button>
+    <div class="theme-picker">
+      <button type="button" class="theme-toggle-btn" id="themeToggleBtn"
+              aria-haspopup="listbox" aria-expanded="false" aria-controls="themeMenu"
+              title="Choose colour theme" aria-label="Choose colour theme">
+        <span class="theme-swatches" aria-hidden="true">
+          <i class="sw sw-a"></i><i class="sw sw-b"></i><i class="sw sw-c"></i>
+        </span>
+        <span id="themeToggleLabel">cyberpunk</span>
+      </button>
+      <ul class="theme-menu" id="themeMenu" role="listbox" aria-label="Colour theme" hidden></ul>
+    </div>
     <a href="mailto:sahane.bhushan7@gmail.com" class="nav-cta" aria-label="Email Bhushan">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8l9 6 9-6M3 8v10a1 1 0 001 1h16a1 1 0 001-1V8M3 8l1-1h16l1 1"/></svg>
       get-in-touch
@@ -3230,7 +3779,7 @@
 </nav>
 
 <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" aria-hidden="true"></div>
-<aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation menu" aria-hidden="true">
+<aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation menu" aria-hidden="true" inert>
  <div class="drawer-head">
  <div class="drawer-title">// navigation</div>
  <button class="drawer-close" id="drawerClose" aria-label="Close navigation menu">
@@ -3242,15 +3791,13 @@
  <li><a href="#stack" class="drawer-link">stack</a></li>
  <li><a href="#projects" class="drawer-link">projects</a></li>
  <li><a href="#certs" class="drawer-link">certs</a></li>
+ <li><a href="#experience" class="drawer-link">experience</a></li>
  <li><a href="#journey" class="drawer-link">journey</a></li>
  <li><a href="#contact" class="drawer-link">contact</a></li>
  </ul>
  <div class="drawer-theme-box">
    <span class="drawer-theme-label">// theme palette</span>
-   <button type="button" class="drawer-theme-btn" id="drawerThemeToggle" aria-label="Toggle color theme">
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-     <span id="drawerThemeName">gruvbox</span>
-   </button>
+   <ul class="drawer-theme-list" id="drawerThemeList" role="listbox" aria-label="Colour theme"></ul>
  </div>
  <a href="mailto:sahane.bhushan7@gmail.com" class="drawer-cta">
  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;" aria-hidden="true"><path d="M3 8l9 6 9-6M3 8v10a1 1 0 001 1h16a1 1 0 001-1V8M3 8l1-1h16l1 1"/></svg>
@@ -3297,12 +3844,12 @@
 
  <div class="hero-stats">
  <div>
- <div class="hero-stat-label">repos</div>
- <div class="hero-stat-value sv-g" data-count="95" data-suffix="+">95+</div>
+ <div class="hero-stat-label">curated repos</div>
+ <div class="hero-stat-value sv-g" data-count="20">20</div>
  </div>
  <div>
  <div class="hero-stat-label">stars</div>
- <div class="hero-stat-value sv-y" data-count="675" data-suffix=" ★">675 ★</div>
+ <div class="hero-stat-value sv-y" data-count="54" data-suffix=" ★">54 ★</div>
  </div>
  <div>
  <div class="hero-stat-label">focus</div>
@@ -3403,7 +3950,6 @@
 <section id="about">
  <div class="container">
  <header class="section-header reveal">
- <span class="section-eyebrow">// ~ ./about</span>
  <h2 class="section-title">$ <span class="accent">grep</span> -i "what i build"</h2>
  <p class="section-subtitle">From MCP servers to RAG pipelines — I work where language models become production operators.</p>
  </header>
@@ -3572,7 +4118,7 @@
   <div class="neofetch-header">
     <span class="neofetch-user">bsahane</span><span class="neofetch-at">@</span><span class="neofetch-host">redhat.com</span>
   </div>
-  <div class="neofetch-sep">-----------------------------</div>
+  <div class="neofetch-sep" aria-hidden="true">-----------------------------</div>
 
   <div class="neofetch-row"><span class="neofetch-k">OS</span><span class="neofetch-s">:</span><span class="neofetch-v">RHEL 9.4 · macOS Sequoia</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Host</span><span class="neofetch-s">:</span><span class="neofetch-v">MacBookPro (M1 Pro, 32GB)</span></div>
@@ -3586,7 +4132,7 @@
   <div class="neofetch-row"><span class="neofetch-k">Certs</span><span class="neofetch-s">:</span><span class="neofetch-v y"><a href="https://rhtapps.redhat.com/verify?certId=170-063-119" target="_blank" rel="noopener noreferrer" class="neofetch-cert-link" title="Verify RHCE (Cert ID: 170-063-119)">RHCE</a> · <a href="https://rhtapps.redhat.com/verify?certId=170-063-119" target="_blank" rel="noopener noreferrer" class="neofetch-cert-link" title="Verify DO467 AAP Specialist">DO467</a> · <a href="https://rhtapps.redhat.com/verify?certId=170-063-119" target="_blank" rel="noopener noreferrer" class="neofetch-cert-link" title="Verify RHCSA">RHCSA</a> · <a href="#certs" class="neofetch-cert-link" title="View all 5 credentials in #certs">+2 more</a></span></div>
   <div class="neofetch-row"><span class="neofetch-k">Stack</span><span class="neofetch-s">:</span><span class="neofetch-v p">MCP Mesh · RAG · A2A Ops</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Infra</span><span class="neofetch-s">:</span><span class="neofetch-v">Ansible · OpenShift · Proxmox</span></div>
-  <div class="neofetch-row"><span class="neofetch-k">Repos</span><span class="neofetch-s">:</span><span class="neofetch-v">95 public · <span class="neofetch-v y">675 ★ stars</span></span></div>
+  <div class="neofetch-row"><span class="neofetch-k">Repos</span><span class="neofetch-s">:</span><span class="neofetch-v">95 public · <span class="neofetch-v y">54 ★ on curated</span></span></div>
   <div class="neofetch-row"><span class="neofetch-k">Memory</span><span class="neofetch-s">:</span><span class="neofetch-v"><span class="neofetch-mem-bar" aria-hidden="true"><span class="mem-fill"></span></span>21.4 / 32.0 GiB (67%)</span></div>
 </div>
 </div>
@@ -3751,12 +4297,12 @@
  SKILLS / STACK
  ============================================================= -->
 <section id="stack">
- <div id="skills" style="position:relative;top:-80px;height:0;width:0;pointer-events:none;" aria-hidden="true"></div>
+ <div id="skills" class="anchor-alias" aria-hidden="true"></div>
  <div class="container">
  <header class="section-header reveal">
- <span class="section-eyebrow">// ~ cat stack.yaml</span>
  <h2 class="section-title">$ <span class="accent">ls</span> -la ~/toolbox</h2>
  <p class="section-subtitle">A protocol layer, three language surfaces, and a thousand integrations between them.</p>
+ <p class="stack-hint">// any tag below greps the repo index — try one</p>
  </header>
 
    <div class="skills-grid">
@@ -3915,7 +4461,6 @@
 <section id="projects">
  <div class="container">
  <header class="section-header reveal">
- <span class="section-eyebrow">// ~ find ./repos -type d -maxdepth 1</span>
  <h2 class="section-title">$ <span class="accent">tree</span> -L 2 ~/repos</h2>
  <p class="section-subtitle">A curated subset of 95+ public repos — production tools, mostly Python and TypeScript.</p>
  </header>
@@ -3939,7 +4484,6 @@
 
  <div class="projects-status-bar reveal" aria-live="polite">
   <span>// index status: <span class="projects-count-badge" id="projectCount">20</span> repositories displayed</span>
-  <span>click any tag to filter by topic</span>
  </div>
 
  <div class="projects-grid" id="projectsGrid" role="list"></div>
@@ -3952,7 +4496,6 @@
 <section id="certs">
  <div class="container">
  <header class="section-header reveal">
- <span class="section-eyebrow">// ~ ./certs.verify --all --official</span>
  <h2 class="section-title section-title-certs">
    <span><span class="prompt-sym" style="color:var(--fg-muted);">$</span> <span class="accent">rhtapps</span>.verify</span>
    <span class="cmd-arg-nowrap"><span class="cmd-flag">--id</span> <span class="cmd-id">170-063-119</span></span>
@@ -4176,7 +4719,7 @@
        </div>
        <div class="cert-id-box">
          <span class="cert-id-label">Badge ID:</span>
-         <span class="cert-id-val" style="font-size:11px;" title="a6c7ff0f-b455-488a-a5b5-317f4593f8c0">a6c7ff0f-b455...</span>
+         <span class="cert-id-val" style="font-size: var(--fs-xs);" title="a6c7ff0f-b455-488a-a5b5-317f4593f8c0">a6c7ff0f-b455...</span>
          <button type="button" class="cert-copy-btn" data-id="a6c7ff0f-b455-488a-a5b5-317f4593f8c0" title="Copy Badge ID" aria-label="Copy Badge ID">
            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
            Copy ID
@@ -4201,12 +4744,121 @@
 </section>
 
 <!-- =============================================================
+ EXPERIENCE — employment history, sourced from LinkedIn (Sep 2026)
+ ============================================================= -->
+<section id="experience">
+ <div class="container">
+  <header class="section-header reveal">
+   <h2 class="section-title">$ <span class="accent">git</span> log --author=bsahane</h2>
+   <p class="section-subtitle">Nine years in infrastructure — helpdesk to hyperscale, five of them at Red Hat.</p>
+  </header>
+
+  <dl class="xp-summary reveal">
+   <div><dt>total</dt><dd class="xp-num">9<span class="xp-unit">yrs</span></dd></div>
+   <div><dt>at Red Hat</dt><dd class="xp-num">5<span class="xp-unit">yrs 4 mos</span></dd></div>
+   <div><dt>roles</dt><dd class="xp-num">6</dd></div>
+   <div><dt>promotions</dt><dd class="xp-num">1</dd></div>
+  </dl>
+
+  <ol class="xp-list reveal">
+
+   <li class="xp-org xp-current">
+    <div class="xp-org-head">
+     <h3 class="xp-company">Red Hat</h3>
+     <span class="xp-meta"><span class="xp-dur">5 yrs 4 mos</span> · Pune District, Maharashtra, India</span>
+    </div>
+    <ol class="xp-roles">
+     <li class="xp-role xp-role-current">
+      <span class="xp-marker" aria-hidden="true"></span>
+      <h4 class="xp-title">Senior System Administrator</h4>
+      <p class="xp-when"><time datetime="2023-08">Aug 2023</time> – <span class="xp-now">Present</span> · 3 yrs 2 mos</p>
+      <p class="xp-skills">Grafana · SignalFX · +14 skills</p>
+     </li>
+     <li class="xp-role">
+      <span class="xp-marker" aria-hidden="true"></span>
+      <h4 class="xp-title">System Administrator</h4>
+      <p class="xp-when"><time datetime="2021-06">Jun 2021</time> – <time datetime="2023-08">Aug 2023</time> · 2 yrs 3 mos · Remote</p>
+      <p class="xp-skills">Grafana · Infrastructure Management · +8 skills</p>
+     </li>
+    </ol>
+   </li>
+
+   <li class="xp-org">
+    <div class="xp-org-head">
+     <h3 class="xp-company">Hewlett Packard Enterprise</h3>
+     <span class="xp-meta"><span class="xp-dur">1 yr 4 mos</span> · Surat, Gujarat, India</span>
+    </div>
+    <ol class="xp-roles">
+     <li class="xp-role">
+      <span class="xp-marker" aria-hidden="true"></span>
+      <h4 class="xp-title">Linux System Administrator</h4>
+      <p class="xp-when"><time datetime="2020-02">Feb 2020</time> – <time datetime="2021-05">May 2021</time></p>
+      <p class="xp-skills">Infrastructure Management · MySQL · +11 skills</p>
+     </li>
+    </ol>
+   </li>
+
+   <li class="xp-org">
+    <div class="xp-org-head">
+     <h3 class="xp-company">ESDS Software Solution Pvt Ltd</h3>
+     <span class="xp-meta"><span class="xp-dur">1 yr</span> · Nashik</span>
+    </div>
+    <ol class="xp-roles">
+     <li class="xp-role">
+      <span class="xp-marker" aria-hidden="true"></span>
+      <h4 class="xp-title">SAP Trainee — System Administrator</h4>
+      <p class="xp-when"><time datetime="2019-03">Mar 2019</time> – <time datetime="2020-02">Feb 2020</time></p>
+      <p class="xp-skills">Infrastructure Management · Troubleshooting · +7 skills</p>
+     </li>
+    </ol>
+   </li>
+
+   <li class="xp-org">
+    <div class="xp-org-head">
+     <h3 class="xp-company">Marg ERP Limited</h3>
+     <span class="xp-meta"><span class="xp-dur">1 yr 2 mos</span> · Nashik</span>
+    </div>
+    <ol class="xp-roles">
+     <li class="xp-role">
+      <span class="xp-marker" aria-hidden="true"></span>
+      <h4 class="xp-title">Technical Support Executive</h4>
+      <p class="xp-when"><time datetime="2018-01">Jan 2018</time> – <time datetime="2019-02">Feb 2019</time></p>
+      <p class="xp-skills">Windows Server · Troubleshooting · +3 skills</p>
+     </li>
+    </ol>
+   </li>
+
+   <li class="xp-org">
+    <div class="xp-org-head">
+     <h3 class="xp-company">MEDIPLANET</h3>
+     <span class="xp-meta"><span class="xp-dur">6 mos</span> · Nashik, Maharashtra, India</span>
+    </div>
+    <ol class="xp-roles">
+     <li class="xp-role">
+      <span class="xp-marker" aria-hidden="true"></span>
+      <h4 class="xp-title">IT Administrator</h4>
+      <p class="xp-when"><time datetime="2017-08">Aug 2017</time> – <time datetime="2018-01">Jan 2018</time></p>
+      <p class="xp-skills">Network Backup · Infrastructure Management · +2 skills</p>
+     </li>
+    </ol>
+   </li>
+
+  </ol>
+
+  <p class="xp-edu reveal">
+   <span class="xp-edu-k">// education</span>
+   K.K. Wagh Institute of Engineering Education &amp; Research — B.E. Computer Science
+   · <time datetime="2012-05">May 2012</time> – <time datetime="2015-04">Apr 2015</time>
+  </p>
+ </div>
+</section>
+
+<!-- =============================================================
  JOURNEY
  ============================================================= -->
 <section id="journey">
  <div class="container">
  <header class="section-header reveal">
- <span class="section-eyebrow">// ~ tail -f ~/journey.log</span>
  <h2 class="section-title">$ <span class="accent">cat</span> ~/journey.log</h2>
  <p class="section-subtitle">The path from sysadmin to AI protocol engineer.</p>
  </header>
@@ -4274,7 +4926,7 @@
  <div class="journey-content">
  <div class="journey-date">ongoing // ∞ <span class="journey-badge">Daily Shipping</span></div>
  <h3 class="journey-title">→ Shipping at the protocol layer</h3>
- <p class="journey-desc">95+ public repos, 675 stars. Code is the resume — shipping production AI systems every single day.</p>
+ <p class="journey-desc">Code is the resume — shipping production AI systems every single day.</p>
  </div>
  </article>
  </div>
@@ -4287,86 +4939,53 @@
 <section id="contact">
  <div class="container">
  <header class="section-header reveal">
- <span class="section-eyebrow">// ~ ./contact.env</span>
  <h2 class="section-title">$ <span class="accent">nc</span> -v bhushan 443</h2>
  <p class="section-subtitle">Open for AI infrastructure, agentic platforms, MCP consulting.</p>
  </header>
 
- <div class="contact-grid">
- <div class="contact-card" role="region" aria-label="Email Contact">
- <div class="contact-card-icon">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
- </div>
- <div>
- <div class="contact-card-label">$ mailto</div>
- <div class="contact-card-value">sahane.bhushan7@gmail.com</div>
- </div>
- <div class="contact-card-actions">
- <button type="button" class="contact-copy-btn" data-copy="sahane.bhushan7@gmail.com" title="Copy email address" aria-label="Copy email address">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
- copy
- </button>
- <a href="mailto:sahane.bhushan7@gmail.com" class="contact-card-arrow" aria-label="Send email">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg>
- </a>
- </div>
- </div>
-
- <div class="contact-card" role="region" aria-label="GitHub Profile">
- <div class="contact-card-icon">
- <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3"/></svg>
- </div>
- <div>
- <div class="contact-card-label">$ git clone</div>
- <div class="contact-card-value">github.com/bsahane</div>
- </div>
- <div class="contact-card-actions">
- <button type="button" class="contact-copy-btn" data-copy="https://github.com/bsahane" title="Copy GitHub URL" aria-label="Copy GitHub URL">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
- copy
- </button>
- <a href="https://github.com/bsahane" target="_blank" rel="noopener noreferrer" class="contact-card-arrow" aria-label="Visit GitHub profile">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg>
- </a>
- </div>
+ <!-- The section's one decisive element: the email as a runnable command,
+      the same device the certs headline uses. Everything else quiets down. -->
+ <div class="contact-command reveal">
+  <div class="contact-command-line">
+   <span class="prompt-sym" aria-hidden="true">$</span>
+   <span class="contact-command-name accent">mail</span>
+   <span class="contact-command-flag">-s</span>
+   <span class="contact-command-subject">"let's build"</span>
+   <span class="contact-command-addr">sahane.bhushan7@gmail.com</span>
+  </div>
+  <div class="contact-command-actions">
+   <button type="button" class="contact-copy-btn contact-cmd-btn" data-copy="sahane.bhushan7@gmail.com" aria-label="Copy email address">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    copy address
+   </button>
+   <a href="mailto:sahane.bhushan7@gmail.com?subject=let%27s%20build" class="contact-cmd-btn contact-cmd-btn-primary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    run
+   </a>
+  </div>
  </div>
 
- <div class="contact-card" role="region" aria-label="LinkedIn Profile">
- <div class="contact-card-icon">
- <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
- </div>
- <div>
- <div class="contact-card-label">$ curl linkedin</div>
- <div class="contact-card-value">/in/sahanebhushan7</div>
- </div>
- <div class="contact-card-actions">
- <a href="https://www.linkedin.com/in/sahanebhushan7" target="_blank" rel="noopener noreferrer" class="contact-card-arrow" aria-label="Visit LinkedIn profile">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg>
- </a>
- </div>
- </div>
-
- <div class="contact-card" role="region" aria-label="Personal Website">
- <div class="contact-card-icon">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
- </div>
- <div>
- <div class="contact-card-label">$ ping</div>
- <div class="contact-card-value">bhushan.sahane.in</div>
- </div>
- <div class="contact-card-actions">
- <button type="button" class="contact-copy-btn" data-copy="https://bhushan.sahane.in" title="Copy website URL" aria-label="Copy website URL">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
- copy
- </button>
- <a href="https://bhushan.sahane.in" target="_blank" rel="noopener noreferrer" class="contact-card-arrow" aria-label="Visit personal website">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg>
- </a>
- </div>
- </div>
- </div>
- </div>
-</section>
+ <ul class="contact-links reveal">
+  <li>
+   <a href="https://github.com/bsahane" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3"/></svg>
+    <span>github.com/bsahane</span>
+   </a>
+  </li>
+  <li>
+   <a href="https://www.linkedin.com/in/sahanebhushan7" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+    <span>/in/sahanebhushan7</span>
+   </a>
+  </li>
+  <li>
+   <a href="https://bhushan.sahane.in" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+    <span>bhushan.sahane.in</span>
+   </a>
+  </li>
+ </ul>
+ </section>
 
 </main>
 
@@ -4485,6 +5104,32 @@ function showToast(msg) {
   }, 2400);
 }
 
+/* Single honest clipboard path. Resolves true only when the text really landed.
+   Async API first, then a hidden-textarea execCommand fallback for insecure
+   origins and denied permissions. Never resolves true on failure. */
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text).then(() => true).catch(() => legacyCopy(text));
+  }
+  return Promise.resolve(legacyCopy(text));
+}
+
+function legacyCopy(text) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:-9999px;opacity:0;';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) {
+    return false;
+  }
+}
+
 /* ============================================================
  RENDER PROJECTS WITH DYNAMIC COUNTS & ACTIONS
  ============================================================ */
@@ -4563,10 +5208,10 @@ function renderProjects(filter='all', search='') {
     card.innerHTML = `
       <div class="project-head">
         <span class="project-repo">${repoIcon} ${p.repo}</span>
-        <span class="project-stars">${p.stars ? '★ ' + p.stars : '★ 0'}</span>
+        <span class="project-stars" aria-label="${p.stars || 0} GitHub stars">${p.stars ? '★ ' + p.stars : '★ 0'}</span>
       </div>
       <div class="project-body">
-        <a class="project-title" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.name}</a>
+        <h3 class="project-title-wrap"><a class="project-title" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.name}</a></h3>
         <p class="project-desc">${p.desc}</p>
         <div class="project-tech">${tags}</div>
         <div class="project-foot">
@@ -4629,13 +5274,15 @@ if (searchClearBtn) {
 grid.addEventListener('click', e => {
   const copyBtn = e.target.closest('.project-btn-copy');
   if (copyBtn && copyBtn.dataset.clone) {
-    navigator.clipboard.writeText(copyBtn.dataset.clone).then(() => {
+    copyText(copyBtn.dataset.clone).then(ok => {
+      if (!ok) {
+        showToast('Copy failed — select the command and press ⌘C');
+        return;
+      }
       const originalText = copyBtn.innerHTML;
       copyBtn.innerHTML = '<span style="color:var(--green)">✓ copied</span>';
       showToast('Copied: ' + copyBtn.dataset.clone);
       setTimeout(() => { copyBtn.innerHTML = originalText; }, 1800);
-    }).catch(() => {
-      showToast('Command copied');
     });
   }
 });
@@ -4645,24 +5292,22 @@ document.addEventListener('click', e => {
   const copyBtn = e.target.closest('.cert-copy-btn');
   if (copyBtn && copyBtn.dataset.id) {
     const certId = copyBtn.dataset.id;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(certId).then(() => {
-        const originalText = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
-        copyBtn.style.borderColor = 'var(--green)';
-        copyBtn.style.color = 'var(--green)';
-        showToast('// Copied Credential ID: ' + certId);
-        setTimeout(() => {
-          copyBtn.innerHTML = originalText;
-          copyBtn.style.borderColor = '';
-          copyBtn.style.color = '';
-        }, 1800);
-      }).catch(() => {
-        showToast('// Credential ID: ' + certId);
-      });
-    } else {
-      showToast('// Credential ID: ' + certId);
-    }
+    copyText(certId).then(ok => {
+      if (!ok) {
+        showToast('// Copy failed — Credential ID is ' + certId);
+        return;
+      }
+      const originalText = copyBtn.innerHTML;
+      copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+      copyBtn.style.borderColor = 'var(--green)';
+      copyBtn.style.color = 'var(--green)';
+      showToast('// Copied Credential ID: ' + certId);
+      setTimeout(() => {
+        copyBtn.innerHTML = originalText;
+        copyBtn.style.borderColor = '';
+        copyBtn.style.color = '';
+      }, 1800);
+    });
   }
 });
 
@@ -4671,22 +5316,20 @@ document.addEventListener('click', e => {
   const btn = e.target.closest('#certCmdCopyBtn');
   if (btn) {
     const cmd = 'rhtapps.verify --id 170-063-119';
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(cmd).then(() => {
-        btn.classList.add('copied');
-        const textSpan = btn.querySelector('.copy-text');
-        if (textSpan) textSpan.textContent = 'copied!';
-        showToast('Copied: ' + cmd);
-        setTimeout(() => {
-          btn.classList.remove('copied');
-          if (textSpan) textSpan.textContent = 'copy';
-        }, 1800);
-      }).catch(() => {
-        showToast('Command: ' + cmd);
-      });
-    } else {
-      showToast('Command: ' + cmd);
-    }
+    copyText(cmd).then(ok => {
+      if (!ok) {
+        showToast('Copy failed — the command is: ' + cmd);
+        return;
+      }
+      btn.classList.add('copied');
+      const textSpan = btn.querySelector('.copy-text');
+      if (textSpan) textSpan.textContent = 'copied!';
+      showToast('Copied: ' + cmd);
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        if (textSpan) textSpan.textContent = 'copy';
+      }, 1800);
+    });
   }
 });
 
@@ -4709,7 +5352,10 @@ document.querySelectorAll('.skill-tags .tag[data-search]').forEach(tag => {
     if (projectsSection) {
       projectsSection.scrollIntoView({ behavior: 'smooth' });
     }
-    showToast('Filtered projects by: ' + term);
+    // Echo the command that actually ran, with the real result. The count is
+    // read from the rendered grid, so it can never drift from what's on screen.
+    const hits = document.querySelectorAll('#projectsGrid .project-card').length;
+    showToast('$ grep -ri "' + term + '" ./repos → ' + hits + (hits === 1 ? ' match' : ' matches'));
     pulseMatchingProjectCards(term);
   });
   // Keyboard access
@@ -4727,24 +5373,68 @@ renderProjects();
 /* ============================================================
  REVEAL OBSERVER (Smooth Entrance)
  ============================================================ */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('is-visible');
-      revealObserver.unobserve(e.target);
+/* ============================================================
+ HERO BOOT — runs once, on load only.
+ The .boot class is applied from JS, never in markup: if this script fails the
+ hero renders fully visible rather than staying blank.
+ ============================================================ */
+(function bootHero() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const staged = [
+    ['.hero-status', 0],
+    ['.hero-tagline', 300],
+    ['.hero-ctas', 400],
+  ];
+  staged.forEach(([sel, delay]) => {
+    const el = hero.querySelector(sel);
+    if (el) {
+      el.classList.add('boot-el');
+      el.style.setProperty('--boot-delay', delay + 'ms');
     }
   });
-}, { threshold: 0.04, rootMargin: '0px 0px -40px 0px' });
+  hero.querySelectorAll('.hero-stats > *').forEach((el, i) => el.style.setProperty('--i', i));
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  hero.classList.add('boot');
+  requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('booted')));
 
-// Reveal elements above the fold immediately
-window.requestAnimationFrame(() => {
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      setTimeout(() => el.classList.add('is-visible'), i * 35);
+  // Once the sequence is done, drop the machinery so nothing lingers in the
+  // compositor and a later re-render can't replay it.
+  setTimeout(() => {
+    hero.classList.remove('boot', 'booted');
+    hero.querySelectorAll('.boot-el').forEach(el => {
+      el.classList.remove('boot-el');
+      el.style.removeProperty('--boot-delay');
+    });
+  }, 1400);
+})();
+
+/* Scroll reveals removed: 31 identical entrances were noise, not authorship.
+   The hero boot above is the page's one authored moment.
+
+   Offscreen loops are paused instead. An always-running packet animation in a
+   section nobody is looking at costs frames and says nothing. */
+const loopSelectors = '.hero-status .dot, .term-banner-dots span, .mcp-connector, .status-pulse, .chat-msg-status-dot';
+const loopObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    e.target.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+  });
+}, { threshold: 0 });
+
+function observeLoops(root) {
+  (root || document).querySelectorAll(loopSelectors).forEach(el => loopObserver.observe(el));
+}
+observeLoops();
+
+document.addEventListener('visibilitychange', () => {
+  const state = document.hidden ? 'paused' : 'running';
+  document.querySelectorAll(loopSelectors).forEach(el => {
+    if (!document.hidden) {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
     }
+    el.style.animationPlayState = state;
   });
 });
 
@@ -4805,22 +5495,33 @@ const navHamburger = document.getElementById('navHamburger');
 const mobileDrawer = document.getElementById('mobileDrawer');
 const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
 const drawerClose = document.getElementById('drawerClose');
+let drawerOpener = null;
 
 function toggleDrawer(open) {
   if (!mobileDrawer) return;
   const shouldOpen = open !== undefined ? open : !mobileDrawer.classList.contains('is-open');
+  const mainEl = document.getElementById('main') || document.querySelector('main');
   if (shouldOpen) {
+    drawerOpener = document.activeElement;
     mobileDrawer.classList.add('is-open');
     mobileDrawer.setAttribute('aria-hidden', 'false');
+    mobileDrawer.removeAttribute('inert');
+    if (mainEl) mainEl.setAttribute('inert', '');
     if (mobileDrawerOverlay) mobileDrawerOverlay.classList.add('is-open');
     if (navHamburger) navHamburger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    if (drawerClose) drawerClose.focus();
   } else {
     mobileDrawer.classList.remove('is-open');
     mobileDrawer.setAttribute('aria-hidden', 'true');
+    mobileDrawer.setAttribute('inert', '');
+    if (mainEl) mainEl.removeAttribute('inert');
     if (mobileDrawerOverlay) mobileDrawerOverlay.classList.remove('is-open');
     if (navHamburger) navHamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    const restore = drawerOpener && document.contains(drawerOpener) ? drawerOpener : navHamburger;
+    if (restore) restore.focus();
+    drawerOpener = null;
   }
 }
 
@@ -4854,7 +5555,14 @@ function typeLoop() {
   }
   setTimeout(typeLoop, deleting ? 28 : 65);
 }
-typeLoop();
+
+// Motion-sensitive visitors get the first command rendered statically, not an
+// endless retyping loop. A CSS animation override cannot stop a setTimeout.
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (twEl) twEl.textContent = cmds[0];
+} else {
+  typeLoop();
+}
 
 /* ============================================================
  DUAL-ENGINE INTERACTIVE TERMINAL (Local CLI + Knowledge + Proxy)
@@ -4862,6 +5570,9 @@ typeLoop();
 const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
 const API_URL = isLocal ? 'http://127.0.0.1:8787/v1/messages' : '/api/v1/messages';
 const HEALTH_URL = isLocal ? 'http://127.0.0.1:8787/health' : '/api/health';
+// Cloud engine cooldown: set when a request fails, cleared on success.
+let cloudDownUntil = 0;
+const CLOUD_COOLDOWN_MS = 60000;
 const chatList = document.getElementById('chatList');
 const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
@@ -5017,7 +5728,11 @@ if (chatList) {
     if (!bodyEl) return;
     
     const textToCopy = bodyEl.innerText || bodyEl.textContent || '';
-    navigator.clipboard.writeText(textToCopy.trim()).then(() => {
+    copyText(textToCopy.trim()).then(ok => {
+      if (!ok) {
+        showToast('Copy failed — select the output and press ⌘C');
+        return;
+      }
       const label = copyBtn.querySelector('.copy-label');
       const origLabel = label ? label.textContent : 'copy';
       copyBtn.classList.add('copied');
@@ -5029,8 +5744,6 @@ if (chatList) {
         copyBtn.classList.remove('copied');
         copyBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px;height:10px;" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> <span class="copy-label">${origLabel}</span>`;
       }, 1800);
-    }).catch(() => {
-      showToast('Failed to copy to clipboard');
     });
   });
 }
@@ -5395,16 +6108,33 @@ async function askBroCode(question) {
 
   let replied = false;
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 2200);
+  // 2200ms was tuned for a proxy that was usually absent. A real hosted model
+  // needs room to answer; past this the local engine takes over silently.
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+  // Circuit breaker: once the cloud path has failed, stop spending 5s on every
+  // subsequent question. Only the first one waits; the rest answer instantly
+  // from the local engine until the cooldown expires.
+  if (Date.now() < cloudDownUntil) {
+    clearTimeout(timeoutId);
+    const fast = getLocalKnowledgeAnswer(question);
+    updateLoadingMsg(loadingEl, fast, 'KNOWLEDGE ENGINE');
+    conversation.push({ role: 'assistant', content: fast });
+    chatSend.disabled = false;
+    if (sendTextEl) sendTextEl.textContent = origSendText;
+    if (chatInput) chatInput.focus();
+    return;
+  }
 
   try {
     const res = await fetch(API_URL, {
       method: 'POST',
       signal: controller.signal,
       headers: { 'Content-Type': 'application/json' },
+      // Model and system prompt are chosen by the proxy, not here — a browser
+      // must not be able to select a costlier model on a public endpoint.
       body: JSON.stringify({
-        model: 'claude-sonnet-4-5',
-        max_tokens: 512,
+        max_tokens: 300,
         messages: conversation
       })
     });
@@ -5417,6 +6147,7 @@ async function askBroCode(question) {
         updateLoadingMsg(loadingEl, reply, 'AI CLOUD');
         conversation.push({ role: 'assistant', content: reply });
         replied = true;
+        cloudDownUntil = 0;
       }
     }
   } catch (err) {
@@ -5424,6 +6155,8 @@ async function askBroCode(question) {
   } finally {
     clearTimeout(timeoutId);
   }
+
+  if (!replied) cloudDownUntil = Date.now() + CLOUD_COOLDOWN_MS;
 
   // If proxy is offline or returned empty, respond with local knowledge engine
   if (!replied) {
@@ -5478,65 +6211,135 @@ if (btnRed) {
 /* ============================================================
  COLOR THEME ENGINE (Cyberpunk Default & Morhetz Gruvbox)
  ============================================================ */
+/* Five palettes, one registry. Adding a sixth means one entry here plus a
+   [data-theme] block in the CSS — nothing else changes. */
+const THEMES = [
+  { group:'editor', id:'cyberpunk', name:'cyberpunk',   credit:'Cyberpunk OLED',                 meta:'#0a0e14', sw:['#39d353','#39c5cf','#bc8cff'] },
+  { group:'editor', id:'tokyo',     name:'tokyo night', credit:'Tokyo Night (enkia)',            meta:'#1a1b26', sw:['#9ece6a','#7dcfff','#bb9af7'] },
+  { group:'editor', id:'mocha',     name:'mocha',       credit:'Catppuccin Mocha',               meta:'#11111b', sw:['#a6e3a1','#89dceb','#cba6f7'] },
+  { group:'editor', id:'nord',      name:'nord',        credit:'Nord (arcticicestudio)',         meta:'#1c2029', sw:['#a3be8c','#88c0d0','#b48ead'] },
+  { group:'editor', id:'gruvbox',   name:'gruvbox',     credit:'Gruvbox (morhetz/gruvbox)',      meta:'#1d2021', sw:['#b8bb26','#8ec07c','#d3869b'] },
+  { group:'material', id:'glass',     name:'frosted',     credit:'Frosted — light glass',          meta:'#f4f4fc', sw:['#2f27ce','#5b21b6','#dedcff'] },
+  { group:'material', id:'clay',      name:'clay',        credit:'Clay — light, soft surfaces',    meta:'#f4ebe6', sw:['#9c2f5b','#97401a','#f0ab8c'] },
+];
+const THEME_IDS = THEMES.map(t => t.id);
+
+function currentTheme() {
+  const a = document.documentElement.getAttribute('data-theme');
+  return THEME_IDS.includes(a) ? a : 'cyberpunk';
+}
+
 function setTheme(themeName, notify = true) {
-  const isGruv = themeName === 'gruvbox';
-  const finalTheme = isGruv ? 'gruvbox' : 'cyberpunk';
-  
-  if (isGruv) {
-    document.documentElement.setAttribute('data-theme', 'gruvbox');
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-  }
-  
-  try {
-    localStorage.setItem('portfolio-theme', finalTheme);
-  } catch (e) {}
+  const t = THEMES.find(x => x.id === themeName) || THEMES[0];
+
+  if (t.id === 'cyberpunk') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', t.id);
+
+  try { localStorage.setItem('portfolio-theme', t.id); } catch (e) {}
 
   const metaTheme = document.getElementById('metaThemeColor');
-  if (metaTheme) {
-    metaTheme.setAttribute('content', isGruv ? '#1d2021' : '#0a0e14');
+  if (metaTheme) metaTheme.setAttribute('content', t.meta);
+
+  const label = document.getElementById('themeToggleLabel');
+  if (label) label.textContent = t.name;
+
+  const btn = document.getElementById('themeToggleBtn');
+  if (btn) {
+    btn.setAttribute('title', 'Colour theme: ' + t.credit);
+    btn.setAttribute('aria-label', 'Colour theme: ' + t.credit + '. Choose another');
   }
 
-  const themeToggleLabel = document.getElementById('themeToggleLabel');
-  if (themeToggleLabel) {
-    themeToggleLabel.textContent = isGruv ? 'cyberpunk' : 'gruvbox';
-  }
-  const drawerThemeName = document.getElementById('drawerThemeName');
-  if (drawerThemeName) {
-    drawerThemeName.textContent = isGruv ? 'cyberpunk' : 'gruvbox';
-  }
+  document.querySelectorAll('.theme-opt').forEach(o => {
+    o.setAttribute('aria-selected', String(o.dataset.theme === t.id));
+  });
 
-  const themeToggleBtn = document.getElementById('themeToggleBtn');
-  if (themeToggleBtn) {
-    themeToggleBtn.setAttribute('title', isGruv ? 'Switch to Cyberpunk OLED theme' : 'Switch to Gruvbox theme (morhetz/gruvbox)');
-    themeToggleBtn.setAttribute('aria-label', isGruv ? 'Switch to Cyberpunk OLED theme' : 'Switch to Gruvbox theme (morhetz/gruvbox)');
-  }
-
-  if (notify) {
-    showToast(isGruv ? 'Theme: Gruvbox (morhetz/gruvbox)' : 'Theme: Cyberpunk OLED');
-  }
+  if (notify) showToast('Theme: ' + t.credit);
 }
 
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme') === 'gruvbox' ? 'gruvbox' : 'cyberpunk';
-  const next = current === 'gruvbox' ? 'cyberpunk' : 'gruvbox';
-  setTheme(next, true);
+const checkSvg = '<svg class="theme-opt-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:13px;height:13px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+
+const THEME_GROUPS = [
+  { id:'editor',   label:'// editor schemes' },
+  { id:'material', label:'// surface materials' },
+];
+
+function buildThemeOptions(host, closeAfter) {
+  if (!host) return;
+  host.innerHTML = '';
+  let lastGroup = null;
+  THEMES.forEach(t => {
+    if (t.group !== lastGroup) {
+      lastGroup = t.group;
+      const g = THEME_GROUPS.find(x => x.id === t.group);
+      const head = document.createElement('li');
+      head.className = 'theme-group';
+      head.setAttribute('role', 'presentation');
+      head.textContent = g ? g.label : t.group;
+      host.appendChild(head);
+    }
+    const li = document.createElement('li');
+    li.setAttribute('role', 'presentation');
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'theme-opt';
+    b.dataset.theme = t.id;
+    b.setAttribute('role', 'option');
+    b.setAttribute('aria-selected', String(t.id === currentTheme()));
+    // Visual group headers are presentational, so carry the family in the
+    // option's own name — a screen reader gets the same distinction.
+    b.setAttribute('aria-label', t.name + ' — ' + t.credit +
+      (t.group === 'material' ? ' (surface material)' : ' (editor scheme)'));
+    b.innerHTML = '<span class="theme-opt-sw" aria-hidden="true">' +
+      t.sw.map(c => '<i style="background:' + c + '"></i>').join('') +
+      '</span><span>' + t.name + '</span>' + checkSvg;
+    b.addEventListener('click', () => { setTheme(t.id, true); if (closeAfter) closeThemeMenu(true); });
+    li.appendChild(b);
+    host.appendChild(li);
+  });
 }
 
-// Wire header & drawer buttons
+const themeMenu = document.getElementById('themeMenu');
 const themeToggleBtn = document.getElementById('themeToggleBtn');
-if (themeToggleBtn) {
-  themeToggleBtn.addEventListener('click', toggleTheme);
+
+function openThemeMenu() {
+  if (!themeMenu) return;
+  themeMenu.hidden = false;
+  themeToggleBtn.setAttribute('aria-expanded', 'true');
+  const sel = themeMenu.querySelector('[aria-selected="true"]') || themeMenu.querySelector('.theme-opt');
+  if (sel) sel.focus();
 }
-const drawerThemeToggle = document.getElementById('drawerThemeToggle');
-if (drawerThemeToggle) {
-  drawerThemeToggle.addEventListener('click', toggleTheme);
+function closeThemeMenu(refocus) {
+  if (!themeMenu || themeMenu.hidden) return;
+  themeMenu.hidden = true;
+  themeToggleBtn.setAttribute('aria-expanded', 'false');
+  if (refocus) themeToggleBtn.focus();
 }
+
+if (themeToggleBtn && themeMenu) {
+  buildThemeOptions(themeMenu, true);
+  themeToggleBtn.addEventListener('click', () => {
+    themeMenu.hidden ? openThemeMenu() : closeThemeMenu(false);
+  });
+  // Roving arrow-key navigation, Escape to dismiss, click-away to close.
+  themeMenu.addEventListener('keydown', e => {
+    const opts = [...themeMenu.querySelectorAll('.theme-opt')];
+    const i = opts.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') { e.preventDefault(); opts[(i + 1) % opts.length].focus(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); opts[(i - 1 + opts.length) % opts.length].focus(); }
+    else if (e.key === 'Home') { e.preventDefault(); opts[0].focus(); }
+    else if (e.key === 'End') { e.preventDefault(); opts[opts.length - 1].focus(); }
+    else if (e.key === 'Escape') { e.preventDefault(); closeThemeMenu(true); }
+  });
+  document.addEventListener('click', e => {
+    if (!themeMenu.hidden && !e.target.closest('.theme-picker')) closeThemeMenu(false);
+  });
+}
+
+buildThemeOptions(document.getElementById('drawerThemeList'), false);
 
 // Sync UI on load
 (function syncThemeUI() {
-  const isGruv = document.documentElement.getAttribute('data-theme') === 'gruvbox';
-  setTheme(isGruv ? 'gruvbox' : 'cyberpunk', false);
+  setTheme(currentTheme(), false);
 })();
 
 function toggleCRT() {
@@ -5564,11 +6367,11 @@ window.addEventListener('keydown', e => {
     e.preventDefault();
     if (chatInput) chatInput.focus();
   }
+  // Escape clears the input only. Wiping the session belongs to the `clear`
+  // command and the red terminal dot, which both already do it deliberately.
   if (e.key === 'Escape' && document.activeElement === chatInput) {
-    conversation = [];
-    const systemMsg = chatList.querySelector('.chat-msg.system');
-    chatList.innerHTML = '';
-    if (systemMsg) chatList.appendChild(systemMsg.cloneNode(true));
+    chatInput.value = '';
+    chatInput.dispatchEvent(new Event('input', { bubbles: true }));
   }
 });
 
@@ -5579,13 +6382,23 @@ document.querySelectorAll('.contact-copy-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const text = btn.dataset.copy;
     if (!text) return;
-    navigator.clipboard.writeText(text).then(() => {
+    copyText(text).then(ok => {
+      if (!ok) {
+        showToast('Copy failed — ' + text);
+        return;
+      }
       showToast('Copied: ' + text);
-      const prev = btn.textContent;
-      btn.textContent = '✓ copied';
-      setTimeout(() => { btn.textContent = prev; }, 1800);
-    }).catch(() => {
-      showToast('Copied to clipboard');
+      // Swap innerHTML, not textContent — the button carries an inline SVG that
+      // a textContent write would delete permanently.
+      const prev = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> copied';
+      btn.style.color = 'var(--green)';
+      btn.style.borderColor = 'var(--green)';
+      setTimeout(() => {
+        btn.innerHTML = prev;
+        btn.style.color = '';
+        btn.style.borderColor = '';
+      }, 1800);
     });
   });
 });
@@ -5743,7 +6556,8 @@ const countObserver = new IntersectionObserver((entries) => {
       const target = parseInt(el.dataset.count, 10);
       const suffix = el.dataset.suffix || '';
       if (!isNaN(target)) {
-        let start = 0;
+        // Start near the real value so no materially false number is ever painted.
+        const from = Math.floor(target * 0.8);
         const duration = 1200;
         const startTime = performance.now();
         function updateCount(currentTime) {
@@ -5751,7 +6565,7 @@ const countObserver = new IntersectionObserver((entries) => {
           const progress = Math.min(1, elapsed / duration);
           // Ease out cubic
           const easeProgress = 1 - Math.pow(1 - progress, 3);
-          const current = Math.floor(easeProgress * target);
+          const current = from + Math.floor(easeProgress * (target - from));
           el.textContent = current + suffix;
           if (progress < 1) {
             requestAnimationFrame(updateCount);
@@ -5771,7 +6585,6 @@ countElements.forEach(el => countObserver.observe(el));
 let audioCtx = null;
 let isAudioEnabled = false;
 const termSoundBtn = document.getElementById('termSoundBtn');
-const termSoundLabel = document.getElementById('termSoundLabel');
 
 function playTerminalClick(pitch = 900) {
   if (!isAudioEnabled) return;
@@ -5801,7 +6614,8 @@ if (termSoundBtn) {
   termSoundBtn.addEventListener('click', () => {
     isAudioEnabled = !isAudioEnabled;
     termSoundBtn.classList.toggle('is-active', isAudioEnabled);
-    if (termSoundLabel) termSoundLabel.textContent = isAudioEnabled ? 'fx: on' : 'fx: off';
+    // The innerHTML rebuild below is the single source of truth for the label.
+    // Updating a cached node here wrote to a detached element after the first toggle.
     termSoundBtn.innerHTML = isAudioEnabled
       ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> <span id="termSoundLabel">fx: on</span>`
       : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><line x1="1" y1="1" x2="23" y2="23"/></svg> <span id="termSoundLabel">fx: off</span>`;
