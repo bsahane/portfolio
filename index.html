@@ -317,7 +317,6 @@
  :root[data-theme="glass"] .project-card,
  :root[data-theme="glass"] .skill-card,
  :root[data-theme="glass"] .cert-card,
- :root[data-theme="glass"] .journey-item,
  :root[data-theme="glass"] .xp-org {
   background: rgba(255, 255, 255, 0.74);
   border-color: rgba(5, 3, 21, 0.10);
@@ -393,7 +392,6 @@
  :root[data-theme="clay"] .project-card,
  :root[data-theme="clay"] .skill-card,
  :root[data-theme="clay"] .cert-card,
- :root[data-theme="clay"] .journey-item,
  :root[data-theme="clay"] .theme-menu {
   border-color: transparent;
   border-radius: var(--radius-lg);
@@ -410,6 +408,25 @@
     inset 0 2px 0 rgba(255, 255, 255, 0.95),
     inset 0 -3px 7px rgba(90, 50, 40, 0.08);
  }
+ /* The journey is a timeline, not a card stack. Its rows carry no surface and
+    no padding — the 36px is inter-row spacing — so the clay card treatment
+    above extruded a pillow around nothing: an empty rounded outline cutting
+    across the spine, with the marker straddling its edge. The material belongs
+    on the marker, which is a real object: a bead threaded on the spine. */
+ :root[data-theme="clay"] .journey-marker {
+  border-color: transparent;
+  box-shadow:
+    0 4px 9px rgba(90, 50, 40, 0.18),
+    inset 0 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 5px rgba(90, 50, 40, 0.10);
+ }
+ :root[data-theme="clay"] .journey-marker.now {
+  box-shadow:
+    0 5px 12px rgba(20, 102, 74, 0.26),
+    inset 0 2px 0 rgba(255, 255, 255, 0.40),
+    inset 0 -2px 5px rgba(12, 70, 50, 0.30);
+ }
+
  :root[data-theme="clay"] .btn,
  :root[data-theme="clay"] .contact-cmd-btn,
  :root[data-theme="clay"] .filter-btn,
