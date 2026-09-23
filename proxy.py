@@ -48,8 +48,6 @@ class Handler(http.server.BaseHTTPRequestHandler):
         "status": "healthy",
         "service": "bsahane-terminal-proxy",
         "has_key": bool(API_KEY),
-        "upstream": UPSTREAM,
-        "model": MODEL
       }
       self.wfile.write(json.dumps(status_data).encode())
       return

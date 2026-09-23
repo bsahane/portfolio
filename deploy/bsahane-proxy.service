@@ -1,0 +1,26 @@
+# Terminal AI proxy for bhushan.sahane.in. Listens on 127.0.0.1:8787 only;
+# nginx exposes it at /api/.
+# The key lives in /etc/bsahane-proxy.env (root, 0600), never in the repo:
+#   CODECRAFT_KEY=...
+# Without a key /health reports has_key:false and the page stays on its
+# local engine without ever POSTing.
+[Unit]
+Description=bsahane portfolio terminal proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=-/etc/bsahane-proxy.env
+ExecStart=/usr/bin/python3 /opt/bsahane-proxy/proxy.py
+Restart=on-failure
+RestartSec=3
+DynamicUser=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+MemoryMax=96M
+
+[Install]
+WantedBy=multi-user.target

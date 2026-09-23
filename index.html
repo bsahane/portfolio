@@ -19,7 +19,12 @@
 <meta property="og:url" content="https://bhushan.sahane.in/" />
 <meta property="og:title" content="Bhushan Sahane — AI Infrastructure Engineer at Red Hat" />
 <meta property="og:description" content="Agentic AI platforms, MCP servers, RAG pipelines and infrastructure automation. RHCE and RHCSA certified — credentials verifiable in one click." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="https://bhushan.sahane.in/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="bsahane ~/portfolio — Bhushan Sahane. AI meets infrastructure. MCP tools for automation and virtualization." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://bhushan.sahane.in/og.png" />
 <meta name="twitter:title" content="Bhushan Sahane — AI Infrastructure Engineer at Red Hat" />
 <meta name="twitter:description" content="Agentic AI platforms, MCP servers, RAG pipelines and infrastructure automation. RHCE and RHCSA certified — credentials verifiable in one click." />
 <script>
@@ -33,11 +38,36 @@
   })();
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Bhushan Sahane","alternateName":"bsahane","url":"https://bhushan.sahane.in/","email":"mailto:sahane.bhushan7@gmail.com","worksFor":{"@type":"Organization","name":"Red Hat, Inc."},"sameAs":["https://github.com/bsahane","https://www.linkedin.com/in/sahanebhushan7"]}
+</script>
+
+<!-- Fonts are self-hosted: Google Fonts held first paint to 1.1s behind a
+     third-party handshake and broke the offline/firewalled requirement.
+     One variable file covers every weight used (400–800); Latin only, because
+     the arrows and box-drawing glyphs were never in Google's subsets either. -->
+<link rel="preload" href="/fonts/jetbrains-mono-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
 
 <style>
+ @font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin-normal.woff2') format('woff2');
+ }
+ @font-face {
+  font-family: 'JetBrains Mono';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin-italic.woff2') format('woff2');
+ }
+ /* Browser defaults leak through here: controls fall back to the system sans
+    (the filter row rendered in Arial) and code/kbd to the UA monospace. The
+    ASCII-art <pre> is left on its UA face on purpose — its box-drawing glyphs
+    are outside the Latin subset, and mixing advance widths would shear it. */
+ button, input, select, textarea, code, kbd, samp { font-family: inherit; }
  /* =============================================================
  DESIGN TOKENS
  ============================================================= */
@@ -688,7 +718,7 @@
  cursor: pointer;
  align-items: center;
  justify-content: center;
- width: 40px; height: 40px;
+ width: 44px; height: 44px;
  transition: all 0.2s;
  }
  .nav-hamburger:hover { color: var(--green); border-color: var(--green); background: var(--bg-overlay); }
@@ -1005,7 +1035,12 @@
  border-bottom: 1px solid var(--bdr-subtle);
  display: flex; align-items: center; gap: 10px;
  position: relative; z-index: 1; }
- .term-dots { display: flex; gap: var(--sp-2); }
+ /* 12px dots can't carry 44px targets without overlapping each other. At a
+    12px gap their centres sit 24px apart, so each gets a separate 24×24 hit
+    area (WCAG 2.2 target-size minimum) with the dots themselves unchanged. */
+ .term-dots { display: flex; gap: var(--sp-3); }
+ .term-dots button { position: relative; }
+ .term-dots button::after { content: ''; position: absolute; inset: -6px; }
  .term-dots button {
  width: 12px; height: 12px;
  border-radius: 50%;
@@ -1389,7 +1424,7 @@
     border: 1px solid var(--bdr);
     border-radius: var(--radius);
     transition: border-color 0.2s, box-shadow 0.2s;
-    height: 42px;
+    height: 44px;
     box-sizing: border-box;
   }
   .chat-input-wrapper:focus-within {
@@ -1473,7 +1508,7 @@
     justify-content: center;
     gap: 6px;
     padding: 0 16px;
-    height: 42px;
+    height: 44px;
     flex-shrink: 0;
     background: var(--green);
     color: var(--bg);
@@ -2396,7 +2431,7 @@
   border-radius: var(--radius);
   cursor: pointer;
   transition: all 0.2s;
-  min-height: 38px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -2436,6 +2471,7 @@
   .search-input {
   width: 100%;
   padding: 9px 34px 9px 34px;
+  min-height: 44px;
   background: var(--bg-raised);
   color: var(--fg);
   border: 1px solid var(--bdr);
@@ -2638,7 +2674,6 @@
   CERTIFICATIONS
   ============================================================= */
   .section-title-certs {
-    font-size: clamp(20px, 3.8vw, 42px);
     word-break: keep-all;
     overflow-wrap: normal;
     hyphens: none;
@@ -2648,6 +2683,20 @@
     align-items: center;
     gap: 8px 12px;
   }
+  /* The copy button used to sit inside the <h2>, so screen readers announced
+     the heading as "… 170-063-119 Copy verification command". It is a sibling
+     now. The heading flows inline so the button still trails the ID on the
+     same line and wraps with it, exactly as it did inside the <h2>. (Not
+     display:contents — some Safari versions drop such headings from the
+     accessibility tree, which would undo the point of the move.) */
+  /* The type size lives on the row, not the <h2>, so the button's
+     vertical-align resolves against the heading's metrics rather than the
+     body's 16px — otherwise it sat 11px below the ID's centre. */
+  .certs-title-row { margin-bottom: 12px; font-size: clamp(20px, 3.8vw, 42px); }
+  .certs-title-row .section-title-certs { display: inline; margin-bottom: 0; font-size: inherit; }
+  /* No margin-left: in inline flow it would indent the button whenever it
+     wraps. The markup's whitespace is the gap, and it collapses at a break. */
+  .certs-title-row .cert-cmd-copy-btn { vertical-align: middle; }
   .cmd-arg-nowrap {
     display: inline-flex;
     align-items: center;
@@ -2682,6 +2731,7 @@
     gap: 6px;
     line-height: 1;
     text-transform: lowercase;
+    font-weight: 700;
   }
   .cert-cmd-copy-btn:hover {
     color: var(--green);
@@ -3608,7 +3658,7 @@
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 42px; height: 42px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: var(--bg-raised);
   border: 1px solid var(--bdr);
@@ -3665,11 +3715,11 @@
   .contact-command-actions .contact-cmd-btn { flex: 1; }
   .about-text, .card-body { padding: 22px; }
   .journey-list::before { left: 17px; }
-  .section-title-certs { font-size: clamp(20px, 5.5vw, 28px); gap: 6px 10px; }
+  .certs-title-row { font-size: clamp(20px, 5.5vw, 28px); }
   .cmd-arg-nowrap { font-size: clamp(17px, 4.8vw, 24px); }
   }
   @media (max-width: 480px) {
-  .section-title-certs { font-size: 20px; }
+  .certs-title-row { font-size: 20px; }
   .cmd-arg-nowrap { font-size: 17px; }
   }
 
@@ -4001,6 +4051,20 @@
   @media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr; } .hero-tagline { max-width: 65ch; } }
   @media (max-width: 600px) { .hero { padding-top: 110px; } .hero-intro { font-size: 17px; } h1.hero-name { font-size: clamp(30px, 8vw, 46px); } .hero-demo-link { font-size: 12px; gap: 8px; } }
   @media (prefers-reduced-motion: reduce) { .lab-node.is-active svg { animation: none; } .hero-demo-link span:last-child { transition: none; } }
+
+  /* Compact controls stay compact under a mouse; on touch they get the 44px
+     floor this project set for itself. Kept last so the base rules (notably
+     `.chat-chips { gap }`, which resets row-gap) cannot undo it. Chips wrap
+     into rows, so they grow to 36px with a 4px invisible margin and an 8px row
+     gap: 44px hit areas that meet between rows instead of overlapping. */
+  @media (pointer: coarse) {
+   .chat-chips { row-gap: 8px; }
+   .chat-chip { min-height: 36px; position: relative; }
+   .chat-chip::after { content: ''; position: absolute; inset: -4px 0; }
+   .term-certs-viewall, .nav-brand { position: relative; }
+   .term-certs-viewall::after, .nav-brand::after { content: ''; position: absolute; inset: -12px -6px; }
+   .term-sound-btn { min-height: 44px; }
+  }
 
 </style>
 </head>
@@ -4789,15 +4853,17 @@
 <section id="certs">
  <div class="container">
  <header class="section-header reveal">
+ <div class="certs-title-row">
  <h2 class="section-title section-title-certs">
    <span><span class="prompt-sym" style="color:var(--fg-muted);">$</span> <span class="accent">rhtapps</span>.verify</span>
    <span class="cmd-arg-nowrap"><span class="cmd-flag">--id</span> <span class="cmd-id">170-063-119</span></span>
+ </h2>
    <button type="button" class="cert-cmd-copy-btn" id="certCmdCopyBtn" title="Copy verification command (rhtapps.verify --id 170-063-119)" aria-label="Copy verification command">
      <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
      <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
      <span class="copy-text">copy</span>
    </button>
- </h2>
+ </div>
  <p class="section-subtitle">Official Red Hat engineering credentials verified on the Red Hat Certification Portal and Credly.</p>
  </header>
 
@@ -6049,13 +6115,18 @@ function checkProxyHealth() {
         badge.textContent = '● LIVE (AI CLOUD)';
         badge.style.borderColor = 'rgba(57, 211, 83, 0.4)';
         badge.style.color = 'var(--green)';
-      } else if (badge) {
-        badge.textContent = '● LOCAL ENGINE';
-        badge.style.borderColor = 'rgba(57, 197, 207, 0.4)';
-        badge.style.color = 'var(--cyan)';
+      } else {
+        // No key upstream: never POST, or every first question logs a 503.
+        cloudDownUntil = Infinity;
+        if (badge) {
+          badge.textContent = '● LOCAL ENGINE';
+          badge.style.borderColor = 'rgba(57, 197, 207, 0.4)';
+          badge.style.color = 'var(--cyan)';
+        }
       }
     })
     .catch(() => {
+      cloudDownUntil = Infinity;
       if (badge) {
         badge.textContent = '● LOCAL ENGINE';
         badge.style.borderColor = 'rgba(57, 197, 207, 0.4)';
