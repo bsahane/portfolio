@@ -159,7 +159,7 @@ Every layout element carries semantic terminal discipline:
 - **`{colors.accent-green}` (`#39d353`)**: Primary operational accent. Denotes active systems, command prompts, success states, and primary CTAs.
 - **`{colors.accent-cyan}` (`#39c5cf`)**: Protocol and networking accent. Symbolizes Model Context Protocol (MCP), mesh proxies, and telemetry streams.
 - **`{colors.accent-blue}` (`#58a6ff`)**: DevOps & orchestration accent. Represents Ansible, Kubernetes, Linux, and repository structures.
-- **`{colors.accent-purple}` (`#bc8cff`)**: Agent-to-Agent (A2A) and multi-agent coordination.
+- **`{colors.accent-purple}` (`#bc8cff`)**: Tool clients and protocol context.
 - **`{colors.accent-yellow}` (`#d29922`)**: Star counts, telemetry metrics, and alert highlights.
 - **`{colors.text-primary}` (`#e6edf3`)** & **`{colors.text-muted}` (`#94a3b8`)**: Strictly calibrated to guarantee >= 4.5:1 contrast against dark background surfaces (WCAG AA).
 
@@ -218,3 +218,9 @@ An 8dp structural rhythm ensures consistent vertical cadence:
 - Never animate layout-affecting properties (`width`, `height`, `margin`, `padding`) on hover or scroll.
 - Never use infinite looping bounce or spin animations on decorative elements; reserve pulsing loops exclusively for operational status dots.
 - Never let dark mode muted text drop below 4.5:1 contrast against adjacent background surfaces.
+
+## Portfolio refinement — 23 September 2026
+
+The hero now uses a solid green headline and an immediate, static identity. Display type scales from 30px on mobile to 64px on desktop. The native 30-second briefing disclosure links to career history, credentials, and email. The first project row presents mcp-ansible and mcp-proxmox. Repository membership is curated from GitHub non-fork metadata; counts derive from the local catalogue.
+
+The request simulator is the signature motion: user-triggered packets, active-node lock-in (350ms scale/opacity), explicit pause/replay, and an immediate final state under reduced motion. Its policy gateway is explicitly illustrative. The hero demo-link arrow shifts 3px on hover. Existing OLED, monospace, themes, and terminal controls are preserved.

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0a0e14" id="metaThemeColor" />
 <title>bsahane ~/portfolio — Bhushan Sahane · AI Infrastructure Engineer</title>
-<meta name="description" content="Bhushan Sahane — AI Infrastructure Engineer at Red Hat, Inc. building agentic AI platforms, MCP servers, RAG pipelines, and A2A systems." />
+<meta name="description" content="Bhushan Sahane — AI Infrastructure Engineer at Red Hat, Inc. building agentic AI platforms, MCP servers, RAG pipelines, and infrastructure automation." />
 <meta name="author" content="Bhushan Sahane" />
 <meta name="email" content="sahane.bhushan7@gmail.com" />
 <link rel="canonical" href="https://bhushan.sahane.in/" />
@@ -18,10 +18,10 @@
 <meta property="og:site_name" content="bsahane ~/portfolio" />
 <meta property="og:url" content="https://bhushan.sahane.in/" />
 <meta property="og:title" content="Bhushan Sahane — AI Infrastructure Engineer at Red Hat" />
-<meta property="og:description" content="Agentic AI platforms, MCP servers, RAG pipelines and A2A systems. RHCE and RHCSA certified — credentials verifiable in one click." />
+<meta property="og:description" content="Agentic AI platforms, MCP servers, RAG pipelines and infrastructure automation. RHCE and RHCSA certified — credentials verifiable in one click." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Bhushan Sahane — AI Infrastructure Engineer at Red Hat" />
-<meta name="twitter:description" content="Agentic AI platforms, MCP servers, RAG pipelines and A2A systems. RHCE and RHCSA certified — credentials verifiable in one click." />
+<meta name="twitter:description" content="Agentic AI platforms, MCP servers, RAG pipelines and infrastructure automation. RHCE and RHCSA certified — credentials verifiable in one click." />
 <script>
   (function() {
     try {
@@ -1930,7 +1930,7 @@
   }
 
   /* =============================================================
-  MCP PROTOCOL & MESH ARCHITECTURE SHOWCASE
+  MCP PROTOCOL & TOOL ARCHITECTURE SHOWCASE
   ============================================================= */
   .mcp-arch-card {
     margin-top: 28px;
@@ -3815,6 +3815,193 @@
   @media (max-width: 768px) {
     .term-kbd-hint { display: none; }
   }
+  /* Selected work and the browser-only protocol demonstration. */
+  .selected-work { margin-top: var(--sp-10); }
+  .work-lead { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: var(--sp-12); align-items: center; padding: var(--sp-10); border: 1px solid var(--bdr); border-radius: var(--radius-lg); background: var(--bg-raised); }
+  .work-copy h3, .work-heading h3 { color: var(--fg); font-size: var(--fs-xl); margin: 0 0 var(--sp-4); letter-spacing: -0.025em; }
+  .work-copy .work-statement { font-size: clamp(21px, 2.1vw, 28px); line-height: 1.4; color: var(--fg); margin: 0 0 var(--sp-5); }
+  .work-copy > p, .work-secondary > p { font-size: var(--fs-base); color: var(--fg-2); line-height: 1.8; max-width: 65ch; }
+  .work-facts { margin: var(--sp-6) 0; font-size: var(--fs-sm); }
+  .work-facts > div { display: grid; grid-template-columns: 64px 1fr; gap: var(--sp-2); margin: var(--sp-2) 0; }
+  .work-facts dt { color: var(--fg-muted); } .work-facts dd { margin: 0; color: var(--fg); }
+  .work-actions { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-5); align-items: center; margin-top: var(--sp-5); }
+  .work-link { min-height: 44px; display: inline-flex; align-items: center; gap: var(--sp-2); color: var(--green); background: transparent; border: 0; padding: var(--sp-2) 0; font: inherit; font-size: var(--fs-sm); text-decoration: none; cursor: pointer; }
+  .work-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .work-link svg, .lab-footnote svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .work-copy .work-attribution { font-size: var(--fs-xs); color: var(--fg-muted); margin: var(--sp-3) 0 0; }
+  .work-attribution a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+  .system-figure { margin: 0; min-width: 0; }
+  .system-map { display: grid; grid-template-columns: 1fr 1.18fr 1fr; gap: var(--sp-6); align-items: center; min-height: 260px; }
+  .system-lane { position: relative; display: flex; flex-direction: column; gap: var(--sp-3); min-width: 0; }
+  .system-label { color: var(--fg-muted); font-size: var(--fs-xs); margin-bottom: var(--sp-2); min-height: 32px; display: flex; align-items: flex-end; }
+  .system-unit { position: relative; background: var(--bg); border: 1px solid var(--bdr); border-radius: var(--radius-sm); min-height: 52px; padding: var(--sp-3); display: flex; align-items: center; gap: var(--sp-2); color: var(--fg); font-size: var(--fs-sm); }
+  .system-unit svg { width: 20px; height: 20px; color: var(--cyan); flex-shrink: 0; }
+  .system-center .system-unit::before, .system-center .system-unit::after { content: ''; position: absolute; top: 50%; width: var(--sp-6); height: 1px; background: var(--cyan); }
+  .system-center .system-unit::before { right: 100%; } .system-center .system-unit::after { left: 100%; }
+  .system-gateway { min-height: 132px; flex-direction: column; justify-content: center; text-align: center; border-color: var(--cyan); }
+  .system-gateway svg { width: 28px; height: 28px; }
+  .system-gateway strong { font-size: var(--fs-lg); }
+  .system-gateway > span { color: var(--fg-2); font-size: var(--fs-xs); }
+  .system-more { border-style: dashed; color: var(--fg-2); }
+  .system-figure figcaption { margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px solid var(--bdr-subtle); display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); color: var(--fg-muted); font-size: var(--fs-xs); }
+  .system-figure figcaption > span:last-child { margin-left: auto; }
+  .diagram-key { width: 16px; height: 2px; background: var(--cyan); }
+  .work-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); margin-top: var(--sp-8); }
+  .work-secondary { border-top: 1px solid var(--bdr); padding-top: var(--sp-6); min-width: 0; }
+  .work-heading { display: flex; justify-content: space-between; gap: var(--sp-3); align-items: baseline; flex-wrap: wrap; }
+  .work-heading h3 { margin-bottom: var(--sp-3); font-size: var(--fs-lg); }
+  .work-heading > span { font-size: var(--fs-xs); color: var(--fg-muted); }
+  .repo-graphic { background: var(--bg-raised); border-radius: var(--radius); padding: var(--sp-5); margin: var(--sp-5) 0 0; min-height: 200px; font-size: var(--fs-sm); }
+  .repo-graphic figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sp-2); color: var(--fg-2); font-size: var(--fs-xs); margin-bottom: var(--sp-5); }
+  .repo-graphic figcaption span { color: var(--fg-muted); }
+  .inventory-root { display: flex; align-items: center; gap: var(--sp-2); color: var(--fg); }
+  .inventory-root svg, .cluster-host svg { width: 20px; height: 20px; color: var(--cyan); flex-shrink: 0; }
+  .inventory-branch { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3); padding: var(--sp-2) 0 var(--sp-2) var(--sp-5); margin-left: var(--sp-2); border-left: 1px solid var(--bdr); }
+  .inventory-branch > span { min-width: 78px; color: var(--fg-2); }
+  .inventory-branch code { color: var(--fg); font-size: var(--fs-xs); }
+  .cluster-host { display: flex; align-items: center; gap: var(--sp-3); }
+  .cluster-host > span { margin-left: auto; color: var(--fg-muted); font-size: var(--fs-xs); }
+  .cluster-guests { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--sp-3); margin-top: var(--sp-4); }
+  .cluster-guests > div { display: flex; flex-direction: column; gap: var(--sp-2); border-top: 1px solid var(--bdr-strong); padding-top: var(--sp-3); }
+  .cluster-guests span { font-size: var(--fs-xs); color: var(--fg-muted); }
+  .cluster-guests strong { font-size: var(--fs-xs); color: var(--fg); font-weight: 500; }
+  .request-lab { margin: var(--sp-16) 0 var(--sp-10); border: 1px solid var(--bdr); border-radius: var(--radius-lg); background: var(--bg-raised); overflow: hidden; scroll-margin-top: 100px; }
+  .lab-heading { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-4); padding: var(--sp-8) var(--sp-8) var(--sp-6); }
+  .lab-heading h3 { font-size: var(--fs-xl); letter-spacing: -0.025em; margin: 0 0 var(--sp-2); }
+  .lab-heading p { color: var(--fg-2); font-size: var(--fs-sm); margin: 0; }
+  .lab-demo-label { color: var(--fg-2); font-size: var(--fs-xs); border: 1px solid var(--bdr); padding: var(--sp-1) var(--sp-2); border-radius: var(--radius-sm); white-space: nowrap; }
+  .lab-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--sp-4); padding: 0 var(--sp-8) var(--sp-5); }
+  .lab-toolbar label { display: flex; flex-direction: column; gap: var(--sp-2); color: var(--fg-muted); font-size: var(--fs-xs); flex: 1; min-width: 200px; }
+  .lab-toolbar select { background: var(--bg); color: var(--fg); border: 1px solid var(--bdr); border-radius: var(--radius); padding: var(--sp-3); font: inherit; font-size: var(--fs-base); min-height: 46px; width: 100%; }
+  .lab-run { display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2); border: 1px solid var(--green); background: var(--green); color: var(--bg); border-radius: var(--radius); padding: var(--sp-3) var(--sp-5); min-height: 46px; min-width: 152px; font: inherit; font-size: var(--fs-sm); font-weight: 600; cursor: pointer; transition: transform 160ms; }
+  .lab-run:hover { transform: translateY(-2px); } .lab-run:disabled { opacity: .5; cursor: default; }
+  .lab-run svg { width: 16px; height: 16px; }
+  .lab-context { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-6); color: var(--fg-muted); font-size: var(--fs-xs); padding: 0 var(--sp-8) var(--sp-5); }
+  .lab-context code { color: var(--fg-2); }
+  .lab-topology { display: grid; grid-template-columns: 1fr 52px 1.2fr 52px 1fr; align-items: center; padding: var(--sp-8); border-top: 1px solid var(--bdr-subtle); border-bottom: 1px solid var(--bdr-subtle); background: var(--bg); }
+  .lab-node { min-width: 0; align-self: stretch; display: flex; flex-direction: column; gap: var(--sp-2); position: relative; padding: var(--sp-5); border: 1px solid var(--bdr); border-radius: var(--radius); background: var(--bg-raised); }
+  .lab-node-kind { color: var(--fg-muted); font-size: var(--fs-xs); }
+  .lab-node > svg { width: 24px; height: 24px; color: var(--fg-2); margin: var(--sp-2) 0; }
+  .lab-node > strong { color: var(--fg); font-size: var(--fs-md); }
+  .lab-node > code { color: var(--fg-2); font-size: var(--fs-xs); overflow-wrap: anywhere; }
+  .lab-node-state { margin-top: auto; padding-top: var(--sp-3); font-size: var(--fs-xs); color: var(--fg-muted); }
+  .lab-node.is-active { border-color: var(--cyan); }
+  .lab-node.is-active > svg, .lab-node.is-active .lab-node-state { color: var(--cyan); }
+  .lab-node.is-complete .lab-node-state { color: var(--green); }
+  .lab-node.is-denied { border-color: var(--red); } .lab-node.is-denied .lab-node-state { color: var(--red); }
+  .lab-wire { position: relative; height: 1px; background: var(--bdr-strong); }
+  .lab-wire::before { content: ''; position: absolute; top: -3px; right: 3px; width: 7px; height: 7px; border-top: 1px solid var(--fg-muted); border-right: 1px solid var(--fg-muted); transform: rotate(45deg); }
+  .lab-packet { position: absolute; top: -3px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); opacity: 0; }
+  .lab-wire.is-active .lab-packet { animation: labPacket 640ms linear both; }
+  .lab-wire.is-return .lab-packet { animation-direction: reverse; background: var(--green); }
+  .request-lab.is-paused .lab-packet { animation-play-state: paused; }
+  @keyframes labPacket { 0% { transform: translateX(0); opacity: 0; } 15%,85% { opacity: 1; } 100% { transform: translateX(45px); opacity: 0; } }
+  .lab-status-line { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--sp-3); padding: var(--sp-5) var(--sp-8); }
+  .lab-state { font-size: var(--fs-xs); color: var(--fg); font-weight: 600; min-width: 82px; }
+  .lab-status-line p { margin: 0; font-size: var(--fs-sm); color: var(--fg-2); }
+  .lab-inspection { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--bdr-subtle); }
+  .lab-events, .lab-result { min-width: 0; padding: var(--sp-5) var(--sp-8); }
+  .lab-result { border-left: 1px solid var(--bdr-subtle); }
+  .lab-inspection h4 { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sp-2); font-size: var(--fs-sm); margin: 0 0 var(--sp-4); font-weight: 500; }
+  .lab-inspection h4 span { color: var(--fg-muted); font-size: var(--fs-xs); font-weight: 400; }
+  .lab-events ol { list-style: none; margin: 0; padding: 0; min-height: 184px; }
+  .lab-events li { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-2); margin-bottom: var(--sp-2); font-size: var(--fs-xs); }
+  .lab-events li::before { content: ''; width: 5px; height: 5px; background: var(--green); border-radius: 50%; align-self: center; }
+  .lab-events code { color: var(--fg); } .lab-events li > span { color: var(--fg-muted); }
+  .lab-events .is-pending::before { background: var(--fg-muted); }
+  .lab-events .is-denied::before { background: var(--red); }
+  .request-lab pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--font); font-size: var(--fs-xs); line-height: 1.7; color: var(--fg-2); }
+  .lab-result pre { min-height: 184px; }
+  .lab-payload { border-top: 1px solid var(--bdr-subtle); padding: 0 var(--sp-8); }
+  .lab-payload summary { padding: var(--sp-4) 0; cursor: pointer; color: var(--fg-2); font-size: var(--fs-xs); min-height: 44px; }
+  .lab-payload pre { padding-bottom: var(--sp-5); }
+  .lab-footnote { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-2); padding: var(--sp-3) var(--sp-8); border-top: 1px solid var(--bdr-subtle); }
+  .lab-footnote p { font-size: var(--fs-xs); color: var(--fg-muted); margin: 0; }
+  .lab-footnote a { display: inline-flex; gap: var(--sp-2); align-items: center; min-height: 44px; color: var(--cyan); font-size: var(--fs-xs); }
+  .lab-noscript { padding: var(--sp-4) var(--sp-8); color: var(--fg-2); }
+  .repo-archive { border-top: 1px solid var(--bdr); padding-top: var(--sp-2); scroll-margin-top: 100px; }
+  .repo-archive > summary, .architecture-reference > summary { padding: var(--sp-5) 0; color: var(--fg); cursor: pointer; font-size: var(--fs-base); min-height: 44px; }
+  .repo-archive > summary span { color: var(--fg-muted); font-size: var(--fs-xs); margin-left: var(--sp-3); }
+  .repo-archive[open] > summary { margin-bottom: var(--sp-5); }
+  .architecture-reference { margin-top: var(--sp-8); border-top: 1px solid var(--bdr); }
+  .architecture-reference .mcp-arch-card { margin-top: 0; }
+  .profile-note { font-size: var(--fs-xs); color: var(--fg-muted); padding: var(--sp-3) var(--sp-5); border-bottom: 1px solid var(--bdr-subtle); }
+  .project-btn-copy, .project-link { min-height: 44px; display: inline-flex; align-items: center; }
+  .project-btn-copy { padding: var(--sp-2) var(--sp-3); }
+  select:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+  #projects .section-subtitle { max-width: 72ch; }
+  @media (max-width: 960px) {
+    .work-lead { grid-template-columns: 1fr; gap: var(--sp-6); padding: var(--sp-8); }
+    .system-map { min-height: 200px; }
+    .lab-node { padding: var(--sp-4); }
+    .lab-topology { grid-template-columns: 1fr 32px 1.2fr 32px 1fr; }
+    @keyframes labPacket { 0% { transform: translateX(0); opacity: 0; } 15%,85% { opacity: 1; } 100% { transform: translateX(25px); opacity: 0; } }
+  }
+  @media (max-width: 640px) {
+    .work-lead { padding: var(--sp-5); }
+    .work-pair { grid-template-columns: 1fr; gap: var(--sp-10); }
+    .system-map { gap: var(--sp-3); grid-template-columns: 1fr 1.1fr 1fr; }
+    .system-unit { padding: var(--sp-2); font-size: var(--fs-xs); flex-wrap: wrap; }
+    .system-label { font-size: var(--fs-xs); min-height: 40px; }
+    .system-center .system-unit::before, .system-center .system-unit::after { width: var(--sp-3); }
+    .system-figure figcaption > span:last-child { margin-left: 0; }
+    .repo-graphic { padding: var(--sp-4); }
+    .inventory-branch { gap: var(--sp-2); }
+    .inventory-branch > span { min-width: 70px; }
+    .lab-heading { padding: var(--sp-5); }
+    .lab-toolbar { padding: 0 var(--sp-5) var(--sp-5); }
+    .lab-toolbar label { min-width: 100%; }
+    .lab-toolbar select { font-size: var(--fs-md); }
+    .lab-run { width: 100%; }
+    .lab-context { padding: 0 var(--sp-5) var(--sp-5); flex-direction: column; }
+    .lab-topology { grid-template-columns: 1fr; padding: var(--sp-5); }
+    .lab-node { display: grid; grid-template-columns: 28px minmax(0,1fr); gap: var(--sp-1) var(--sp-3); padding: var(--sp-4); }
+    .lab-node-kind { grid-column: 2; } .lab-node > svg { grid-column: 1; grid-row: 1 / 4; margin: var(--sp-2) 0; }
+    .lab-node > strong, .lab-node > code, .lab-node-state { grid-column: 2; }
+    .lab-node-state { padding-top: var(--sp-2); }
+    .lab-wire { width: 1px; height: 28px; justify-self: center; }
+    .lab-wire::before { top: auto; bottom: 3px; right: -3px; transform: rotate(135deg); }
+    .lab-packet { left: -3px; top: 0; }
+    @keyframes labPacket { 0% { transform: translateY(0); opacity: 0; } 15%,85% { opacity: 1; } 100% { transform: translateY(21px); opacity: 0; } }
+    .lab-status-line { padding: var(--sp-4) var(--sp-5); }
+    .lab-inspection { grid-template-columns: 1fr; }
+    .lab-events, .lab-result { padding: var(--sp-5); }
+    .lab-result { border-left: 0; border-top: 1px solid var(--bdr-subtle); }
+    .lab-events ol, .lab-result pre { min-height: 150px; }
+    .lab-payload { padding: 0 var(--sp-5); } .lab-footnote { padding: var(--sp-4) var(--sp-5); }
+    .repo-archive > summary span { display: block; margin: var(--sp-2) 0 0; }
+  }
+
+
+  /* Evidence-first hero: identity and actions never wait for an entrance. */
+  .hero { padding-top: 110px; }
+  .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+  h1.hero-name { font-size: clamp(36px, 4.5vw, 64px); line-height: 1.1; letter-spacing: -.035em; }
+  .hero-intro { display: block; font-size: 20px; color: var(--fg); letter-spacing: -.02em; margin-bottom: 24px; }
+  .hero-emphasis { color: var(--green); }
+  .hero-tagline { max-width: 52ch; margin-top: 26px; }
+  .hero-evidence { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 28px 0 20px; font-size: 12px; }
+  .hero-evidence a, .recruiter-brief a { display: inline-flex; align-items: center; min-height: 44px; color: var(--cyan); text-underline-offset: 5px; }
+  .recruiter-brief { border-block: 1px solid var(--bdr); padding: 4px 0; max-width: 58ch; }
+  .recruiter-brief summary { cursor: pointer; padding: 14px 0; color: var(--fg); font-size: 13px; }
+  .recruiter-brief p { color: var(--fg-2); font-size: 13px; line-height: 1.8; margin: 0 0 16px; }
+  .recruiter-brief > div { display: flex; flex-wrap: wrap; gap: 18px; padding-bottom: 18px; font-size: 12px; }
+  .hero-demo-link { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; margin-top: 12px; font-size: 12px; color: var(--green); }
+  .hero-demo-link span:last-child { transition: transform 180ms ease-out; }
+  .hero-demo-link:hover span:last-child { transform: translateY(3px); }
+  .boot.booted h1.hero-name, .hero .hero-tagline, .hero .hero-ctas, .hero .terminal-card { animation: none !important; opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .nav-cta { white-space: nowrap; flex-shrink: 0; }
+  .nav-links { gap: clamp(12px, 1.6vw, 24px); }
+  .lab-heading h3 { font-size: clamp(23px, 3vw, 36px); letter-spacing: -.03em; max-width: 24ch; line-height: 1.2; }
+  .request-lab { scroll-margin-top: 100px; }
+  .work-secondary { transition: border-color 180ms ease-out; }
+  .work-secondary:focus-within, .work-secondary:hover { border-color: var(--cyan); }
+  .lab-node.is-active svg { animation: request-lock 350ms ease-out both; }
+  @keyframes request-lock { from { transform: scale(.9); opacity: .6; } to { transform: scale(1); opacity: 1; } }
+  @media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr; } .hero-tagline { max-width: 65ch; } }
+  @media (max-width: 600px) { .hero { padding-top: 110px; } .hero-intro { font-size: 17px; } h1.hero-name { font-size: clamp(30px, 8vw, 46px); } .hero-demo-link { font-size: 12px; gap: 8px; } }
+  @media (prefers-reduced-motion: reduce) { .lab-node.is-active svg { animation: none; } .hero-demo-link span:last-child { transition: none; } }
+
 </style>
 </head>
 
@@ -3831,9 +4018,9 @@
    <span class="brand-short"><span class="c-green">bsahane</span><span class="c-muted">:</span><span class="c-muted">~</span><span class="c-muted">$</span></span>
  </a>
  <ul class="nav-links">
+ <li><a href="#projects">projects</a></li>
  <li><a href="#about">about</a></li>
  <li><a href="#stack">stack</a></li>
- <li><a href="#projects">projects</a></li>
  <li><a href="#certs">certs</a></li>
  <li><a href="#experience">experience</a></li>
  <li><a href="#journey">journey</a></li>
@@ -3871,9 +4058,9 @@
  </button>
  </div>
  <ul class="drawer-links">
+ <li><a href="#projects" class="drawer-link">projects</a></li>
  <li><a href="#about" class="drawer-link">about</a></li>
  <li><a href="#stack" class="drawer-link">stack</a></li>
- <li><a href="#projects" class="drawer-link">projects</a></li>
  <li><a href="#certs" class="drawer-link">certs</a></li>
  <li><a href="#experience" class="drawer-link">experience</a></li>
  <li><a href="#journey" class="drawer-link">journey</a></li>
@@ -3898,23 +4085,18 @@
  <div class="container">
  <div class="hero-grid">
  <div>
- <span class="hero-status">
- <span class="dot" aria-hidden="true"></span>
- <span>all_systems=operational · AI infrastructure live</span>
- </span>
 
  <h1 class="hero-name">
- $ hello, I'm <span class="gradient">Bhushan Sahane</span>
+ <span class="hero-intro">Bhushan Sahane</span>
+ AI meets<br><span class="hero-emphasis">infrastructure.</span>
  </h1>
 
- <p class="hero-tagline">
- Building <span class="hl">AI infrastructure</span> at <span class="hl-b">Red Hat, Inc.</span> — agentic AI platforms, <span class="hl">MCP servers</span>, <span class="hl-b">RAG</span> pipelines, and <span class="hl-p">A2A</span> systems that turn language models into production operators.
- </p>
+ <p class="hero-tagline">AI infrastructure engineer at <span class="hl-b">Red Hat.</span> I build <span class="hl">MCP tools</span> that connect language models to automation, virtualization, and real infrastructure.</p>
 
  <div class="hero-ctas">
  <a href="#projects" class="btn btn-primary">
  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg>
- ./init projects
+ Explore my work
  </a>
  <a href="https://github.com/bsahane" target="_blank" rel="noopener" class="btn btn-secondary">
  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3"/></svg>
@@ -3926,24 +4108,9 @@
  </a>
  </div>
 
- <div class="hero-stats">
- <div>
- <div class="hero-stat-label">curated repos</div>
- <div class="hero-stat-value sv-g" data-count="20">20</div>
- </div>
- <div>
- <div class="hero-stat-label">stars</div>
- <div class="hero-stat-value sv-y" data-count="54" data-suffix=" ★">54 ★</div>
- </div>
- <div>
- <div class="hero-stat-label">focus</div>
- <div class="hero-stat-value sv-c">MCP·RAG·A2A</div>
- </div>
- <div>
- <div class="hero-stat-label">status</div>
- <div class="hero-stat-value sv-p">shipping</div>
- </div>
- </div>
+ <div class="hero-evidence"><a href="#experience">Infrastructure since 2017</a><a href="#certs">RHCE + RHCSA <span aria-hidden="true">↗</span></a></div>
+ <details class="recruiter-brief"><summary>The 30-second briefing</summary><p><strong>Enterprise infrastructure, with an AI tool layer.</strong> Experience across Red Hat, HPE, and Linux operations. Inspect my Python MCP servers, verify my certifications, or walk through a simulated tool request.</p><div><a href="#experience">Career history</a><a href="#certs">Verify credentials</a><a href="mailto:sahane.bhushan7@gmail.com">Let’s talk</a></div></details>
+ <a class="hero-demo-link" href="#request-lab"><span aria-hidden="true">$</span> Trace an infrastructure request <span aria-hidden="true">↓</span></a>
  </div>
 
  <!-- =============================================================
@@ -3980,7 +4147,7 @@
   </div>
 
   <div class="t-out">→ AI Infrastructure Engineer · Red Hat, Inc.</div>
-  <div class="t-out muted">→ Agentic AI · MCP · RAG · A2A · DevOps</div>
+  <div class="t-out muted">→ Agentic AI · MCP · RAG · DevOps</div>
   <div class="t-out g">→ $ open-to-collab = true</div>
 
   <div class="t-line" style="margin-top: 16px;">
@@ -4017,8 +4184,8 @@
   <button type="button" class="chat-chip cmd-chip" data-cmd="certs"><span class="chip-sym">$</span>certs</button>
   <button type="button" class="chat-chip cmd-chip" data-cmd="neofetch"><span class="chip-sym">$</span>neofetch</button>
   <button type="button" class="chat-chip query-chip" data-cmd="What is Bhushan's role at Red Hat?"><span class="chip-sym">?</span>role</button>
-  <button type="button" class="chat-chip query-chip" data-cmd="Tell me about MCP Mesh"><span class="chip-sym">?</span>mcp-mesh</button>
-  <button type="button" class="chat-chip query-chip" data-cmd="How does Strix AI pentesting work?"><span class="chip-sym">?</span>strix</button>
+  <button type="button" class="chat-chip query-chip" data-cmd="Tell me about mcp-ansible"><span class="chip-sym">?</span>mcp-ansible</button>
+  <button type="button" class="chat-chip query-chip" data-cmd="How does mcp-proxmox work?"><span class="chip-sym">?</span>proxmox</button>
   <button type="button" class="chat-chip cmd-chip" data-cmd="clear"><span class="chip-sym">$</span>clear</button>
   </div>
   </div>
@@ -4031,6 +4198,92 @@
 <!-- =============================================================
  ABOUT
  ============================================================= -->
+<section id="projects">
+ <div class="container">
+ <header class="section-header reveal">
+ <h2 class="section-title">$ <span class="accent">open</span> ~/selected-work</h2>
+ <p class="section-subtitle">From a language model to a Linux host. Explore two infrastructure tools, then follow a request through the browser simulation.</p>
+ </header>
+
+<div class="selected-work">
+  <div class="work-pair">
+    <article class="work-secondary">
+      <div class="work-heading"><h3>mcp-ansible</h3><span>Automation</span></div>
+      <p>Give agents tools to inspect inventory, validate playbooks, and troubleshoot hosts using Ansible.</p>
+      <figure class="repo-graphic inventory-graphic">
+        <figcaption>Inventory graph <span>illustrative</span></figcaption>
+        <div class="inventory-root"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7h7l2-3h9v16H3Z"/></svg> inventory/hosts.ini</div>
+        <div class="inventory-branch"><span>web</span><code>web-01</code><code>web-02</code></div>
+        <div class="inventory-branch"><span>database</span><code>db-01</code></div>
+      </figure>
+      <div class="work-actions"><a href="https://github.com/bsahane/mcp-ansible" target="_blank" rel="noopener noreferrer" class="work-link">Explore source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a><button type="button" class="work-link" data-demo="inventory">Try inventory request</button></div>
+    </article>
+    <article class="work-secondary">
+      <div class="work-heading"><h3>mcp-proxmox</h3><span>Virtualization</span></div>
+      <p>Expose Proxmox discovery and lifecycle operations as tools for virtual machines, containers, and storage.</p>
+      <figure class="repo-graphic cluster-graphic">
+        <figcaption>Cluster resources <span>illustrative</span></figcaption>
+        <div class="cluster-host"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></svg><strong>pve-01</strong><span>Proxmox VE</span></div>
+        <div class="cluster-guests"><div><span>VM / 101</span><strong>web-01</strong></div><div><span>VM / 102</span><strong>agent-01</strong></div><div><span>LXC / 201</span><strong>worker-01</strong></div></div>
+      </figure>
+      <div class="work-actions"><a href="https://github.com/bsahane/mcp-proxmox" target="_blank" rel="noopener noreferrer" class="work-link">Explore source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a><button type="button" class="work-link" data-demo="vms">Try VM discovery</button></div>
+    </article>
+  </div>
+</div>
+
+<div class="request-lab" id="request-lab" role="region" aria-labelledby="labTitle">
+  <div class="lab-heading"><div><h3 id="labTitle">Watch intent become infrastructure.</h3><p>From an agent request to a policy decision and a structured response.</p></div><span class="lab-demo-label">Interactive demo</span></div>
+  <div class="lab-toolbar">
+    <label for="labScenario">Example request<select id="labScenario"><option value="inventory">List Ansible inventory</option><option value="vms">Discover running VMs</option><option value="denied">Run a playbook · access denied</option></select></label>
+    <button type="button" class="lab-run" id="labRun" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg><span>Run demo</span></button>
+  </div>
+  <div class="lab-context"><span>principal <code>portfolio-reader</code></span><span>policy <code>read-only · example</code></span><span id="labTransport">tool transport <code>stdio</code></span></div>
+  <div class="lab-topology" aria-label="Agent client, Example policy gateway, and selected MCP tool server">
+    <div class="lab-node" data-lab-node="client"><span class="lab-node-kind">CLIENT</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="m7 8 3 3-3 3m6 0h4M8 21h8"/></svg><strong>Agent client</strong><code>tools/call</code><span class="lab-node-state">Ready</span></div>
+    <div class="lab-wire" aria-hidden="true"><span class="lab-packet"></span></div>
+    <div class="lab-node" data-lab-node="gateway"><span class="lab-node-kind">CONTROL PLANE</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6l8-3Z"/><path d="m8 12 3 3 5-6"/></svg><strong>Example gateway</strong><code>Identity → policy → route</code><span class="lab-node-state">Awaiting request</span></div>
+    <div class="lab-wire" aria-hidden="true"><span class="lab-packet"></span></div>
+    <div class="lab-node" data-lab-node="server"><span class="lab-node-kind">TOOL SERVER</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></svg><strong id="labServer">mcp-ansible</strong><code id="labTool">ansible-inventory</code><span class="lab-node-state">Not called</span></div>
+  </div>
+  <div class="lab-status-line"><span class="lab-state" id="labState">Ready</span><p id="labStatus" role="status" aria-live="polite">Run the example to follow the request.</p></div>
+  <div class="lab-inspection">
+    <div class="lab-events"><h4>Request trace <span id="labStep">0 / 6 steps</span></h4><ol id="labEvents"><li class="is-pending"><code>request.created</code><span>Waiting for playback</span></li></ol></div>
+    <div class="lab-result"><h4>Tool response <span id="labResultState">pending</span></h4><pre id="labResult" aria-label="Illustrative tool response">// A sample response will appear here.</pre></div>
+  </div>
+  <details class="lab-payload"><summary>Inspect JSON-RPC request</summary><pre id="labPayload">{"jsonrpc":"2.0","id":"demo-001","method":"tools/call","params":{"name":"ansible-inventory","arguments":{"inventory":"/demo/hosts.ini"}}}</pre></details>
+  <div class="lab-footnote"><p>Illustrative policy and sample responses. Runs entirely in your browser.</p><a id="labSource" href="https://github.com/bsahane/mcp-ansible#tools-names" target="_blank" rel="noopener noreferrer">Tool reference <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+  <noscript><p class="lab-noscript">Enable JavaScript to replay the demo. The topology and request above remain available to inspect.</p></noscript>
+</div>
+
+ <details class="repo-archive" id="repo-index">
+ <summary>Browse the repository index <span>13 repositories · forks excluded</span></summary>
+ <div class="projects-controls reveal" role="toolbar" aria-label="Filter and search projects">
+ <button class="filter-btn active" data-filter="all" aria-pressed="true">all <span class="filter-count">13</span></button>
+ <button class="filter-btn" data-filter="featured" aria-pressed="false">★ featured <span class="filter-count">3</span></button>
+ <button class="filter-btn" data-filter="mcp" aria-pressed="false">⌬ mcp <span class="filter-count">7</span></button>
+ <button class="filter-btn" data-filter="ai" aria-pressed="false">◈ ai <span class="filter-count">1</span></button>
+ <button class="filter-btn" data-filter="devops" aria-pressed="false">⚙ devops <span class="filter-count">3</span></button>
+ <button class="filter-btn" data-filter="tool" aria-pressed="false">◊ tool <span class="filter-count">2</span></button>
+
+ <div class="search-wrapper">
+  <svg class="search-icon-inside" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  <input type="search" class="search-input" id="projectSearch" placeholder="grep ./repos/ (e.g. mcp, ansible, ai, go)..." aria-label="Search projects by name, description or tech" autocomplete="off" />
+  <button type="button" class="search-clear" id="searchClear" title="Clear search" aria-label="Clear search query">
+   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+ </div>
+ </div>
+
+ <div class="projects-status-bar reveal" aria-live="polite">
+  <span>// index status: <span class="projects-count-badge" id="projectCount">13</span> repositories displayed</span>
+ </div>
+
+ <div class="projects-grid" id="projectsGrid" role="list"></div>
+ <p class="section-subtitle">Fork status and stars checked against GitHub on 23 September 2026. This index includes only repositories marked as non-forks; see source history for attribution.</p>
+ </details>
+ </div>
+</section>
+
 <section id="about">
  <div class="container">
  <header class="section-header reveal">
@@ -4050,7 +4303,7 @@
  <div class="card-body about-text">
  <p>$ whoami — I'm <strong>Bhushan Sahane</strong>, an <span class="accent">AI Infrastructure Engineer at <code>Red Hat, Inc.</code></span> focused on building the next generation of agentic AI platforms for the enterprise.</p>
 
- <p>I work across the full AI stack: <strong>A2A (Agent-to-Agent) protocols</strong>, <strong>MCP servers</strong>, <strong>RAG pipelines</strong>, custom <strong>MCP clients</strong>, and unified all-in-one platforms that expose MCP tooling to LLMs and human operators.</p>
+ <p>I work across the full AI stack: <strong>MCP servers</strong>, <strong>RAG pipelines</strong>, custom <strong>MCP clients</strong>, and unified all-in-one platforms that expose MCP tooling to LLMs and human operators.</p>
 
  <p>On the infrastructure side I live in <code>Ansible</code>, <code>Proxmox</code>, <code>Kubernetes</code>, and <code>Linux</code> — building AI-Ops automation, auto-healing systems, and zero-touch deployment pipelines.</p>
 
@@ -4158,7 +4411,7 @@
    </div>
  </div>
 
- <p>Currently shipping <strong>MCP Mesh</strong> — a control-plane gateway that unifies MCP client↔server traffic with auth, observability and policy enforcement. Also working on <strong>AI pentesting</strong>, <strong>legal-tech MCP servers</strong>, and intelligent <strong>web scrapers</strong>.</p>
+ <p>My open-source work connects AI tools to infrastructure: <strong>mcp-ansible</strong> for automation, <strong>mcp-proxmox</strong> for virtualization, and <strong>legal-tech MCP servers</strong> for domain-specific retrieval.</p>
 
  <span class="secret">// TODO: take over the world (gently)</span>
  </div>
@@ -4192,8 +4445,8 @@
 <span class="l-dark">     `'-------'`    </span>
 <span class="l-cyan">  ┌───────────────┐ </span>
 <span class="l-cyan">  │</span> <span class="l-green">◉  AI▪INFRA ◉</span> <span class="l-cyan">│ </span>
-<span class="l-cyan">  │</span> <span class="l-purple">├─► MCP MESH</span>  <span class="l-cyan">│ </span>
-<span class="l-cyan">  │</span> <span class="l-blue">└─► A2A CORE</span>  <span class="l-cyan">│ </span>
+<span class="l-cyan">  │</span> <span class="l-purple">├─► MCP TOOLS</span>  <span class="l-cyan">│ </span>
+<span class="l-cyan">  │</span> <span class="l-blue">└─► RAG CORE</span>  <span class="l-cyan">│ </span>
 <span class="l-cyan">  └───────────────┘ </span>
 <span class="l-badge">  RED HAT // RHEL 9 </span>
 </pre>
@@ -4207,17 +4460,17 @@
   <div class="neofetch-row"><span class="neofetch-k">OS</span><span class="neofetch-s">:</span><span class="neofetch-v">RHEL 9.4 · macOS Sequoia</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Host</span><span class="neofetch-s">:</span><span class="neofetch-v">MacBookPro (M1 Pro, 32GB)</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Kernel</span><span class="neofetch-s">:</span><span class="neofetch-v">Darwin 24.0.0 / Linux 6.8</span></div>
-  <div class="neofetch-row"><span class="neofetch-k">Uptime</span><span class="neofetch-s">:</span><span class="neofetch-v g" id="liveUptime"><span id="uptimeVal">252d 14h 32m</span> <span class="neofetch-pill" id="uptimeBadge">99.98% SLA</span><span id="uptimeText" style="display:none;"></span></span></div>
+  <div class="neofetch-row"><span class="neofetch-k">Session</span><span class="neofetch-s">:</span><span class="neofetch-v g" id="liveUptime"><span id="uptimeVal">This browser tab</span> <span class="neofetch-pill" id="uptimeBadge">LOCAL</span><span id="uptimeText" style="display:none;"></span></span></div>
   <div class="neofetch-row"><span class="neofetch-k">Packages</span><span class="neofetch-s">:</span><span class="neofetch-v">95 (repos), 14 (mcp), 38 (rpm)</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Shell</span><span class="neofetch-s">:</span><span class="neofetch-v b">zsh 5.9 (/bin/zsh)</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Terminal</span><span class="neofetch-s">:</span><span class="neofetch-v">Ghostty · Kitty (tmux 3.4)</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Role</span><span class="neofetch-s">:</span><span class="neofetch-v c">AI Infrastructure Engineer</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Company</span><span class="neofetch-s">:</span><span class="neofetch-v g">Red Hat, Inc.</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Certs</span><span class="neofetch-s">:</span><span class="neofetch-v y"><a href="https://rhtapps.redhat.com/verify?certId=170-063-119" target="_blank" rel="noopener noreferrer" class="neofetch-cert-link" title="Verify RHCE (Cert ID: 170-063-119)">RHCE</a> · <a href="https://rhtapps.redhat.com/verify?certId=170-063-119" target="_blank" rel="noopener noreferrer" class="neofetch-cert-link" title="Verify DO467 AAP Specialist">DO467</a> · <a href="https://rhtapps.redhat.com/verify?certId=170-063-119" target="_blank" rel="noopener noreferrer" class="neofetch-cert-link" title="Verify RHCSA">RHCSA</a> · <a href="#certs" class="neofetch-cert-link" title="View all 5 credentials in #certs">+2 more</a></span></div>
-  <div class="neofetch-row"><span class="neofetch-k">Stack</span><span class="neofetch-s">:</span><span class="neofetch-v p">MCP Mesh · RAG · A2A Ops</span></div>
+  <div class="neofetch-row"><span class="neofetch-k">Stack</span><span class="neofetch-s">:</span><span class="neofetch-v p">MCP · RAG · Linux</span></div>
   <div class="neofetch-row"><span class="neofetch-k">Infra</span><span class="neofetch-s">:</span><span class="neofetch-v">Ansible · OpenShift · Proxmox</span></div>
-  <div class="neofetch-row"><span class="neofetch-k">Repos</span><span class="neofetch-s">:</span><span class="neofetch-v">95 public · <span class="neofetch-v y">54 ★ on curated</span></span></div>
-  <div class="neofetch-row"><span class="neofetch-k">Memory</span><span class="neofetch-s">:</span><span class="neofetch-v"><span class="neofetch-mem-bar" aria-hidden="true"><span class="mem-fill"></span></span>21.4 / 32.0 GiB (67%)</span></div>
+  <div class="neofetch-row"><span class="neofetch-k">Repos</span><span class="neofetch-s">:</span><span class="neofetch-v">13 indexed · <span class="neofetch-v y">59 stars · Sep 2026</span></span></div>
+  <div class="neofetch-row"><span class="neofetch-k">Mode</span><span class="neofetch-s">:</span><span class="neofetch-v">Portfolio · interactive demos</span></div>
 </div>
 </div>
 
@@ -4246,12 +4499,12 @@
 
 <div class="neofetch-prompt">
   <div class="prompt-line">
-    <span class="prompt-user">bsahane@redhat</span><span class="prompt-colon">:</span><span class="prompt-path">~</span><span class="prompt-char">$</span> <span class="prompt-cmd">fastfetch --mesh-status</span>
+    <span class="prompt-user">bsahane@redhat</span><span class="prompt-colon">:</span><span class="prompt-path">~</span><span class="prompt-char">$</span> <span class="prompt-cmd">fastfetch --infra-status</span>
     <span class="prompt-cursor" aria-hidden="true"></span>
   </div>
   <div class="prompt-status">
     <span class="status-pulse" aria-hidden="true"></span>
-    <span>MESH ONLINE</span>
+    <span>LOCAL PORTFOLIO</span>
   </div>
 </div>
 
@@ -4260,13 +4513,15 @@
  </div>
 
  <!-- =============================================================
-  INTERACTIVE MCP MESH & PROTOCOL TOPOLOGY
+  INTERACTIVE MCP TOOLS & PROTOCOL TOPOLOGY
   ============================================================= -->
-  <div class="mcp-arch-card spotlight-card reveal" id="mcpArchitecture" role="region" aria-label="Interactive MCP Mesh Protocol Architecture">
+  <details class="architecture-reference">
+  <summary>Explore the full MCP architecture</summary>
+  <div class="mcp-arch-card spotlight-card reveal" id="mcpArchitecture" role="region" aria-label="Interactive MCP Protocol Architecture">
     <div class="card-head">
       <div class="card-head-l">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        <span>mcp-mesh-topology.spec // Protocol Control Plane & Swarm Architecture</span>
+        <span>mcp-topology.spec // Illustrative tool-routing architecture</span>
       </div>
       <div class="card-head-r">interactive topology · click node to inspect</div>
     </div>
@@ -4285,26 +4540,19 @@
             </div>
             <p class="mcp-node-desc">Claude Code, Cursor, Windsurf initiating tool queries across sockets.</p>
           </button>
-          <button type="button" class="mcp-node-btn" data-arch="agents" aria-label="Inspect Autonomous A2A Swarms specs">
-            <div class="mcp-node-top">
-              <span class="mcp-node-name">A2A Swarms</span>
-              <span class="mcp-node-badge" style="background:rgba(188,140,255,0.15);color:var(--purple);">Multi-Agent</span>
-            </div>
-            <p class="mcp-node-desc">Autonomous multi-agent swarms delegating tasks and syncing context.</p>
-          </button>
         </div>
 
         <div class="mcp-connector" aria-hidden="true"><span class="conn-h">⇄</span><span class="conn-v">↓</span></div>
 
-        <!-- Layer 2: Control Plane (Mesh) -->
+        <!-- Layer 2: Example control plane -->
         <div class="mcp-column">
           <div class="mcp-column-title">
-            <span>[02] Unified Mesh Control</span>
+            <span>[02] Example policy layer</span>
             <span class="badge badge-featured">Core</span>
           </div>
-          <button type="button" class="mcp-node-btn gateway" data-arch="mesh" aria-label="Inspect MCP Mesh Gateway specs">
+          <button type="button" class="mcp-node-btn gateway" data-arch="gateway" aria-label="Inspect MCP Gateway specs">
             <div class="mcp-node-top">
-              <span class="mcp-node-name" style="color:var(--green);">MCP Mesh Gateway</span>
+              <span class="mcp-node-name" style="color:var(--green);">Policy gateway</span>
               <span class="mcp-node-badge" style="background:rgba(57,211,83,0.15);color:var(--green);">Control Plane</span>
             </div>
             <p class="mcp-node-desc">Single governed endpoint with Auth, RBAC, OpenTelemetry tracing, and Token Vault.</p>
@@ -4340,13 +4588,6 @@
             </div>
             <p class="mcp-node-desc">Proxmox VE cluster management, VM/LXC lifecycle, and cloud-init.</p>
           </button>
-          <button type="button" class="mcp-node-btn" data-arch="strix" aria-label="Inspect Strix AI Pentest specs">
-            <div class="mcp-node-top">
-              <span class="mcp-node-name">Strix Pentest</span>
-              <span class="mcp-node-badge" style="background:rgba(255,123,114,0.15);color:var(--pink);">Security</span>
-            </div>
-            <p class="mcp-node-desc">Autonomous AI agent validating OWASP Top 10 vulnerabilities.</p>
-          </button>
         </div>
       </div>
 
@@ -4369,11 +4610,12 @@
         <div class="mcp-detail-meta" id="mcpDetailMeta">
           <span>Protocol: <code>MCP 2024-11-05</code></span>
           <span>Role: <code>Context Consumer & Tool Requester</code></span>
-          <span>Status: <code>Verified in Production</code></span>
+          <span>Status: <code>Architecture reference</code></span>
         </div>
       </div>
     </div>
   </div>
+  </details>
  </div>
 </section>
 
@@ -4398,11 +4640,9 @@
   <h3 class="skill-title">agentic-ai</h3>
   <span class="skill-num">[01]</span>
   </div>
-  <p class="skill-desc">Designing protocol-level agent infrastructure. MCP servers, A2A, MCP mesh gateways.</p>
+  <p class="skill-desc">Designing protocol-level agent infrastructure. MCP servers, tool integration.</p>
   <div class="skill-tags">
   <span class="tag tag-g" role="button" tabindex="0" data-search="mcp" title="Filter projects by MCP">MCP Protocol</span>
-  <span class="tag tag-p" role="button" tabindex="0" data-search="a2a" title="Filter projects by A2A">A2A</span>
-  <span class="tag tag-b" role="button" tabindex="0" data-search="mesh" title="Filter projects by Mesh">Multi-Agent</span>
   <span class="tag tag-c" role="button" tabindex="0" data-search="tool" title="Filter projects by Tool">Tool Calling</span>
   <span class="tag tag-y" role="button" tabindex="0" data-search="rag" title="Filter projects by RAG">RAG</span>
   </div>
@@ -4494,7 +4734,6 @@
   </div>
   <p class="skill-desc">AI-driven security testing. Autonomous agents with PoC validation across OWASP Top 10.</p>
   <div class="skill-tags">
-  <span class="tag tag-pink" role="button" tabindex="0" data-search="strix" title="Filter projects by Strix AI">Strix AI</span>
   <span class="tag tag-o" role="button" tabindex="0" data-search="owasp" title="Filter projects by OWASP">OWASP Top 10</span>
   <span class="tag tag-y" role="button" tabindex="0" data-search="security" title="Filter projects by SAST/DAST">SAST/DAST</span>
   <span class="tag" role="button" tabindex="0" data-search="security" title="Filter projects by Cloud Security">Cloud Security</span>
@@ -4542,37 +4781,7 @@
 <!-- =============================================================
  PROJECTS
  ============================================================= -->
-<section id="projects">
- <div class="container">
- <header class="section-header reveal">
- <h2 class="section-title">$ <span class="accent">tree</span> -L 2 ~/repos</h2>
- <p class="section-subtitle">A curated subset of 95+ public repos — production tools, mostly Python and TypeScript.</p>
- </header>
 
- <div class="projects-controls reveal" role="toolbar" aria-label="Filter and search projects">
- <button class="filter-btn active" data-filter="all" aria-pressed="true">all <span class="filter-count">20</span></button>
- <button class="filter-btn" data-filter="featured" aria-pressed="false">★ featured <span class="filter-count">6</span></button>
- <button class="filter-btn" data-filter="mcp" aria-pressed="false">⌬ mcp <span class="filter-count">8</span></button>
- <button class="filter-btn" data-filter="ai" aria-pressed="false">◈ ai <span class="filter-count">5</span></button>
- <button class="filter-btn" data-filter="devops" aria-pressed="false">⚙ devops <span class="filter-count">4</span></button>
- <button class="filter-btn" data-filter="tool" aria-pressed="false">◊ tool <span class="filter-count">3</span></button>
- 
- <div class="search-wrapper">
-  <svg class="search-icon-inside" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-  <input type="search" class="search-input" id="projectSearch" placeholder="grep ./repos/ (e.g. mcp, ansible, ai, go)..." aria-label="Search projects by name, description or tech" autocomplete="off" />
-  <button type="button" class="search-clear" id="searchClear" title="Clear search" aria-label="Clear search query">
-   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
- </div>
- </div>
-
- <div class="projects-status-bar reveal" aria-live="polite">
-  <span>// index status: <span class="projects-count-badge" id="projectCount">20</span> repositories displayed</span>
- </div>
-
- <div class="projects-grid" id="projectsGrid" role="list"></div>
- </div>
-</section>
 
 <!-- =============================================================
  CERTIFICATIONS
@@ -4955,7 +5164,7 @@
  <div class="journey-content">
  <div class="journey-date">2026 // now <span class="journey-badge">Red Hat, Inc.</span></div>
  <h3 class="journey-title">→ AI Infrastructure Engineer @ Red Hat, Inc.</h3>
- <p class="journey-desc">Agentic AI platforms, MCP infrastructure, RAG pipelines, and the MCP Mesh control plane for enterprise.</p>
+ <p class="journey-desc">Agentic AI platforms, MCP infrastructure, RAG pipelines, and infrastructure automation for enterprise.</p>
  </div>
  </article>
 
@@ -4965,21 +5174,12 @@
  </div>
  <div class="journey-content">
  <div class="journey-date">2025 // ship <span class="journey-badge">Open Source Flagships</span></div>
- <h3 class="journey-title">→ Shipped MCP Mesh · mcp-ansible · mcp-proxmox</h3>
- <p class="journey-desc">Three flagship open-source projects. 51+ combined stars. Infrastructure layer for AI agents across MCP servers.</p>
+ <h3 class="journey-title">→ Shipped mcp-ansible · mcp-proxmox</h3>
+ <p class="journey-desc">Two infrastructure projects: Ansible automation and Proxmox virtualization, exposed through MCP tools.</p>
  </div>
  </article>
 
- <article class="journey-item reveal">
- <div class="journey-marker" aria-hidden="true">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
- </div>
- <div class="journey-content">
- <div class="journey-date">2025 // security <span class="journey-badge">Autonomous Pentest</span></div>
- <h3 class="journey-title">→ Forked & adapted Strix AI Pentest</h3>
- <p class="journey-desc">Autonomous agents that find and PoC-validate OWASP Top 10 (SQLi, SSRF, XSS, IDOR, SSTI).</p>
- </div>
- </article>
+
 
  <article class="journey-item reveal">
  <div class="journey-marker" aria-hidden="true">
@@ -4988,7 +5188,7 @@
  <div class="journey-content">
  <div class="journey-date">2024 // ai <span class="journey-badge">Domain MCP</span></div>
  <h3 class="journey-title">→ Built domain-aware MCP servers</h3>
- <p class="journey-desc">Bharatiya Nyaya Sanhita legal MCP, Kali Linux MCP, template-mcp-server.</p>
+ <p class="journey-desc">Bharatiya Nyaya Sanhita legal MCP, Kali Linux MCP.</p>
  </div>
  </article>
 
@@ -5090,10 +5290,6 @@
  DATA
  ============================================================ */
 const projects = [
-{name:'mesh', repo:'bsahane/mesh', featured:true, category:'mcp', stars:0,
- desc:'MCP Mesh — a unified control plane for Model Context Protocol traffic. Single governed endpoint with auth, RBAC, observability (OpenTelemetry), virtual MCPs, token vault, runtime strategies.',
- tech:['TypeScript','Bun','Hono','React 19','OpenTelemetry','Kysely'], badge:'mcp',
- url:'https://github.com/bsahane/mesh'},
 {name:'mcp-ansible', repo:'bsahane/mcp-ansible', featured:true, category:'mcp', stars:30,
  desc:'Advanced Ansible MCP server — inventories, playbooks, roles, vault ops and a complete troubleshooting suite (diagnose, auto-heal, log-hunter, performance baseline).',
  tech:['Python 3.10+','MCP','Ansible','AAP/AWX'], badge:'featured',
@@ -5102,39 +5298,23 @@ const projects = [
  desc:'Proxmox MCP server — VMs, LXC, snapshots, metrics, cloud-init networking, pool/user management.',
  tech:['Python','MCP','Proxmox API','proxmoxer'], badge:'featured',
  url:'https://github.com/bsahane/mcp-proxmox'},
-{name:'strix', repo:'bsahane/strix', featured:true, category:'ai', stars:0,
- desc:'Open-source AI pentesting tool — autonomous agents find and PoC-validate OWASP Top 10 (SQLi, SSRF, XSS, IDOR, SSTI, JWT…).',
- tech:['Python','LiteLLM','Playwright','Nuclei','Caido'], badge:'ai',
- url:'https://github.com/bsahane/strix'},
 {name:'legal-mcp-server', repo:'bsahane/legal-mcp-server', featured:true, category:'mcp', stars:0,
  desc:'Bharatiya Nyaya Sanhita backed Legal MCP Server — grounded access to Indian statutory law, IPC↔BNS mappings, limitation periods, case search.',
  tech:['Python','MCP','BNS','Indian Kanoon'], badge:'mcp',
  url:'https://github.com/bsahane/legal-mcp-server'},
-{name:'slack-mcp-client', repo:'bsahane/slack-mcp-client', featured:true, category:'ai', stars:0,
- desc:'Slack bot and MCP client bridge — multi-provider (OpenAI/Anthropic/Ollama), LangChain agent mode, RAG, Prometheus metrics.',
- tech:['Go','LangChain','OpenAI/Anthropic/Ollama','Helm'], badge:'ai',
- url:'https://github.com/bsahane/slack-mcp-client'},
 {name:'AI-Web-Scraper', repo:'bsahane/AI-Web-Scraper', category:'ai', stars:1,
  desc:'Intelligent scraping app pairing Selenium automation with Ollama-powered content analysis. Streamlit UI.',
  tech:['Python','Selenium','Ollama','Streamlit','Docker'], badge:'ai',
  url:'https://github.com/bsahane/AI-Web-Scraper'},
-{name:'Auth-Proxy-Tunnel', repo:'bsahane/Auth-Proxy-Tunnel', category:'devops', stars:1,
+{name:'Auth-Proxy-Tunnel', repo:'bsahane/Auth-Proxy-Tunnel', category:'devops', stars:2,
  desc:'Self-hosted Secure Application Access — Cloudflare Tunnel + Nginx PM + Authentik via Docker Compose.',
  tech:['Cloudflare','Nginx PM','Authentik','PostgreSQL','Redis'], badge:'devops',
  url:'https://github.com/bsahane/Auth-Proxy-Tunnel'},
-{name:'fixtral', repo:'bsahane/fixtral', category:'ai', stars:0,
- desc:'AI Photoshop assistant — pulls requests from r/PhotoshopRequest, applies edits with Gemini 2.5 Flash, renders before/after.',
- tech:['Next.js 14','Gemini AI','Supabase','Vercel','shadcn/ui'], badge:'ai',
- url:'https://github.com/bsahane/fixtral'},
-{name:'cc_peng_mcp', repo:'bsahane/cc_peng_mcp', category:'mcp', stars:0,
- desc:'Claude Code Prompt Engineer MCP server — rewrites human prompts into tool-aware Claude Code prompts.',
- tech:['Node.js','TypeScript','MCP','Claude Code'], badge:'mcp',
- url:'https://github.com/bsahane/cc_peng_mcp'},
 {name:'proxmox-dashboard', repo:'bsahane/proxmox-dashboard', category:'devops', stars:1,
  desc:'Skynet — Proxmox dashboard with Apache Guacamole console access. Manage VMs/LXCs, launch remote consoles.',
  tech:['Next.js 14','TypeScript','shadcn/ui','Guacamole','Docker'], badge:'devops',
  url:'https://github.com/bsahane/proxmox-dashboard'},
-{name:'Notch-Prompter', repo:'bsahane/Notch-Prompter', category:'tool', stars:0,
+{name:'Notch-Prompter', repo:'bsahane/Notch-Prompter', category:'tool', stars:1,
  desc:'macOS teleprompter app under the MacBook notch. 60fps auto-scroll, Markdown rendering, drag-drop scripts.',
  tech:['Swift 5','SwiftUI','AppKit','Combine'], badge:'tool',
  url:'https://github.com/bsahane/Notch-Prompter'},
@@ -5142,30 +5322,22 @@ const projects = [
  desc:'Bear-inspired Markdown new-tab Chrome extension. Unified editor, auto-save, search, export.',
  tech:['JavaScript','Tailwind','Chrome MV3','Marked.js','Vite'], badge:'tool',
  url:'https://github.com/bsahane/BearMark'},
-{name:'memory-mcp-server', repo:'bsahane/memory-mcp-server', category:'mcp', stars:0,
+{name:'memory-mcp-server', repo:'bsahane/memory-mcp-server', category:'mcp', stars:1,
  desc:'Persistent memory MCP server — long-term memory of facts, entities, observations. Hybrid FTS5 + semantic retrieval.',
  tech:['Python','MCP','SQLite','FTS5','Embeddings'], badge:'mcp',
  url:'https://github.com/bsahane/memory-mcp-server'},
-{name:'legal-open-mcp-server', repo:'bsahane/legal-open-mcp-server', category:'mcp', stars:0,
+{name:'legal-open-mcp-server', repo:'bsahane/legal-open-mcp-server', category:'mcp', stars:1,
  desc:'Open legal MCP server — judgment search, statute lookup, contract review, citation verification, document drafting.',
  tech:['Python','MCP','FastAPI','PostgreSQL'], badge:'mcp',
  url:'https://github.com/bsahane/legal-open-mcp-server'},
-{name:'kali-mcp-server', repo:'bsahane/kali-mcp-server', category:'mcp', stars:0,
+{name:'kali-mcp-server', repo:'bsahane/kali-mcp-server', category:'mcp', stars:1,
  desc:'Kali Linux MCP server — exposes Kali tools to LLMs as MCP tools. Recon, scanning, exploitation, reporting.',
  tech:['Python','MCP','Kali Linux','Security'], badge:'mcp',
  url:'https://github.com/bsahane/kali-mcp-server'},
-{name:'template-mcp-server', repo:'bsahane/template-mcp-server', category:'mcp', stars:0,
- desc:'Reusable template for writing new MCP servers in Python — stdio transport, tool registration, error handling.',
- tech:['Python','MCP','Stdio'], badge:'mcp',
- url:'https://github.com/bsahane/template-mcp-server'},
 {name:'ansible-adv-mcp-server', repo:'bsahane/ansible-adv-mcp-server', category:'mcp', stars:0,
  desc:'Ansible Advanced MCP Server — TypeScript implementation extending mcp-ansible with policy-as-code, observability, graph-aware inventory.',
  tech:['TypeScript','MCP','Ansible','Node.js'], badge:'mcp',
  url:'https://github.com/bsahane/ansible-adv-mcp-server'},
-{name:'10x-Tool-Calls', repo:'bsahane/10x-Tool-Calls', category:'tool', stars:0,
- desc:'Rules file + Python script for Cursor/Windsurf — chains up to 25 sequential task loops inside a single request.',
- tech:['Python','Cursor','Windsurf','Agent IDE'], badge:'tool',
- url:'https://github.com/bsahane/10x-Tool-Calls'},
 {name:'InfraAISRE', repo:'bsahane/InfraAISRE', category:'devops', stars:0,
  desc:'InfraAISRE — Infrastructure as Code driven by AI/SRE patterns.',
  tech:['IaC','AI','SRE','Automation'], badge:'devops',
@@ -5432,9 +5604,10 @@ document.querySelectorAll('.skill-tags .tag[data-search]').forEach(tag => {
       allBtn.setAttribute('aria-pressed','true');
     }
     renderProjects('all', term);
-    const projectsSection = document.getElementById('projects');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    const archive = document.getElementById('repo-index');
+    if (archive) {
+      archive.open = true;
+      archive.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     }
     // Echo the command that actually ran, with the real result. The count is
     // read from the rendered grid, so it can never drift from what's on screen.
@@ -5634,7 +5807,7 @@ document.addEventListener('keydown', e => {
  HERO TYPEWRITER
  ============================================================ */
 const twEl = document.getElementById('hero-typewriter');
-const cmds = ['cat about.txt', './mcp-mesh up --production', 'kubectl get pods -A', 'open slack-mcp-client', 'ssh bhushan@redhat.com', 'echo "let\'s build"'];
+const cmds = ['cat about.txt', 'python -m mcp_ansible', 'kubectl get pods -A', 'open mcp-proxmox', 'ssh bhushan@redhat.com', 'echo "let\'s build"'];
 let ci=0, ci2=0, deleting=false;
 function typeLoop() {
   if (!twEl) return;
@@ -5906,7 +6079,7 @@ function handleLocalCommand(cmd) {
   • ls         - list virtual portfolio filesystem
   • pwd        - print working directory
   • uname      - kernel & system environment details
-  • uptime     - host cluster availability & metrics
+  • uptime     - current browser tab session
   • history    - review commands executed in session
   • say [text] - echo text to terminal screen (try: say hello)
   • cat [file] - read virtual file (try: cat about.txt, cat skills.md)
@@ -5919,25 +6092,23 @@ function handleLocalCommand(cmd) {
   
   if (clean === 'whoami') {
     return `Bhushan Sahane — AI Infrastructure Engineer @ Red Hat, Inc.
-Specializing in Agentic AI platforms, MCP servers, RAG pipelines, and A2A systems.
+Specializing in Agentic AI platforms, MCP servers, RAG pipelines, and infrastructure automation.
 Location: Nashik, India (Remote) · RHCE + DO467 Certified.`;
   }
   
   if (clean === 'skills' || clean === 'stack' || clean === 'tools') {
     return `engineering stack:
-  • AI: MCP (Model Context Protocol), A2A, Multi-Agent, RAG, LiteLLM, LangChain
+  • AI: MCP (Model Context Protocol), Multi-Agent, RAG, LiteLLM, LangChain
   • DevOps: Ansible (AAP/AWX), Proxmox, Kubernetes, OpenShift, Terraform, Docker
   • Backend: Python (FastAPI), Go, TypeScript, Node.js, Next.js
-  • Security: Autonomous Pentest (Strix AI), SAST/DAST, OWASP Top 10`;
+  • Security: SAST/DAST, OWASP Top 10`;
   }
   
   if (clean === 'projects' || clean === 'repos') {
     return `flagship repositories (github.com/bsahane):
-  1. mesh — Unified MCP control plane gateway with OpenTelemetry & auth
-  2. mcp-ansible — Advanced Ansible MCP with auto-heal & troubleshooting (★ 30)
-  3. mcp-proxmox — Full Proxmox cluster MCP server (★ 21)
-  4. strix — Autonomous AI pentesting agent PoC-validating OWASP Top 10
-  5. legal-mcp-server — BNS Indian legal statutory MCP server`;
+  1. mcp-ansible — Advanced Ansible MCP with auto-heal & troubleshooting (★ 30)
+  2. mcp-proxmox — Full Proxmox cluster MCP server (★ 21)
+  3. legal-mcp-server — BNS Indian legal statutory MCP server`;
   }
   
   if (clean === 'certs' || clean === 'certifications' || clean === 'rhtapps.verify' || clean.startsWith('rhtapps.verify') || clean === 'certs.verify' || clean.startsWith('certs.verify')) {
@@ -5984,7 +6155,6 @@ Location: Nashik, India (Remote) · RHCE + DO467 Certified.`;
 -rw-r--r--  1 bsahane redhat   2.8K  Sep 10 18:00  journey.log
 -rw-r--r--  1 bsahane redhat   4.2K  Sep 10 18:00  skills.md
 -rw-r--r--  1 bsahane redhat   5.6K  Sep 10 18:00  certs.json
--rwxr-xr-x  1 bsahane redhat    892  Sep 10 18:00  mesh-gateway.sh*
 drwxr-xr-x  5 bsahane redhat   4.0K  Sep 10 18:00  projects/`;
   }
 
@@ -6014,8 +6184,8 @@ drwxr-xr-x  5 bsahane redhat   4.0K  Sep 10 18:00  projects/`;
   }
 
   if (clean === 'uptime') {
-    return `system uptime: 284 days, 14 hours, 32 mins (99.98% availability)
-load average: 0.12, 0.08, 0.04 (operational)`;
+    const seconds = Math.floor(performance.now() / 1000);
+    return `Browser tab session: ${Math.floor(seconds / 60)}m ${seconds % 60}s.\nThis measures time on this page, not infrastructure availability.`;
   }
   
   if (clean === 'date') {
@@ -6054,17 +6224,17 @@ load average: 0.12, 0.08, 0.04 (operational)`;
   if (clean.startsWith('cat ')) {
     const file = clean.slice(4).trim();
     if (file === 'about.txt' || file === 'who.txt' || file === 'readme.md') {
-      return `Building next-generation agentic AI platforms for enterprise at Red Hat, Inc. Focused on protocol-level orchestration (MCP, A2A) and self-healing automation.`;
+      return `Building next-generation agentic AI platforms for enterprise at Red Hat, Inc. Focused on protocol-level orchestration (MCP) and self-healing automation.`;
     }
     if (file === 'journey.log') {
       return `[2022] RHCE + DO467 AAP Specialist
 [2024] Domain-aware legal & Kali MCP servers
-[2025] Shipped MCP Mesh, mcp-ansible, mcp-proxmox
+[2025] Shipped mcp-ansible, mcp-proxmox
 [2026] AI Infrastructure Engineer @ Red Hat, Inc.`;
     }
     if (file === 'skills.md') {
       return `# Core Engineering Capabilities
-- Agentic AI & Protocol Layer (Model Context Protocol, A2A, RAG, LiteLLM)
+- Agentic AI & Protocol Layer (Model Context Protocol, RAG, LiteLLM)
 - Enterprise Infrastructure (Red Hat Enterprise Linux, Ansible AAP/AWX, Proxmox VE, OpenShift)
 - Systems Programming (Python FastAPI, Go, TypeScript/Node.js)`;
     }
@@ -6077,9 +6247,7 @@ load average: 0.12, 0.08, 0.04 (operational)`;
   {"name": "RH124", "id": "a6c7ff0f-b455-488a-a5b5-317f4593f8c0", "status": "Credly Badge"}
 ]`;
     }
-    if (file === 'mesh-gateway.sh') {
-      return `#!/usr/bin/env bash\necho "Initializing MCP Mesh Gateway on port 8080..."\n./mcp-mesh --auth --otel-collector=http://otel:4317`;
-    }
+
     return `cat: ${file}: No such file or directory. Try 'cat about.txt', 'cat journey.log', 'cat skills.md', or 'cat certs.json'.`;
   }
 
@@ -6097,7 +6265,7 @@ load average: 0.12, 0.08, 0.04 (operational)`;
   }
 
   if (clean === '1') {
-    return `[1] Red Hat Certified Engineer (RHCE) & MCP Mesh Gateway
+    return `[1] Red Hat Certified Engineer (RHCE)
 Active until Jul 2027 · Verification: https://rhtapps.redhat.com/verify?certId=170-063-119`;
   }
   if (clean === '2') {
@@ -6118,7 +6286,7 @@ function getLocalKnowledgeAnswer(q) {
       query.startsWith('hey ') || query === 'good morning' || query === 'good evening') {
     return `→ 👋 Hello! I'm Bhushan's interactive terminal agent.
 I'm here to answer questions about Bhushan's AI Infrastructure engineering at Red Hat, MCP servers, RAG pipelines, Ansible automation, and verified certifications.
-Try asking "What is MCP Mesh?" or run commands like 'skills', 'projects', 'certs', 'neofetch'.`;
+Try asking "What is MCP?" or run commands like 'skills', 'projects', 'certs', 'neofetch'.`;
   }
 
   if (query.includes('who are you') || query.includes('what are you')) {
@@ -6129,14 +6297,12 @@ Try asking "What is MCP Mesh?" or run commands like 'skills', 'projects', 'certs
     return `→ Bhushan's career trajectory, credentials, and projects are showcased directly on this site! Check out ~/journey for his timeline, ~/certs for verified Red Hat credentials, or email sahane.bhushan7@gmail.com.`;
   }
 
-  if (query.includes('mcp mesh') || query.includes('mesh')) {
-    return `→ MCP Mesh is Bhushan's flagship unified control plane for Model Context Protocol traffic. It acts as an API gateway with auth, RBAC, OpenTelemetry distributed tracing, virtual MCP server aggregation, and a token vault.`;
-  }
+
   if (query.includes('red hat') || query.includes('what does bhushan do') || query.includes('job') || query.includes('role')) {
-    return `→ Bhushan is an AI Infrastructure Engineer at Red Hat, Inc. He builds enterprise agentic AI platforms, custom MCP servers, RAG pipelines, and Agent-to-Agent (A2A) protocol systems that turn LLMs into reliable production operators.`;
+    return `→ Bhushan is an AI Infrastructure Engineer at Red Hat, Inc. He builds enterprise agentic AI platforms, custom MCP servers, RAG pipelines, and automation tools that turn LLMs into reliable production operators.`;
   }
   if (query.includes('mcp') || query.includes('model context protocol')) {
-    return `→ MCP (Model Context Protocol) is the open protocol standard enabling LLMs to securely query data and run tools across enterprise servers. Bhushan has authored MCP Mesh, mcp-ansible, mcp-proxmox, legal-mcp-server, and memory-mcp-server.`;
+    return `→ MCP (Model Context Protocol) is the open protocol standard enabling LLMs to securely query data and run tools across enterprise servers. Bhushan has authored mcp-ansible, mcp-proxmox, legal-mcp-server, and memory-mcp-server.`;
   }
   if (query.includes('cert') || query.includes('rhce') || query.includes('aap') || query.includes('rhcsa') || query.includes('rh124') || query.includes('do467')) {
     return `→ Bhushan holds 5 official Red Hat credentials & certifications:
@@ -6149,9 +6315,7 @@ Try asking "What is MCP Mesh?" or run commands like 'skills', 'projects', 'certs
 Verify directly on the official Red Hat portal:
 https://rhtapps.redhat.com/verify?certId=170-063-119`;
   }
-  if (query.includes('pentest') || query.includes('strix') || query.includes('security')) {
-    return `→ Bhushan created Strix — an autonomous AI pentesting tool where agents find and PoC-validate OWASP Top 10 vulnerabilities (SQLi, SSRF, XSS, IDOR, SSTI) using Playwright, Nuclei, and LiteLLM.`;
-  }
+
   if (query.includes('ansible')) {
     return `→ Bhushan built mcp-ansible, a comprehensive Ansible MCP server with diagnostics, auto-healing, log hunting, and inventory management, with over 30+ GitHub stars.`;
   }
@@ -6162,12 +6326,12 @@ https://rhtapps.redhat.com/verify?certId=170-063-119`;
     return `→ Bhushan is open for collaboration on AI infrastructure and agentic platforms. You can reach him at sahane.bhushan7@gmail.com or connect on LinkedIn (linkedin.com/in/sahanebhushan7).`;
   }
   if (query.includes('skill') || query.includes('strongest')) {
-    return `→ Bhushan's core strength is bridging protocol-level agent systems (MCP, A2A, LangChain) with enterprise infrastructure (Ansible, Linux, Proxmox, Kubernetes, OpenTelemetry).`;
+    return `→ Bhushan's core strength is bridging protocol-level agent systems (MCP, LangChain) with enterprise infrastructure (Ansible, Linux, Proxmox, Kubernetes, OpenTelemetry).`;
   }
 
   // Graceful conversational response
-  return `→ Bhushan Sahane is an AI Infrastructure Engineer @ Red Hat, Inc. building Agentic AI, MCP Mesh, RAG, and DevOps automation.
-💡 Type 'help', 'whoami', 'skills', 'projects', 'certs', or ask specifically about MCP Mesh, Ansible, or Strix.`;
+  return `→ Bhushan Sahane is an AI Infrastructure Engineer @ Red Hat, Inc. building Agentic AI, MCP, RAG, and DevOps automation.
+💡 Type 'help', 'whoami', 'skills', 'projects', 'certs', or ask specifically about MCP, Ansible, or Proxmox.`;
 }
 
 async function askBroCode(question) {
@@ -6520,18 +6684,16 @@ if (backToTopBtn) {
    ============================================================ */
 function updateUptime() {
   const uptimeVal = document.getElementById('uptimeVal');
+  const seconds = Math.floor(performance.now() / 1000);
+  if (uptimeVal) uptimeVal.textContent = Math.floor(seconds / 60) + 'm ' + (seconds % 60) + 's';
   const uptimeText = document.getElementById('uptimeText');
-  const startYear = new Date('2026-01-01T00:00:00Z').getTime();
-  const now = Date.now();
-  const diffDays = Math.max(1, Math.floor((now - startYear) / (1000 * 60 * 60 * 24)));
-  if (uptimeVal) uptimeVal.textContent = `${diffDays}d 14h 32m`;
-  if (uptimeText) uptimeText.textContent = `99.98% · ${diffDays}d 14h active`;
+  if (uptimeText) uptimeText.textContent = 'Current browser tab session';
 }
 updateUptime();
-setInterval(updateUptime, 60000);
+setInterval(updateUptime, 1000);
 
 /* ============================================================
- MCP MESH ARCHITECTURE INTERACTIVE TOPOLOGY HANDLER
+ MCP TOOLS ARCHITECTURE INTERACTIVE TOPOLOGY HANDLER
  ============================================================ */
 const archSpecs = {
   claude: {
@@ -6540,23 +6702,15 @@ const archSpecs = {
     body: 'Developer-facing interfaces (Claude Code CLI, Cursor, Windsurf, LangChain) connect to model reasoning loops and send structured tool queries across local or remote sockets. Model calls are normalized into Model Context Protocol tool requests.',
     proto: 'MCP 2024-11-05',
     role: 'Context Consumer & Tool Requester',
-    status: 'Verified in Production'
+    status: 'Architecture reference'
   },
-  agents: {
-    title: 'A2A (Agent-to-Agent) Swarms',
-    tags: ['Multi-Agent', 'Subagent Coordination', 'Shared Memory'],
-    body: 'Specialized autonomous agents communicate through verified protocols to break down complex tasks, run security scans, cross-validate code, and manage automated remediation without human intervention.',
-    proto: 'A2A / Custom Orchestration',
-    role: 'Autonomous Operators',
-    status: 'Active Deployment'
-  },
-  mesh: {
-    title: 'MCP Mesh Control Plane Gateway',
+  gateway: {
+    title: 'Illustrative policy gateway',
     tags: ['Unified Endpoint', 'RBAC & Auth', 'Token Vault', 'OpenTelemetry'],
-    body: 'Flagship unified control plane for Model Context Protocol traffic. Serves as an API gateway with token-level rate limiting, role-based access control, distributed tracing via OpenTelemetry, and dynamic virtual server aggregation.',
-    proto: 'Bun + Hono + Kysely + OTel',
+    body: 'An illustrative architecture pattern: check identity, evaluate an access policy, and route allowed requests to a tool server. This diagram is a design reference, not a deployed product.',
+    proto: 'Illustrative architecture',
     role: 'Governed Routing Gateway',
-    status: 'Open Source (bsahane/mesh)'
+    status: 'Architecture reference'
   },
   telemetry: {
     title: 'Observability & Policy Engine',
@@ -6564,7 +6718,7 @@ const archSpecs = {
     body: 'Tracks latency, token usage, tool invocation frequency, and error rates across all MCP servers in real time. Generates end-to-end spans for distributed debugging across heterogeneous tool ecosystems.',
     proto: 'OpenTelemetry / Prometheus',
     role: 'SRE & Reliability Baseline',
-    status: 'Operational 99.98% SLA'
+    status: 'Architecture reference'
   },
   ansible: {
     title: 'mcp-ansible Server',
@@ -6582,14 +6736,6 @@ const archSpecs = {
     role: 'Virtualization Management',
     status: 'Production (★ 21 stars)'
   },
-  strix: {
-    title: 'Strix Autonomous AI Pentest',
-    tags: ['LiteLLM', 'Playwright', 'Nuclei', 'OWASP Top 10'],
-    body: 'Open-source autonomous security testing platform where AI agents identify vulnerabilities, craft safe proof-of-concept exploits, and validate OWASP Top 10 weaknesses (SQLi, SSRF, XSS, IDOR, SSTI, JWT).',
-    proto: 'Multi-Tool Security Harness',
-    role: 'Autonomous Security Auditor',
-    status: 'Open Source (bsahane/strix)'
-  }
 };
 
 document.querySelectorAll('.mcp-node-btn').forEach(btn => {
@@ -6651,11 +6797,11 @@ const countObserver = new IntersectionObserver((entries) => {
       if (!isNaN(target)) {
         // Start near the real value so no materially false number is ever painted.
         const from = Math.floor(target * 0.8);
-        const duration = 1200;
+        const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1200;
         const startTime = performance.now();
         function updateCount(currentTime) {
           const elapsed = currentTime - startTime;
-          const progress = Math.min(1, elapsed / duration);
+          const progress = duration === 0 ? 1 : Math.min(1, elapsed / duration);
           // Ease out cubic
           const easeProgress = 1 - Math.pow(1 - progress, 3);
           const current = from + Math.floor(easeProgress * (target - from));
@@ -6721,7 +6867,7 @@ if (termSoundBtn) {
 const knownCommands = [
   'help', 'whoami', 'skills', 'projects', 'certs', 'contact', 'neofetch',
   'matrix', 'theme', 'theme gruvbox', 'theme cyberpunk', 'theme list', 'crt',
-  'uptime', 'clear', 'arch', 'mesh', 'topology', 'date',
+  'uptime', 'clear', 'arch', 'topology', 'date',
   'ls', 'pwd', 'id', 'uname', 'history', 'say hello', 'echo ',
   'cat about.txt', 'cat journey.log', 'cat skills.md', 'cat certs.json'
 ];
@@ -6803,6 +6949,153 @@ window.addEventListener('keydown', e => {
     }
   }
 });
+
+/* Browser-only protocol demo. Payloads and policy are illustrative; no requests
+   leave this page. Tool names/arguments follow the linked repository READMEs. */
+(function requestLab() {
+  const lab = document.getElementById('request-lab');
+  if (!lab) return;
+  const scenario = document.getElementById('labScenario');
+  const run = document.getElementById('labRun');
+  const status = document.getElementById('labStatus');
+  const stateLabel = document.getElementById('labState');
+  const events = document.getElementById('labEvents');
+  const result = document.getElementById('labResult');
+  const resultState = document.getElementById('labResultState');
+  const nodes = [...lab.querySelectorAll('.lab-node')];
+  const wires = [...lab.querySelectorAll('.lab-wire')];
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const examples = {
+    inventory: { server: 'mcp-ansible', tool: 'ansible-inventory', args: { inventory: '/demo/hosts.ini' }, source: 'https://github.com/bsahane/mcp-ansible', output: { hosts: ['web-01', 'web-02', 'db-01'], groups: { web: ['web-01', 'web-02'], database: ['db-01'] } } },
+    vms: { server: 'mcp-proxmox', tool: 'proxmox-list-vms', args: { node: 'pve-01', status: 'running' }, source: 'https://github.com/bsahane/mcp-proxmox', output: [{ vmid: 101, name: 'web-01', status: 'running' }, { vmid: 102, name: 'agent-01', status: 'running' }] },
+    denied: { server: 'mcp-ansible', tool: 'ansible-playbook', args: { playbook_path: '/demo/deploy.yml', inventory: '/demo/hosts.ini' }, source: 'https://github.com/bsahane/mcp-ansible', denied: true, output: { jsonrpc: '2.0', id: 'demo-001', error: { code: -32001, message: 'Blocked by the illustrative read-only policy.', data: { rule: 'deny-write-tools', toolExecuted: false } } } }
+  };
+  let step = -1, timer = null, playing = false;
+  function stepsFor(example) {
+    const steps = [
+      ['request.received', 'JSON-RPC tools/call', 'The client sends a structured tool request.'],
+      ['identity.checked', 'portfolio-reader', 'The gateway resolves the example client identity.'],
+      example.denied
+        ? ['policy.denied', 'write tool blocked', 'The read-only policy rejects this request. No tool is executed.']
+        : ['policy.allowed', 'read operation', 'The example policy permits this read operation.']
+    ];
+    if (!example.denied) steps.push(
+      ['route.selected', example.server, 'The demo gateway routes the request to the selected MCP server.'],
+      ['tool.returned', example.tool, 'The tool returns the illustrative infrastructure data.'],
+      ['response.delivered', 'request demo-001', 'The structured response returns to the client.']
+    );
+    return steps;
+  }
+  function setRunLabel(label) { run.querySelector('span').textContent = label; }
+  function clearTimer() { clearTimeout(timer); timer = null; }
+  function render() {
+    const example = examples[scenario.value];
+    const steps = stepsFor(example);
+    const complete = step === steps.length - 1;
+    lab.classList.toggle('is-paused', !playing && step >= 0 && !complete);
+    document.getElementById('labStep').textContent = Math.max(0, step + 1) + ' / ' + steps.length + ' steps';
+    nodes.forEach(node => node.classList.remove('is-active', 'is-complete', 'is-denied'));
+    wires.forEach(wire => wire.classList.remove('is-active', 'is-return'));
+    const states = ['Ready', 'Awaiting request', 'Not called'];
+    if (step >= 0) {
+      states[0] = step === 0 ? 'Sending request' : 'Request sent';
+      nodes[0].classList.add(step === 0 ? 'is-active' : 'is-complete');
+      if (step === 0) wires[0].classList.add('is-active');
+      if (step >= 1) { states[1] = step === 1 ? 'Identity checked' : 'Read permitted'; nodes[1].classList.add('is-active'); }
+      if (example.denied && complete) {
+        states[0] = 'Rejection received'; states[1] = 'Access denied'; states[2] = 'Not executed';
+        nodes[1].classList.remove('is-active'); nodes[1].classList.add('is-denied');
+        wires[0].classList.add('is-active', 'is-return');
+      } else if (step >= 3) {
+        states[1] = 'Request routed'; states[2] = step === 3 ? 'Reading data' : 'Result returned';
+        nodes[1].classList.remove('is-active'); nodes[1].classList.add('is-complete');
+        nodes[2].classList.add(step === 3 ? 'is-active' : 'is-complete');
+        if (step === 3 || step === 4) wires[1].classList.add('is-active');
+        if (step === 4) wires[1].classList.add('is-return');
+        if (complete) { states[0] = 'Response received'; wires[0].classList.add('is-active', 'is-return'); }
+      }
+    }
+    nodes.forEach((node, i) => { node.querySelector('.lab-node-state').textContent = states[i]; });
+    events.replaceChildren();
+    const visible = step < 0 ? [['request.created', 'Waiting for playback']] : steps.slice(0, step + 1);
+    visible.forEach((entry, i) => {
+      const li = document.createElement('li');
+      if (step < 0) li.classList.add('is-pending');
+      if (example.denied && i === 2) li.classList.add('is-denied');
+      const code = document.createElement('code'); code.textContent = entry[0];
+      const detail = document.createElement('span'); detail.textContent = entry[1];
+      li.append(code, detail); events.append(li);
+    });
+    stateLabel.textContent = complete ? (example.denied ? 'Denied' : 'Completed') : playing ? 'Tracing' : step >= 0 ? 'Paused' : 'Ready';
+    status.textContent = step < 0 ? 'Run the example to follow the request.' : steps[step][2];
+    result.textContent = complete ? JSON.stringify(example.output, null, 2) : '// Awaiting the ' + (example.denied ? 'policy decision.' : 'tool response.');
+    resultState.textContent = complete ? (example.denied ? 'gateway rejection' : 'decoded sample data') : 'pending';
+    setRunLabel(complete ? 'Replay demo' : playing ? 'Pause demo' : step >= 0 ? 'Resume demo' : 'Run demo');
+  }
+  function reset() {
+    clearTimer(); playing = false; step = -1;
+    const example = examples[scenario.value];
+    document.getElementById('labServer').textContent = example.server;
+    document.getElementById('labTool').textContent = example.tool;
+    document.getElementById('labSource').href = example.source;
+    document.getElementById('labPayload').textContent = JSON.stringify({ jsonrpc: '2.0', id: 'demo-001', method: 'tools/call', params: { name: example.tool, arguments: example.args } }, null, 2);
+    render();
+  }
+  function schedule() {
+    timer = setTimeout(() => {
+      step++;
+      if (step === stepsFor(examples[scenario.value]).length - 1) playing = false;
+      render();
+      if (playing) schedule();
+    }, 850);
+  }
+  function pause() {
+    if (!playing) return;
+    clearTimer(); playing = false; render();
+  }
+  run.addEventListener('click', () => {
+    if (playing) { pause(); return; }
+    const last = stepsFor(examples[scenario.value]).length - 1;
+    if (step === last) reset();
+    if (motion.matches) { step = last; playing = false; render(); return; }
+    playing = true;
+    if (step < 0) step = 0;
+    render(); schedule();
+  });
+  scenario.addEventListener('change', reset);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
+  new IntersectionObserver(entries => { if (!entries[0].isIntersecting) pause(); }, { threshold: 0 }).observe(lab);
+  motion.addEventListener('change', () => {
+    if (motion.matches && playing) {
+      clearTimer(); playing = false; step = stepsFor(examples[scenario.value]).length - 1; render();
+    }
+  });
+  document.querySelectorAll('[data-demo]').forEach(button => {
+    button.addEventListener('click', () => {
+      scenario.value = button.dataset.demo; reset();
+      lab.scrollIntoView({ behavior: motion.matches ? 'auto' : 'smooth', block: 'start' });
+      run.focus({ preventScroll: true });
+    });
+  });
+  run.disabled = false;
+  reset();
+})();
+
+(function revealLinkedDetails() {
+  function reveal() {
+    if (!location.hash) return;
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    let parent = target.closest('details');
+    let opened = false;
+    while (parent) { parent.open = true; opened = true; parent = parent.parentElement.closest('details'); }
+    if (opened) target.scrollIntoView({ behavior: 'auto' });
+  }
+  window.addEventListener('hashchange', reveal);
+  reveal();
+})();
 
 </script>
 

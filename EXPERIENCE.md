@@ -1,6 +1,6 @@
 ---
 status: final
-updated: 2026-09-10
+updated: 2026-09-22
 system: Tactical Monospace Native Web
 design_tokens: DESIGN.md
 ---
@@ -22,17 +22,17 @@ design_tokens: DESIGN.md
 [Sticky Nav Header]
   ├─ Top Scroll Progress Indicator (2px gradient bar tracking viewport position)
   ├─ Brand Identity (`bsahane@portfolio:~$ whoami`)
-  ├─ Navigation Links (`~/about`, `~/stack`, `~/projects`, `~/certs`, `~/journey`, `~/contact`)
-  ├─ Theme Switcher (`themeToggleBtn`: Cyberpunk OLED ⇄ Gruvbox retro groove)
+  ├─ Navigation Links (`projects`, `about`, `stack`, `certs`, `experience`, `journey`, `contact`)
+  ├─ Theme Picker (`themeToggleBtn`: native buttons in a palette listbox)
   ├─ Action CTA (`get-in-touch`)
   └─ Mobile Hamburger Drawer (Viewport < 768px, includes drawer theme palette switcher)
 
 [Hero Section]
-  ├─ Operational Status Pill (`all_systems=operational · AI infrastructure live`)
+  ├─ Identity Pill (`AI infrastructure · open-source work`)
   ├─ Headline (`$ hello, I'm Bhushan Sahane`)
   ├─ Subtitle & Specialty Focus (Red Hat, Agentic AI, MCP, RAG, A2A)
   ├─ Primary CTAs (`./init projects`, `github`, `linkedin`)
-  ├─ Live Telemetry Stats Grid (Animated count-up rollups for Repos, Stars, Focus, Status)
+  ├─ Local Index Stats Grid (Curated repos, stars explicitly labeled as a snapshot, focus, shipping status)
   └─ Interactive Dual-Engine Terminal
        ├─ macOS Traffic Control Dots (Clear / CRT / Maximize) + Sound FX Toggle
        ├─ Typewriter Shell Loop
@@ -40,23 +40,29 @@ design_tokens: DESIGN.md
        ├─ Quick-Prompt Chip Buttons
        └─ Terminal Shell Input with Real-Time Ghost Autocomplete (`Tab` to complete)
 
+[Selected Work (`#projects`, immediately after hero)]
+  ├─ Wide MCP Mesh Overview, Source Link, and decocms/studio Fork Attribution
+  ├─ mcp-ansible & mcp-proxmox Studies with Illustrative Infrastructure Diagrams
+  ├─ Project Actions that Select a Request Example and Focus its Run Button
+  ├─ Browser-Only Request Lab (`#request-lab`)
+  │    ├─ Native Scenario Selector and Run / Pause / Resume / Replay Button
+  │    ├─ Client → Mesh Policy Gateway → Tool Server Topology
+  │    ├─ Text Status, Ordered Request Trace, and Sample Result
+  │    └─ Expandable JSON-RPC Request Payload and Repository Reference
+  └─ Collapsed Repository Index (`#repo-index`, native details/summary)
+       ├─ Category Filter Tabs with dynamic count badges (`all`, `featured`, `mcp`, `ai`, `devops`, `tool`)
+       ├─ Instant In-Memory Search Bar (`grep ./repos/`) with clear action
+       ├─ Filter Status Summary and Local Snapshot Notice
+       └─ Project Grid with Star Counts, Repository Links, and 1-Click `git clone`
+
 [About & Protocol Overview]
   ├─ Bio & Architectural Philosophy
-  ├─ Core Competencies Breakdown
-  └─ Interactive MCP Architecture Visualizer (Animated Protocol Flow from Models to MCP Mesh to Infrastructure)
+  ├─ Core Competencies and Current Browser Tab Session Counter
+  └─ Collapsed Full Architecture Reference (Interactive MCP Topology)
 
 [Toolbox & Stack Matrix]
   ├─ Categorized Skill Cards with Cursor Spotlight Lighting
-  └─ Interactive Protocol Tags (Clicking a tag smoothly scrolls to Projects and pulses matching cards)
-
-[Curated Flagship Projects]
-  ├─ Category Filter Tabs with dynamic count badges (`all`, `featured`, `mcp`, `ai`, `devops`, `tool`)
-  ├─ Instant In-Memory Search Bar (`grep ./repos/`) with clear action
-  ├─ Filter Status Summary (`// index status: X repositories displayed`)
-  └─ Project Grid with Ambient Cursor Spotlight
-       ├─ Star Counts & Badges
-       ├─ Repository Links
-       └─ 1-Click `git clone` Action
+  └─ Interactive Protocol Tags (Open repository index, filter it, scroll to it, and pulse matches)
 
 [Certifications & Verification Portal (`#certs`)]
   ├─ Official Verification Banner (`Primary Red Hat Certificate ID: 170-063-119`)
@@ -69,6 +75,9 @@ design_tokens: DESIGN.md
   ├─ 1-Click Credential ID Clipboard Copy with Visual Status & Toast
   └─ Direct Verification Deep-Links opening Red Hat Portal & Credly in new tabs
 
+[Professional Experience (`#experience`)]
+  └─ Career Summary and Employer/Role History
+
 [Journey & Timeline]
   └─ Chronological Engineering Progression (RHCE/DO467 -> Legal MCP -> MCP Mesh -> Red Hat AI Infra)
 
@@ -76,8 +85,8 @@ design_tokens: DESIGN.md
   ├─ Interactive Contact Cards (`mailto`, `git clone`, `curl linkedin`, `ping bhushan.sahane.in`)
   └─ 1-Click Copy with Toast Alerts
 
-[Footer & Telemetry]
-  ├─ Dynamic Active Uptime Counter
+[Footer]
+  ├─ Identity, Copyright, Build Credit, and EOF
   └─ CRT Scanline Mode & Back-To-Top Floating Controls
 ```
 
@@ -116,11 +125,27 @@ design_tokens: DESIGN.md
 ### 3. Interactive Skills-to-Projects Cross-Filtering with Visual Pulse
 - Clicking any skill tag (e.g., `MCP Protocol`, `Ansible`, `LangChain`, `Proxmox`):
   1. Sets search term and filters repository list.
-  2. Smoothly scrolls down to the `#projects` section.
-  3. Triggers a 1.4-second luminous accent pulse (`card-highlight-pulse`) on all matching project cards to orient the user.
+  2. Opens `#repo-index` and scrolls to the archive (instant under reduced motion).
+  3. Announces the search and actual match count in a toast.
+  4. Triggers a 1.4-second luminous accent pulse (`card-highlight-pulse`) on all matching project cards to orient the user.
 
 ### 4. One-Click Copy Actions
 - Clicking any copy action (`git clone`, email, URL) copies the string to the system clipboard, temporarily swaps the button label to `✓ copied` (in green) for 1800ms, and dispatches an accessible toast notification.
+
+
+### 5. Selected Work and Browser-Only Request Lab
+- **Evidence and Entry Points**: Selected work appears immediately after the hero. Mesh links to its fork and credits `decocms/studio`; Ansible and Proxmox diagrams identify their data as illustrative. Project demo buttons select the corresponding scenario, reset playback, scroll to the lab, and focus Run without starting automatically.
+- **Three Scenarios**: `ansible-inventory` reads `/demo/hosts.ini`; `proxmox-list-vms` requests running VMs on `pve-01`; `ansible-playbook` demonstrates rejection by an illustrative read-only policy for `portfolio-reader`. Payloads and results are local examples; no request leaves the page.
+- **Trace and Results**: Allowed scenarios progress through request, identity, policy, route, tool result, and delivered response. Denied playback stops after the third step, marks the tool server “Not executed,” and displays a JSON-RPC gateway error with `toolExecuted: false`. Successful outputs are labeled decoded sample data. The native payload disclosure exposes the selected JSON-RPC `tools/call` request at any time.
+- **Explicit Playback**: The same native button offers Run, Pause, Resume, and Replay. Steps advance every 850ms; changing scenarios resets the trace and pending result. Completion leaves the final trace and output visible until an explicit replay or scenario change.
+- **Visibility and Motion**: Playback pauses when the tab becomes hidden or the lab leaves the viewport; resumption is explicit. Reduced motion makes Run/Replay reveal the complete outcome immediately. Enabling reduced motion during playback also completes the trace immediately.
+- **Accessible Static State**: Text node states and the ordered trace supplement color and packet motion; status updates use a polite live region. Without JavaScript, the topology and initial request remain readable, the Run button stays disabled, and a noscript message explains playback availability. On mobile, topology and inspection columns stack vertically.
+
+### 6. Progressive Disclosure and Session Evidence
+- **Repository Archive**: The native `details` starts closed. Skill filtering opens it automatically; visitors can otherwise expand it to use the existing search, category filters, source links, and clone actions.
+- **Architecture Reference**: The full interactive topology lives inside a native disclosure in About. Hash navigation opens containing disclosures before scrolling to nested targets, including on initial page load.
+- **Session Clock**: The About session counter and terminal `uptime` command use `performance.now()` to measure elapsed time in this browser tab. They do not report infrastructure availability.
+- **Repository Evidence**: Hero stars are explicitly a snapshot; the repository index explains that counts and stars come from the local index and points to GitHub for current activity.
 
 ---
 
@@ -131,6 +156,8 @@ design_tokens: DESIGN.md
 | **Terminal Input** | Inset dark background, ghost autocomplete behind | Green outline (2px, offset 2px) | Thinking dots animation, disabled submit button | Submitting disabled when empty |
 | **Spotlight Card** | Subtle dark border `#21262d` | Radial phosphor spotlight under cursor, `translateY(-3px)` | `card-highlight-pulse` green bloom when filtered | N/A |
 | **Filter Tab** | Muted text, subtle border | Accent color border and text | Inverted background `#39d353`, dark text `#0a0e14` | N/A |
+| **Request Lab** | Ready, pending response | Native select/button focus treatment | Tracing, Paused, Completed, or Denied; explicit replay | Run disabled without JavaScript |
+| **Repository / Architecture Disclosure** | Collapsed | Native summary keyboard focus | Expanded on activation or linked descendant | Static content remains inspectable |
 | **Toast Alert** | Hidden, `opacity: 0`, translated down | Visible on hover | `opacity: 1`, translated into view, auto-dismiss 2400ms | Removed from viewport |
 
 ---
@@ -149,11 +176,17 @@ design_tokens: DESIGN.md
 
 ## Accessibility Floor
 
-1. **Semantic HTML5**: Native elements used exclusively (`<nav>`, `<header>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`, `<button>`, `<a>`).
+1. **Semantic HTML5**: Native elements used exclusively (`<nav>`, `<header>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`, `<button>`, `<a>`, `<details>`, `<summary>`, `<select>`).
 2. **Text Contrast**: Normal body and secondary text verified at >= 4.5:1 against surfaces (`#94a3b8` on `#0a0e14` = 7.1:1).
 3. **Screen Reader Announcements**:
-   - `aria-live="polite"` on chat response stream and project filter status counter.
+   - `aria-live="polite"` on chat response stream, project filter status counter, and request lab status.
    - `aria-live="assertive"` on toast alerts.
    - `aria-expanded` and `aria-controls` on mobile hamburger and drawer.
 4. **Touch Target Dimensions**: Minimum 44x44px bounding box on all mobile tap targets.
 5. **Reduced Motion**: Full compliance with `@media (prefers-reduced-motion: reduce)` — disabling typewriter loop, instant scrolling, disabling counter rollups, and collapsing all transition durations to 0ms.
+
+## Portfolio curation — 23 September 2026
+
+Only GitHub repositories with `fork: false` belong in the portfolio catalogue. Selected work is mcp-ansible and mcp-proxmox. Remove excluded repositories from biography, timeline, terminal suggestions, canned replies, and architecture attribution as well as cards. The policy gateway in the browser request simulator is an illustrative pattern, not a portfolio repository or deployed service.
+
+The hero immediately exposes identity, technical focus, source links, and credentials. A native “30-second briefing” disclosure supports recruiter scanning without a modal. A direct hero link leads to the request simulator; no simulation starts without visitor action.

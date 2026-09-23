@@ -24,7 +24,7 @@ Success is any of:
 
 ## Positioning
 
-Demonstration over assertion: the site is itself an artifact of the engineering it describes. Depth is provable in-page rather than claimed — live credential verification deep-links, a working dual-engine terminal, real repositories with real star counts, and a protocol-flow visualizer. The specific expertise combination is Red Hat enterprise automation (RHCE, RHCSA, Ansible Automation Platform) crossed with agentic AI infrastructure (MCP servers, RAG pipelines, A2A systems) — a pairing a generic AI portfolio cannot truthfully copy.
+Demonstration over assertion: the site is itself an artifact of the engineering it describes. Depth is provable in-page rather than claimed — live credential verification deep-links, a working dual-engine terminal, real repositories with real star counts, and a protocol-flow visualizer. The specific expertise combination is Red Hat enterprise automation (RHCE, RHCSA, Ansible Automation Platform) crossed with agentic AI infrastructure (MCP servers, RAG pipelines) — a pairing a generic AI portfolio cannot truthfully copy.
 
 ## Operating Context
 
@@ -55,7 +55,7 @@ Demonstration over assertion: the site is itself an artifact of the engineering 
 Real and verifiable:
 - Employment: AI Infrastructure Engineer at Red Hat, Inc.
 - Five certifications, primary Red Hat Certificate ID `170-063-119`, with live verification deep-links to the Red Hat portal and Credly: RHCE (active to Jul 2027), RHCSA (active to Jun 2027), Managing Enterprise Automation with Red Hat AAP (DO467), RHCSA Rapid Track (RH199), Red Hat System Administration I (RH124, Credly badge).
-- Public GitHub repositories with real star counts, including Legal MCP and MCP Mesh work.
+- Public GitHub repositories with real star counts, including Legal MCP, mcp-ansible, and mcp-proxmox.
 - Working in-page demonstrations: dual-engine terminal, MCP architecture visualizer.
 
 Absent — must never be fabricated: testimonials, client names or logos, employer endorsements, performance benchmarks, adoption or traffic metrics, invented star counts, awards, press mentions, and speaking history.
